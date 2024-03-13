@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>COL-FEXXIONES</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+  
+  <!-- Themefisher Icon font -->
+  
+  <link rel="stylesheet" href="../../plugins/themefisher-font/style.css">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Animate css -->
+  <link rel="stylesheet" href="../../plugins/animate/animate.css">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="../../plugins/slick/slick.css">
+  <link rel="stylesheet" href="../../plugins/slick/slick-theme.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body id="body">
+
+<!-- Start Top Header Bar -->
+<section class="top-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<div class="contact-number">
+					<i class="tf-ion-ios-telephone"></i>
+					<span id="adminName"></span>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Site Logo -->
+				<div class="logo text-center">
+					<a href="administrador.php">
+						<!-- replace logo here -->
+						<svg width="335px" height="29px" viewBox="0 0 450 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
+								font-weight="bold">
+								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
+									<text id="AVIATO">
+										<tspan x="108.94" y="325">COL-FEXXIONES</tspan>
+									</text>
+								</g>
+							</g>
+						</svg>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Cart -->
+				<ul class="top-menu text-right list-inline">
+					
+
+					<!-- Search -->
+					<li class="dropdown search dropdown-slide">
+						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
+								class="tf-ion-ios-search-strong"></i> Buscar</a>
+						<ul class="dropdown-menu search-dropdown">
+							<li>
+								<form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
+							</li>
+						</ul>
+					</li>
+
+				</ul><!-- / .nav .navbar-nav .navbar-right -->
+			</div>
+		</div>
+	</div>
+</section><!-- End Top Header Bar -->
+
+
+<!-- Main Menu Section -->
+<section class="menu">
+	<nav class="navbar navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<h2 class="menu-title">Main Menu</h2>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div><!-- / .navbar-header -->
+
+			<!-- Navbar Links -->
+			<div id="navbar" class="navbar-collapse collapse text-center">
+				<ul class="nav navbar-nav">
+
+					<!-- Home -->
+					<li class="dropdown ">
+						<a href="administrador.html">volver</a>
+					</li><!-- / Home -->
+
+				</ul><!-- / .nav .navbar-nav -->
+
+			</div>
+			<!--/.navbar-collapse -->
+		</div><!-- / .container -->
+	</nav>
+</section>
+
+<section class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+					<h1 class="page-name">Lista de Aliados</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="user-dashboard page-wrapper">
+	<div class="container">
+		<div class="row" id="vendedoresRender">
+            
+		</div>
+	</div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Perfil Vendedor</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reload()"></button>
+      </div>
+      <div class="modal-body">
+        <form class="text-left clearfix" id="actualizarVendedor">
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_nombres" id="actualVendedor_nombres"  placeholder="Nombres" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_documento" id="actualVendedor_documento"  placeholder="Num. Documento Identidad" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_apellidos" id="actualVendedor_apellidos" placeholder="Apellidos" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_telefono" id="actualVendedor_telefono" placeholder="Telefono" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_direccion" id="actualVendedor_direccion"  placeholder="Direccion" required>
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control" name="actualVendedor_email" id="actualVendedor_email" placeholder="Email" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_nombre_empresa" id="actualVendedor_nombre_empresa"  placeholder="Nombre Empresa" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="actualVendedor_password" id="actualVendedor_password" placeholder="Password" required>
+					</div>
+					<div class="form-group">
+						<label for="estado">Estado</label>
+						<select name="estadoSelect" id="estadoSelect">
+							
+						</select>	
+					</div>
+					<div class="text-center">
+						<button name="actualizar" type="submit" id="actualizar" class="btn btn-primary text-center">Actualizar</button>
+					</div>
+				</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<footer class="footer section text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="social-media">
+					<li>
+						<a href="https://web.facebook.com/profile.php?id=100004737528439">
+							<i class="tf-ion-social-facebook"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/its_jhon_r_r/">
+							<i class="tf-ion-social-instagram"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://x.com/TH4N0S16?t=WuUKfQXJqzcXzM2Mu4VdVg&s=09">
+							<i class="tf-ion-social-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.pinterest.com/themefisher/">
+							<i class="tf-ion-social-pinterest"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="footer-menu text-uppercase">
+					<li>
+						<a href="contact.html">CONTACTO</a>
+					</li>
+					<li>
+						<a href="shop.html">TIENDA</a>
+					</li>
+					<li>
+						<a href="pricing.html">PRECIOS</a>
+					</li>
+					<li>
+						<a href="contact.html">POLITICA DE PRIVACIDAD</a>
+					</li>
+				</ul>
+				<p class="copyright-text">Copyright &copy;2023, Diseñado &amp; Desarrollado por <a href="https://www.sena.edu.co/es-co/Paginas/default.aspx">TEAM SENA</a></p>
+			</div>
+		</div>
+	</footer>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+    
+    <!-- Main jQuery -->
+    <script src="../../plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Touchpin -->
+    <script src="../../plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Instagram Feed Js -->
+    <script src="../../plugins/instafeed/instafeed.min.js"></script>
+    <!-- Video Lightbox Plugin -->
+    <script src="../../plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+    <!-- Count Down Js -->
+    <script src="../../plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+
+    <!-- slick Carousel -->
+    <script src="../../plugins/slick/slick.min.js"></script>
+    <script src="../../plugins/slick/slick-animation.min.js"></script>
+
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="../../plugins/google-map/gmap.js"></script>
+
+    <!-- Main Js File -->
+    <script src="../../js/script.js"></script>
+		<script src="../../js/administrador.js"></script>
+		<script src="../../js/vendedores.js"></script>
+    
+
+
+  </body>
+  </html>
