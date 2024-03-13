@@ -117,7 +117,7 @@
               <img src="../../images/ferxxo.png" alt="" >
             </div>
             <!-- User Name -->
-            <h5 class="text-center">Jhon Roa</h5>
+            <h5 class="text-center" id="nombreVendedor"></h5>
             <p>Se unio el 28 Noviembre, 2023</p>
             <a href="#" class="btn btn-main-sm">Editar Perfil</a>
           </div>
@@ -466,6 +466,14 @@ Essential Scripts
 
     <!-- Main Js File -->
     <script src="../../js/script.js"></script>
+    <script src="../../js/login.js"></script>
+    <script>
+      var userName = localStorage.getItem('nameUser');
+
+      if(userName){
+        document.getElementById("nombreVendedor").textContent = userName;
+      }
+    </script>
 
 </body>
 

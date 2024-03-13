@@ -8,14 +8,22 @@ $('#loginForm').submit(function(event) {
     method: 'GET',
     success: function(response) {
       // Manejar la respuesta exitosa
+      
       if(response != null){
           localStorage.setItem('loggedIn','true');
           localStorage.setItem('nameUser', response.usuario_nombre);
           localStorage.setItem('emailUser', response.usuario_email);
-        if(response.rol.idRol = 4){
-    
-          window.location.href = "../php/login/administrador.html";
-        }
+          localStorage.setItem('rol', response.rol.idRol);
+        
+        if(response.usuario_nombre == null){
+          window.location.href = '#';
+        }else if(response.rol.idRol === 4){
+          window.location.href = '../php/login/administrador.html';
+        }else if(response.rol.idRol === 2){
+          window.location.href = '../php/login/aliado.html';
+        }else if(response.rol.idRol === 1){
+          window.location.href = '../php/login/usuario.html';
+        };
       }else{
         alert("usuario no registrado");
       }

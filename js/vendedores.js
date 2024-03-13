@@ -80,7 +80,6 @@ let idEditar;
 function editar(id){
   //console.log(vendedor);
   idEditar = id;
-  let estado;
   //cargar datos del vendedor
   $.ajax({
     url: 'http://localhost:8080/api/v1/usuarios/'+idEditar,
@@ -110,18 +109,22 @@ function editar(id){
       console.log(response);
       console.log(estadoVendedor);
       if(response != null){
-
+        
         $('#estadoSelect').empty();
         
         response.forEach(function(estado) {
+          if (estado.idEstado == estadoVendedor.idEstado) {
+            var opcion = $('<option>', {
+              value: estado.idEstado,
+              text: estado.estado_descripcion,
+              selected: true
+            });
+        }else{
           var opcion = $('<option>', {
             value: estado.idEstado,
             text: estado.estado_descripcion
-        });
-        if (estado.idEstado == estadoVendedor.idEstado) {
-          opcion.prop('selected', true);
+          });
         }
-
         $('#estadoSelect').append(opcion);
           
         });
@@ -132,58 +135,53 @@ function editar(id){
     }
   });
 
-  //Enviar formulario
-  $('#actualizarVendedor').submit(function(event) {
-    event.preventDefault();
+}
+//Enviar formulario
+$('#actualizarVendedor').submit(function(event) {
+  event.preventDefault();
+
+  let rol = {};
+  rol.idRol = 2;
+  let estado = {};
+  estado.idEstado = document.getElementById("estadoSelect").value;
+  let campos = {};
   
-    let rol = {};
-    rol.idRol = 2;
-    let estado = {};
-    estado.idEstado = document.getElementById("estadoSelect").value;
-    let campos = {};
-    
-    campos.idUsuario = vendedorAEditar.idUsuario;
-    campos.usuario_nombre = document.getElementById("actualVendedor_nombres").value;
-    campos.usuario_apellido = document.getElementById("actualVendedor_apellidos").value;
-    campos.usuario_telefono = document.getElementById("actualVendedor_telefono").value;
-    campos.usuario_email = document.getElementById("actualVendedor_email").value;
-    campos.usuario_password = document.getElementById("actualVendedor_password").value;
-    campos.usuario_documento = document.getElementById("actualVendedor_documento").value;
-    campos.usuario_empresa = document.getElementById("actualVendedor_nombre_empresa").value;
-    campos.usuario_direccion = document.getElementById("actualVendedor_direccion").value;
-    campos.usuario_foto = "foto.png";
-    campos.usuario_ventas = 0;
-    campos.usuario_compras = 0;
-    campos.estado = estado;
-    campos.rol = rol;
-    
-    $.ajax({
-      url: 'http://localhost:8080/api/v1/usuarios',
-      method: 'POST',
-      data: JSON.stringify(campos),
-      contentType: 'application/json',
-      success: function(response) {
-        if(response != null){
-          document.getElementById("vendedoresRender").innerHTML = '';
-          obtenerVendedores();
-          alert("vendedor actualizado");
-        }else{
-          alert("No se pudo actualizar")
-        }
-        console.log('Respuesta del servicio:', response);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+  campos.idUsuario = vendedorAEditar.idUsuario;
+  campos.usuario_nombre = document.getElementById("actualVendedor_nombres").value;
+  campos.usuario_apellido = document.getElementById("actualVendedor_apellidos").value;
+  campos.usuario_telefono = document.getElementById("actualVendedor_telefono").value;
+  campos.usuario_email = document.getElementById("actualVendedor_email").value;
+  campos.usuario_password = document.getElementById("actualVendedor_password").value;
+  campos.usuario_documento = document.getElementById("actualVendedor_documento").value;
+  campos.usuario_empresa = document.getElementById("actualVendedor_nombre_empresa").value;
+  campos.usuario_direccion = document.getElementById("actualVendedor_direccion").value;
+  campos.usuario_foto = "foto.png";
+  campos.usuario_ventas = 0;
+  campos.usuario_compras = 0;
+  campos.estado = estado;
+  campos.rol = rol;
+  
+  $.ajax({
+    url: 'http://localhost:8080/api/v1/usuarios',
+    method: 'POST',
+    data: JSON.stringify(campos),
+    contentType: 'application/json',
+    success: function(response) {
+      if(response != null){
+        document.getElementById("vendedoresRender").innerHTML = '';
+        obtenerVendedores();
+        alert("vendedor actualizado");
+      }else{
+        alert("No se pudo actualizar")
       }
-    });
+      console.log('Respuesta del servicio:', response);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+    }
   });
+});
 
+function resetForm(){
+  document.getElementById('estadoSelect').selectedIndex = -1;
 }
-
-function reload(){
-  if (vendedorModificado == true) {
-    location.reload();
-    vendedorModificado = false;
-  }
-}
-
