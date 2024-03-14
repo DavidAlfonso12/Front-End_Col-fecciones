@@ -15,13 +15,11 @@ $('#loginForm').submit(function(event) {
           localStorage.setItem('emailUser', response.usuario_email);
           localStorage.setItem('rol', response.rol.idRol);
         
-        if(response.usuario_nombre == null){
-          window.location.href = '#';
-        }else if(response.rol.idRol === 4){
+        if(response.rol.rolNombre === "Administrador"){
           window.location.href = '../php/login/administrador.html';
-        }else if(response.rol.idRol === 2){
+        }else if(response.rol.rolNombre === "aliado"){
           window.location.href = '../php/login/aliado.html';
-        }else if(response.rol.idRol === 1){
+        }else if(response.rol.rolNombre === "usuario"){
           window.location.href = '../php/login/usuario.html';
         };
       }else{
