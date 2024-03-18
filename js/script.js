@@ -181,3 +181,128 @@ $('#registerUsuario').submit(function(event) {
     }
   });
 });
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openFormButton").addEventListener("click", openForm);
+
+
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formaContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formaContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openaFormButton").addEventListener("click", openForm);
+
+
+
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formaaContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formaaContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openaaFormButton").addEventListener("click", openForm);
+
+
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formaaaContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formaaaContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openaaaFormButton").addEventListener("click", openForm);
+
+
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formaaaaContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formaaaaContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openaaaaFormButton").addEventListener("click", openForm);
+
+
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formaaaaaContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formaaaaaContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openaaaaaFormButton").addEventListener("click", openForm);

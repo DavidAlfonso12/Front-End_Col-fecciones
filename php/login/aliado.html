@@ -98,7 +98,48 @@
             <!-- User Name -->
             <h5 class="text-center" id="nombreVendedor"></h5>
             <p>Se unio el 28 Noviembre, 2023</p>
-            <a href="#" class="btn btn-main-sm">Editar Perfil</a>
+            <button id="openFormButton">editar perfil</button>
+
+        
+        <div id="formContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>EDITAR PERFIL</h2>
+        <form id="productForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerUsuario">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_nombres" id="user_nombres"  placeholder="Nombre de Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
           </div>
         </div>
       </div>
@@ -136,10 +177,55 @@
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="aliado.html">
+                        <a class="edit" data-toggle="tooltip" id="openaaaaaFormButton" data-placement="top" title="Edit" >
                           <i class="fa fa-pencil"></i>
                         </a>
                       </li>
+        
+
+
+
+        <div id="formaaaaaContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>Editar produc</h2>
+        <form id="editProductoForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerProducto">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="prod_nombres" id="pro_nombres"  placeholder="Nombre de producto" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
+
+
                       <li class="list-inline-item">
                         <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
                           <i class="fa fa-trash"></i>
@@ -168,10 +254,50 @@
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="aliado.html">
+                        <a class="edit" data-toggle="tooltip" id="openaaaaFormButton" data-placement="top" title="Edit" >
                           <i class="fa fa-pencil"></i>
                         </a>
                       </li>
+        
+        <div id="formaaaaContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>EDITAR PERFIL</h2>
+        <form id="productForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerUsuario">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_nombres" id="user_nombres"  placeholder="Nombre de Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
                       <li class="list-inline-item">
                         <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
                           <i class="fa fa-trash"></i>
@@ -201,10 +327,50 @@
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="aliado.html">
+                        <a class="edit" data-toggle="tooltip" id="openaaaFormButton" data-placement="top" title="Edit" >
                           <i class="fa fa-pencil"></i>
                         </a>
                       </li>
+        
+        <div id="formaaaContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>EDITAR PERFIL</h2>
+        <form id="productForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerUsuario">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_nombres" id="user_nombres"  placeholder="Nombre de Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
                       <li class="list-inline-item">
                         <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
                           <i class="fa fa-trash"></i>
@@ -235,10 +401,50 @@
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="aliado.html">
+                        <a class="edit" data-toggle="tooltip" id="openaFormButton" data-placement="top" title="Edit" >
                           <i class="fa fa-pencil"></i>
                         </a>
                       </li>
+        
+        <div id="formaContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>EDITAR PERFIL</h2>
+        <form id="productForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerUsuario">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_nombres" id="user_nombres"  placeholder="Nombre de Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
                       <li class="list-inline-item">
                         <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
                           <i class="fa fa-trash"></i>
@@ -269,10 +475,50 @@
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="aliado.html">
+                        <a class="edit" data-toggle="tooltip" id="openaaFormButton" data-placement="top" title="Edit" >
                           <i class="fa fa-pencil"></i>
                         </a>
                       </li>
+        
+        <div id="formaaContainer" class="form-container">
+         <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>EDITAR PERFIL</h2>
+        <form id="productForm" onsubmit="return false;">
+          <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-6">
+              <div class="block text-center">
+                <form class="text-left clearfix" id="registerUsuario">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_nombres" id="user_nombres"  placeholder="Nombre de Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_apellidos" id="user_apellidos" placeholder="Direccion" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="user_telefono" id="user_telefono" placeholder="Telefono" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea type="email" class="form-control" name="user_email" id="user_email" placeholder="Descripcion del perfil" rows="4" cols="50" required ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Contraseña" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="user_password" id="user_password" placeholder="Confirmar contraseña" required>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+            <button type="submit" onclick="addProduct()">Confirmar edicion</button>
+        </form>
+    </div>
+</div>
                       <li class="list-inline-item">
                         <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
                           <i class="fa fa-trash"></i>
