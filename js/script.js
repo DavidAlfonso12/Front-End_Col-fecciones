@@ -181,3 +181,22 @@ $('#registerUsuario').submit(function(event) {
     }
   });
 });
+
+// Función para abrir el formulario
+function openForm() {
+  document.getElementById("formContainer").style.display = "block";
+}
+
+// Función para cerrar el formulario
+function closeForm() {
+  document.getElementById("formContainer").style.display = "none";
+}
+
+// Función para añadir un producto (puedes modificar esta función según tus necesidades)
+function addProduct() {
+  // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
+  // Por simplicidad, aquí simplemente cerraremos el formulario
+  closeForm();
+}
+// Asignar la función openForm al botón
+document.getElementById("openFormButton").addEventListener("click", openForm);

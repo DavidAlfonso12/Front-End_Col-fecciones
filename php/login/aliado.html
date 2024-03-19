@@ -69,9 +69,56 @@
 							<li class="nav-item">
 								<button class="nav-link login-button" onclick="cerrarSesion()"><a>Cerrar Sesion</a></button>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="../../products.html"><i class="fa fa-plus-circle"></i> Añadir Prodcuto</a>
-							</li>
+
+
+              <!-- FORMULARIO AGREGAR PRODUCTO -->
+
+              <button id="openFormButton">Añadir Producto</button>
+
+<div id="formContainer" class="form-container">
+    <div class="form-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h1>COL-FECCIONES</h1>
+        <h2>REGISTRA TU PRODUCTO!</h2><br>
+        <form id="productForm" onsubmit="return false;">
+            <label for="productName">Nombre Producto:</label>
+            <input type="text" id="productName" name="productName" required><br><br>
+
+            <label for="productPrice">Categoria Prodcuto:</label>
+            <input type="text" id="productPrice" name="productType" required><br><br>
+
+            <label for="productSize">Talla:</label>
+            <select type="text" id="productSize" name="productSize" required>
+
+              <option value="">XS</option>
+              <option value="">S</option>
+              <option value="">M</option>
+              <option value="">L</option>
+              <option value="">Xl</option>
+              <option value="">XXL</option>
+
+            </select><br><br>
+
+            
+            <label for="productColo">Color:</label>
+            <input type="text" id="productColor" name="productColor" required><br><br>
+
+
+            <label for="productPrice">Precio:</label>
+            <input type="number" id="productPrice" name="productPrice" required><br><br>
+
+            <label for="productDescription">Descripción:</label><br>
+            <textarea id="productDescription" name="productDescription" rows="4" cols="50" required></textarea><br><br>
+
+            <label for="productImage">Imagen:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*"><br><br>
+
+            <button type="submit" onclick="addProduct()">Añadir Producto</button>
+        </form>
+    </div>
+</div>
+							
+
 						</ul>
 					</div>
 				</nav>
