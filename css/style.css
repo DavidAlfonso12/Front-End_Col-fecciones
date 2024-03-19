@@ -45,6 +45,14 @@ a, a:focus, a:hover {
   width: 580px;
   height: 735px;
 }
+.container-button{
+  text-align: center;
+}
+
+button{
+  display: inline-block;
+  margin-bottom: 20px;
+}
 
 blockquote {
   font-size: 18px;
