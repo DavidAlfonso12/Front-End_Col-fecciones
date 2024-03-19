@@ -14,17 +14,21 @@ $('#loginForm').submit(function(event) {
                 localStorage.setItem('loggedIn', 'true');
                 CrearUsuarioLocal(response);
 
-                if (response.rol.rolNombre === "Administrador") {
-                    window.location.href = '../php/login/administrador.html';
-                } else if (response.rol.rolNombre === "aliado") {
-                    window.location.href = '../php/login/aliado.html';
-                } else if (response.rol.rolNombre === "usuario") {
-                    window.location.href = '../php/login/usuario.html';
-                };
+                if(response.estado.estado_descripcion !== "Activo"){
+                    alert("Tu estado actual es: " + response.estado.estado_descripcion + " para cambiarlo comunicate con un administrador");
+                }else{        
+                    if (response.rol.rolNombre === "Administrador") {
+                        window.location.href = '../php/login/administrador.html';
+                    } else if (response.rol.rolNombre === "aliado") {
+                        window.location.href = '../php/login/aliado.html';
+                    } else if (response.rol.rolNombre === "usuario") {
+                        window.location.href = '../php/login/usuario.html';
+                    }; 
+                }
             } else {
                 alert("usuario no registrado");
             }
-            console.log('Respuesta del servicio:', response);
+            //console.log('Respuesta del servicio:', response);
             // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
         },
         error: function(jqXHR, textStatus, errorThrown) {

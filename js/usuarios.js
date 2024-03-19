@@ -191,7 +191,7 @@ $('#actualizarUsuario').submit(function(event) {
 
                 alert("usuario actualizado");
             } else {
-                alert("No se pudo actualizar")
+                alert("No se pudo actualizar");
             }
             console.log('Respuesta del servicio:', response);
         },

@@ -1,0 +1,1 @@
+document.getElementById("usuarioNombre").textContent = user.usuario_nombre;

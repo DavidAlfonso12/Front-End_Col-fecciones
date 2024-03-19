@@ -22,3 +22,8 @@ function CrearUsuarioLocal(usuario) {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(usuario));
 }
+
+if(window.location.href.includes('administrador.html') && user.rol.idRol != 4){
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+}
