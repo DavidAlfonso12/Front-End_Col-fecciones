@@ -12,7 +12,7 @@ $('#loginForm').submit(function(event) {
             if (response != null) {
 
                 localStorage.setItem('loggedIn', 'true');
-                localStorage.setItem('user', JSON.stringify(response));
+                CrearUsuarioLocal(response);
 
                 if (response.rol.rolNombre === "Administrador") {
                     window.location.href = '../php/login/administrador.html';

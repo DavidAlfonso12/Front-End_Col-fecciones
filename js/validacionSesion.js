@@ -1,4 +1,4 @@
-if (!localStorage.getItem('loggedIn')) {
+if (!window.location.href.includes('login.html') && !localStorage.getItem('loggedIn')) {
     window.location.href = '../../login.html';
 }
 
@@ -13,3 +13,12 @@ function cerrarSesion() {
 }
 
 var user = JSON.parse(localStorage.getItem('user'));
+
+function validarAdministrador() {
+    return user.rol.idRol == 4;
+}
+
+function CrearUsuarioLocal(usuario) {
+    localStorage.removeItem('user');
+    localStorage.setItem('user', JSON.stringify(usuario));
+}

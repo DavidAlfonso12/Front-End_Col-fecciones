@@ -8,75 +8,76 @@
 -->
 
 <html lang="en">
+
 <head>
 
-  <!-- Basic Page Needs
+    <!-- Basic Page Needs
   ================================================== -->
-  <meta charset="utf-8">
-  <title>Col-Fexxiones | Login</title>
+    <meta charset="utf-8">
+    <title>Col-Fexxiones | Login</title>
 
-  <!-- Mobile Specific Metas
+    <!-- Mobile Specific Metas
   ================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Construction Html5 Template">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/Leonardo_Diffusion_XL_A_logo_for_a_clothing_brand_called_colfe_3 (1) 1.png" />
-  
-  <!-- Themefisher Icon font -->
-  <link rel="stylesheet" href="plugins/themefisher-font/style.css">
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-  
-  <!-- Animate css -->
-  <link rel="stylesheet" href="plugins/animate/animate.css">
-  <!-- Slick Carousel -->
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Construction Html5 Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="author" content="Themefisher">
+    <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/Leonardo_Diffusion_XL_A_logo_for_a_clothing_brand_called_colfe_3 (1) 1.png" />
+
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+
+    <!-- Animate css -->
+    <link rel="stylesheet" href="plugins/animate/animate.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="plugins/slick/slick.css">
+    <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body id="body">
 
-<section class="signin-page account">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="block text-center">
-          <a class="logo" href="index.html">
-            <h1>ColFexxiones</h1>
-          </a>
-          <h4 class="text-center">Bienvenido</h4>
-          <form class="text-left clearfix" id="loginForm">
-            <div class="form-group">
-              <input type="email" class="form-control" name="usuario_email"  placeholder="Email">
+    <section class="signin-page account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block text-center">
+                        <a class="logo" href="index.html">
+                            <h1>ColFexxiones</h1>
+                        </a>
+                        <h4 class="text-center">Bienvenido</h4>
+                        <form class="text-left clearfix" id="loginForm">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="usuario_email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="usuario_password" placeholder="Password">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" id="login" class="btn btn-main text-center">Ingresar</button>
+                            </div>
+                        </form>
+                        <p class="mt-20">Aun no tienes cuenta ?<a href="typeAcount.html"> Crear tu cuenta</a></p>
+                        <p><a href="forget-password.html"> Olvidaste tu contraseña ?</a></p>
+                        <p><a href="index.html">Volver</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control" name="usuario_password" placeholder="Password">
-            </div>
-            <div class="text-center">
-              <button type="submit" id="login" class="btn btn-main text-center" >Ingresar</button>
-            </div>
-          </form>
-          <p class="mt-20">Aun no tienes cuenta ?<a href="typeAcount.html"> Crear tu cuenta</a></p>
-          <p><a href="forget-password.html"> Olvidaste tu contraseña ?</a></p>
-          <p><a href="index.html">Volver</a></p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- 
     Essential Scripts
     =====================================-->
-    
+
     <!-- Main jQuery -->
     <script src="plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.1 -->
@@ -96,9 +97,11 @@
 
 
     <!-- Main Js File -->
+    <script src="js/validacionSesion.js"></script>
     <script src="js/login.js"></script>
-    
 
 
-  </body>
-  </html>
+
+</body>
+
+</html>

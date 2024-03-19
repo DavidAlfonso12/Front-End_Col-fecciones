@@ -104,7 +104,7 @@
                                 <div class="form-content">
                                     <span class="close" onclick="closeForm()">&times;</span>
                                     <h2>EDITAR PERFIL</h2>
-                                    <form id="updateFormVendedor" onsubmit="return false;">
+                                    <form id="actualizarVendedor">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12 col-md-offset-6">
@@ -374,9 +374,6 @@ Essential Scripts
         if (user.usuario_nombre) {
             document.getElementById("nombreVendedor").textContent = user.usuario_nombre;
         }
-        console.log(user.usuario_nombre);
-        console.log(user.idUsuario);
-        console.log(user);
     </script>
     <script src="../../js/script.js"></script>
     <script src="../../js/login.js"></script>

@@ -1,18 +1,23 @@
 //Get Vendedores
 let usuarioModificado = false;
 let estadoUsuario;
-obtenerUsuarios();
-function obtenerUsuarios(){
-  $.ajax({
-    url: 'http://localhost:8080/api/v1/usuarios/rol/1',
-    method: 'GET',
-    success: function(response){
-      let usuarios = response;
-      //Respuesta exitosa
-      if(usuarios != null){
-        let contentUsuarios = "";
-        for(let i of usuarios){
-          let usuario = `
+if (validarAdministrador()) {
+    obtenerUsuarios();
+    var modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+}
+
+function obtenerUsuarios() {
+    document.getElementById("usuariosRender").innerHTML = '';
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/usuarios/rol/1',
+        method: 'GET',
+        success: function(response) {
+            let usuarios = response;
+            //Respuesta exitosa
+            if (usuarios != null) {
+                let contentUsuarios = "";
+                for (let i of usuarios) {
+                    let usuario = `
           <div class="col-md-6">
               <div class="dashboard-wrapper user-dashboard">
               <div class="media">
@@ -40,9 +45,9 @@ function obtenerUsuarios(){
                   </thead>
                   <tbody>
                     <tr>
+                      <td>${i.idUsuario}</td>
                       <td>${i.usuario_nombre}</td>
                       <td>${i.usuario_apellido}</td>
-                      <td>${i.idUsuario}</td>
                       <td>${i.usuario_telefono}</td>
                       <td>${i.usuario_email}</td>
                       <td>${i.estado.estado_descripcion}</td>
@@ -58,127 +63,144 @@ function obtenerUsuarios(){
             </div>
 			    </div>
           `;
-  
-          contentUsuarios += usuario;
+
+                    contentUsuarios += usuario;
+                }
+
+                document.getElementById("usuariosRender").innerHTML = contentUsuarios;
+
+            } else {
+                alert("No se encontraron usuarios con este rol");
+            }
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar errores de la solicitud
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
         }
-  
-        document.getElementById("usuariosRender").innerHTML = contentUsuarios;
-  
-      }else{
-        alert("No se encontraron usuarios con este rol");
-      }
-  
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      // Manejar errores de la solicitud
-      console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-    }
-  });
+    });
 }
 
 
 //Actualizar vendedor
 let idEditar;
 
-function editar(id){
-  //console.log(vendedor);
-  idEditar = id;
-  //cargar datos del vendedor
-  $.ajax({
-    url: 'http://localhost:8080/api/v1/usuarios/'+idEditar,
-    method: 'GET',
-    dataType: 'json',
-    success: function(response){
-      $('#actualUsuario_nombres').val(response.usuario_nombre);
-      $('#actualUsuario_apellidos').val(response.usuario_apellido);
-      $('#actualUsuario_telefono').val(response.usuario_telefono);
-      $('#actualUsuario_email').val(response.usuario_email);
-      $('#actualUsuario_password').val(response.usuario_password);
-      estadoUsuario = response.estado;
-      usuarioAEditar = response;
-    }
-    
-  });
-  
-  //consultar estados
-  $.ajax({
-    url: 'http://localhost:8080/api/v1/estados',
-    method: 'GET',
-    dataType: 'json',
-    success: function(response){
-      console.log(response);
-      console.log(estadoUsuario);
-      if(response != null){
-        
-        $('#estadoSelect').empty();
-        
-        response.forEach(function(estado) {
-          if (estado.idEstado == estadoUsuario.idEstado) {
-            var opcion = $('<option>', {
-              value: estado.idEstado,
-              text: estado.estado_descripcion,
-              selected: true
-            });
-        }else{
-          var opcion = $('<option>', {
-            value: estado.idEstado,
-            text: estado.estado_descripcion
-          });
+function editar(id) {
+    //console.log(vendedor);
+    idEditar = id;
+    //cargar datos del vendedor
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/usuarios/' + idEditar,
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            $('#actualUsuario_nombres').val(response.usuario_nombre);
+            $('#actualUsuario_apellidos').val(response.usuario_apellido);
+            $('#actualUsuario_telefono').val(response.usuario_telefono);
+            $('#actualUsuario_email').val(response.usuario_email);
+            $('#actualUsuario_password').val(response.usuario_password);
+            estadoUsuario = response.estado;
+            usuarioAEditar = response;
+            if (validarAdministrador()) {
+                obtenerEstados();
+            }
         }
-        $('#estadoSelect').append(opcion);
-          
-        });
-      }
-    },
-    error: function(xhr, status, error) {
-        console.error('Error al obtener datos de estados:', error);
-    }
-  });
 
+    });
 }
+
+function obtenerEstados() {
+
+    //consultar estados
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/estados',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            console.log(response);
+            console.log(estadoUsuario);
+            if (response != null) {
+
+                $('#estadoSelect').empty();
+
+                response.forEach(function(estado) {
+                    if (estado.idEstado == estadoUsuario.idEstado) {
+                        var opcion = $('<option>', {
+                            value: estado.idEstado,
+                            text: estado.estado_descripcion,
+                            selected: true
+                        });
+                    } else {
+                        var opcion = $('<option>', {
+                            value: estado.idEstado,
+                            text: estado.estado_descripcion
+                        });
+                    }
+                    $('#estadoSelect').append(opcion);
+
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al obtener datos de estados:', error);
+        }
+    });
+}
+
 //Enviar formulario
 $('#actualizarUsuario').submit(function(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  let rol = {};
-  rol.idRol = 1;
-  let estado = {};
-  estado.idEstado = document.getElementById("estadoSelect").value;
-  let campos = {};
-  
-  campos.idUsuario = usuarioAEditar.idUsuario;
-  campos.usuario_nombre = document.getElementById("actualUsuario_nombres").value;
-  campos.usuario_apellido = document.getElementById("actualUsuario_apellidos").value;
-  campos.usuario_telefono = document.getElementById("actualUsuario_telefono").value;
-  campos.usuario_email = document.getElementById("actualUsuario_email").value;
-  campos.usuario_password = document.getElementById("actualUsuario_password").value;
-  campos.usuario_foto = "foto.png";
-  campos.usuario_ventas = 0;
-  campos.usuario_compras = 0;
-  campos.estado = estado;
-  campos.rol = rol;
-  
-  $.ajax({
-    url: 'http://localhost:8080/api/v1/usuarios',
-    method: 'POST',
-    data: JSON.stringify(campos),
-    contentType: 'application/json',
-    success: function(response) {
-      if(response != null){
-        document.getElementById("usuariosRender").innerHTML = '';
-        obtenerUsuarios();
-        alert("usuario actualizado");
-      }else{
-        alert("No se pudo actualizar")
-      }
-      console.log('Respuesta del servicio:', response);
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+    let campos = {};
+    campos.idUsuario = usuarioAEditar.idUsuario;
+    campos.usuario_nombre = document.getElementById("actualUsuario_nombres").value;
+    campos.usuario_apellido = document.getElementById("actualUsuario_apellidos").value;
+    campos.usuario_telefono = document.getElementById("actualUsuario_telefono").value;
+    campos.usuario_email = document.getElementById("actualUsuario_email").value;
+    campos.usuario_password = document.getElementById("actualUsuario_password").value;
+    campos.usuario_foto = "foto.png";
+    campos.usuario_ventas = 0;
+    campos.usuario_compras = 0;
+    if (validarAdministrador()) {
+        let rol = {};
+        rol.idRol = 1;
+        campos.rol = rol;
+
+        let estado = {};
+        estado.idEstado = document.getElementById("estadoSelect").value;
+        campos.estado = estado;
+    } else {
+        campos.estado = user.estado;
+        campos.rol = user.rol;
     }
-  });
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/usuarios',
+        method: 'POST',
+        data: JSON.stringify(campos),
+        contentType: 'application/json',
+        success: function(response) {
+            if (response != null) {
+                if (validarAdministrador()) {
+                    obtenerUsuarios();
+                    modal.hide();
+                } else {
+                    CrearUsuarioLocal(response);
+                    closeForm();
+                }
+
+                alert("usuario actualizado");
+            } else {
+                alert("No se pudo actualizar")
+            }
+            console.log('Respuesta del servicio:', response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+        }
+    });
 });
 
-function resetForm(){
-  document.getElementById('estadoSelect').selectedIndex = -1;
+function resetForm() {
+    document.getElementById('estadoSelect').selectedIndex = -1;
 }

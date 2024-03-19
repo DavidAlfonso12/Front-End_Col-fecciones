@@ -1,9 +1,6 @@
 var userName = localStorage.getItem('nameUser');
 
-if(userName){
-  document.getElementById("adminName").textContent = userName;
-}
+document.getElementById("adminName").textContent = user.usuario_nombre;
+
 
 //cierre sesion
-
-
