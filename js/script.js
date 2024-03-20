@@ -181,50 +181,42 @@ $('#registerUsuario').submit(function(event) {
     });
 });
 
-// Función para abrir el formulario
+//============= Formulario para editar el perfil del vendedor ================ \\
 function openForm() {
     document.getElementById("formContainer").style.display = "block";
 }
 
-// Función para cerrar el formulario
 function closeForm() {
     document.getElementById("formContainer").style.display = "none";
 }
-
-// Función para añadir un producto (puedes modificar esta función según tus necesidades)
-function guardarPerfil() {
-    closeForm();
-}
-// Asignar la función openForm al botón
 document.getElementById("openFormButton").addEventListener("click", openForm);
 
 
-
-// Función para abrir el formulario
+//============= Formulario para editar el producto del vendedor ================ \\
 function openFormUpdateProduct() {
     document.getElementById("formEditarProductoContainer").style.display = "block";
 }
 
-// Función para cerrar el formulario
 function closeFormUpdateProduct() {
     document.getElementById("formEditarProductoContainer").style.display = "none";
 }
 
-// Función para añadir un producto (puedes modificar esta función según tus necesidades)
 function updateProduct() {
-    // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
-    // Por simplicidad, aquí simplemente cerraremos el formulario
     closeFormUpdateProduct();
 }
-// Asignar la función openForm al botón
 document.getElementById("editarProducto").addEventListener("click", openFormUpdateProduct);
 
 
-//======== Formulario para agregar producto
-function addProduct() {
-    // Aquí puedes realizar la lógica para agregar el producto, como enviar los datos a un servidor, etc.
-    // Por simplicidad, aquí simplemente cerraremos el formulario
-    closeForm();
+//============= Formulario para agregar productos del vendedor ================ \\
+function openFormAddProducto() {
+    document.getElementById('formAddProducto').style.display = "block";
 }
-// Asignar la función openForm al botón
-document.getElementById("openFormButton").addEventListener("click", openForm);
+
+function closeFormAddProducto() {
+    document.getElementById('formAddProducto').style.display = "none";
+}
+
+function addProduct() {
+    closeFormAddProducto();
+}
+document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);

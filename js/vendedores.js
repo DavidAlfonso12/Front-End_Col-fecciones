@@ -60,7 +60,6 @@ function obtenerVendedores() {
           </div>
         </div>
           `;
-
                     contentVendedores += vend;
                 }
 
@@ -113,9 +112,6 @@ function obtenerEstados() {
         dataType: 'json',
         success: function(response) {
             if (response != null) {
-
-                $('#estadoSelect').empty();
-
                 response.forEach(function(estado) {
                     if (estado.idEstado == estadoVendedor.idEstado) {
                         var opcion = $('<option>', {

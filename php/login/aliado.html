@@ -70,36 +70,26 @@ Essential stylesheets
                                 </li>
                                 <!-- FORMULARIO AGREGAR PRODUCTO -->
 
-                                <button id="openFormButton">Añadir Producto</button>
+                                <button id="openFormAddProducto" onclick="obtenerCategorias()">Añadir Producto</button>
 
-                                <div id="formContainer" class="form-container">
+                                <div id="formAddProducto" class="form-container">
                                     <div class="form-content">
-                                        <span class="close" onclick="closeForm()">&times;</span>
-                                        <h1>COL-FECCIONES</h1>
+                                        <span class="close" onclick="closeFormAddProducto()">&times;</span>
                                         <h2>REGISTRA TU PRODUCTO!</h2><br>
-                                        <form id="productForm" onsubmit="return false;">
+                                        <form id="addProductForm">
                                             <label for="productName">Nombre Producto:</label>
                                             <input type="text" id="productName" name="productName" required><br><br>
 
-                                            <label for="productPrice">Categoria Prodcuto:</label>
-                                            <input type="text" id="productPrice" name="productType" required><br><br>
-
-                                            <label for="productSize">Talla:</label>
-                                            <select type="text" id="productSize" name="productSize" required>
-                                                <option value="">XS</option>
-                                                <option value="">S</option>
-                                                <option value="">M</option>
-                                                <option value="">L</option>
-                                                <option value="">Xl</option>
-                                                <option value="">XXL</option>
-                                                </select><br><br>
-
-                                            <label for="productColo">Color:</label>
-                                            <input type="text" id="productColor" name="productColor" required><br><br>
-
+                                            <label for="productCategoria">Categoria Producto:</label>
+                                            <select type="text" id="productCategoria" name="productCategoria" required>
+                                                <option value="0" selected>Seleccione una categoria</option>
+                                            </select><br><br>
 
                                             <label for="productPrice">Precio:</label>
                                             <input type="number" id="productPrice" name="productPrice" required><br><br>
+
+                                            <label for="productPrice">Cantidad disponible:</label>
+                                            <input type="number" id="productCantidad" name="productCantidad" required><br><br>
 
                                             <label for="productDescription">Descripción:</label><br>
                                             <textarea id="productDescription" name="productDescription" rows="4" cols="50" required></textarea><br><br>
@@ -107,7 +97,8 @@ Essential stylesheets
                                             <label for="productImage">Imagen:</label>
                                             <input type="file" id="productImage" name="productImage" accept="image/*"><br><br>
 
-                                            <button type="submit" onclick="addProduct()">Añadir Producto</button>
+
+                                            <button type="submit">Añadir Producto</button>
                                         </form>
                                     </div>
                                 </div>
@@ -406,7 +397,7 @@ Essential Scripts
     <script src="../../plugins/slick/slick.min.js"></script>
     <script src="../../plugins/slick/slick-animation.min.js"></script>
     <script src="../../js/validacionSesion.js"></script>
-
+    <script src="../../js/productos.js"></script>
     <!-- Main Js File -->
     <script>
         function verPerfil() {
@@ -420,6 +411,7 @@ Essential Scripts
     <script src="../../js/script.js"></script>
     <script src="../../js/login.js"></script>
     <script src="../../js/vendedores.js"></script>
+
 
 </body>
 
