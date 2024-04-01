@@ -193,18 +193,7 @@ document.getElementById("openFormButton").addEventListener("click", openForm);
 
 
 //============= Formulario para editar el producto del vendedor ================ \\
-function openFormUpdateProduct() {
-    document.getElementById("formEditarProductoContainer").style.display = "block";
-}
 
-function closeFormUpdateProduct() {
-    document.getElementById("formEditarProductoContainer").style.display = "none";
-}
-
-function updateProduct() {
-    closeFormUpdateProduct();
-}
-document.getElementById("editarProducto").addEventListener("click", openFormUpdateProduct);
 
 
 //============= Formulario para agregar productos del vendedor ================ \\
@@ -216,7 +205,5 @@ function closeFormAddProducto() {
     document.getElementById('formAddProducto').style.display = "none";
 }
 
-function addProduct() {
-    closeFormAddProducto();
-}
+
 document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);

@@ -18,55 +18,47 @@ function obtenerUsuarios() {
                 let contentUsuarios = "";
                 for (let i of usuarios) {
                     let usuario = `
-          <div class="col-md-6">
-              <div class="dashboard-wrapper user-dashboard">
-              <div class="media">
-              <div class="pull-left">
-                
-              </div>
-              <div class="media-body">
-                <h2 class="media-heading">${i.usuario_nombre} ${i.usuario_apellido}</h2>
-                              
-              </div>
-            </div>
-            <div class="total-order mt-20">
-              <h4>Datos del Usuario</h4>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Telefono</th>
-                      <th>Correo</th>
-                      <th>Estado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>${i.idUsuario}</td>
-                      <td>${i.usuario_nombre}</td>
-                      <td>${i.usuario_apellido}</td>
-                      <td>${i.usuario_telefono}</td>
-                      <td>${i.usuario_email}</td>
-                      <td>${i.estado.estado_descripcion}</td>
-                    </tr>
-                    
-                  </tbody>
-                                  
-                </table>
-                <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Perfil</button>
-              </div>
-            </div>
-
-            </div>
-			    </div>
-          `;
-
+            <div class="col-md-6">
+                <div class="dashboard-wrapper user-dashboard">
+                <div class="media">
+                <div class="pull-left">
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">${i.usuario_nombre} ${i.usuario_apellido}</h2>
+                </div>
+                </div>
+                <div class="total-order mt-20">
+                <h4>Datos del Usuario</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>${i.idUsuario}</td>
+                        <td>${i.usuario_nombre}</td>
+                        <td>${i.usuario_apellido}</td>
+                        <td>${i.usuario_telefono}</td>
+                        <td>${i.usuario_email}</td>
+                        <td>${i.estado.estado_descripcion}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Perfil</button>
+                </div>
+                </div>
+                </div>
+                </div>`;
                     contentUsuarios += usuario;
                 }
-
                 document.getElementById("usuariosRender").innerHTML = contentUsuarios;
 
             } else {

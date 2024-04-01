@@ -27,6 +27,14 @@ if (window.location.href.includes('administrador.html') && user.rol.idRol != 4) 
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
 }
+if (window.location.href.includes('aliado.html') && user.rol.idRol != 2) {
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+}
+if (window.location.href.includes('usuario.html') && user.rol.idRol != 1) {
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+}
 
 function convertirFecha(fecha) {
     // Obtener los componentes de la fecha y hora

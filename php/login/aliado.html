@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 
 <head>
-
     <!-- ** Basic Page Needs ** -->
     <meta charset="utf-8">
     <title>COL-FEXXIONES | Vendedor </title>
-
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Agency HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="author" content="Themefisher">
     <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
-
     <!-- favicon -->
     <link href="../../images/Leonardo_Diffusion_XL_A_logo_for_a_clothing_brand_called_colfe_3 (1) 1.png" rel="shortcut icon">
-
     <!-- 
 Essential stylesheets
 =====================================-->
@@ -28,9 +22,7 @@ Essential stylesheets
     <link href="../../plugins2/slick/slick.css" rel="stylesheet">
     <link href="../../plugins2/slick/slick-theme.css" rel="stylesheet">
     <link href="../../plugins2/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-
     <link href="../../css/stylesecond.css" rel="stylesheet">
-
 </head>
 
 <body class="body-wrapper">
@@ -97,12 +89,10 @@ Essential stylesheets
                                             <label for="productImage">Imagen:</label>
                                             <input type="file" id="productImage" name="productImage" accept="image/*"><br><br>
 
-
                                             <button type="submit">Añadir Producto</button>
                                         </form>
                                     </div>
                                 </div>
-
 
                             </ul>
                         </div>
@@ -143,24 +133,31 @@ Essential stylesheets
                                                 <div class="col-md-12 col-md-offset-6">
                                                     <div class="block text-center">
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_nombres">Nombres</label>
                                                             <input type="text" class="form-control" name="actualVendedor_nombres" id="actualVendedor_nombres" placeholder="Nombres" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_apellidos">Apellidos</label>
                                                             <input type="text" class="form-control" name="actualVendedor_apellidos" id="actualVendedor_apellidos" placeholder="Apellidos" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_direccion">Direccion</label>
                                                             <input type="text" class="form-control" name="actualVendedor_direccion" id="actualVendedor_direccion" placeholder="Direccion" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_telefono"> Telefono</label>
                                                             <input type="text" class="form-control" name="actualVendedor_telefono" id="actualVendedor_telefono" placeholder="Telefono" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="email" class="form-control" name="actualVendedor_email" id="actualVendedor_email" placeholder="Email" required>
+                                                            <label for="actualVendedor_email">Email</label>
+                                                            <input type="email" class="form-control text-center" name="actualVendedor_email" id="actualVendedor_email" placeholder="Email" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_nombre_empresa">Empresa</label>
                                                             <input type="text" class="form-control" name="actualVendedor_nombre_empresa" id="actualVendedor_nombre_empresa" placeholder="Nombre empresa" required>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="actualVendedor_password">Contraseña</label>
                                                             <input type="text" class="form-control" name="actualVendedor_password" id="actualVendedor_password" placeholder="Contraseña" required>
                                                         </div>
                                                     </div>
@@ -174,7 +171,6 @@ Essential stylesheets
                         </div>
                     </div>
                 </div>
-
 
                 <div class="col-lg-8">
                     <!-- Vista de productos -->
@@ -190,93 +186,62 @@ Essential stylesheets
                                     <th class="text-center">Acción</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="productosVendedor">
                                 <!-- Ventana Editar producto-->
                                 <div id="formEditarProductoContainer" class="form-container">
                                     <div class="form-content">
                                         <span class="close" onclick="closeFormUpdateProduct()">&times;</span>
                                         <h2>EDITAR PRODUCTO</h2>
-                                        <form id="updateFormProduct" onsubmit="return false;">
+                                        <form id="updateFormProduct">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-12 col-md-offset-6">
                                                         <div class="block text-center">
                                                             <div class="form-group">
+                                                                <img src="" id="pruevaImg" alt="">
+                                                                <label for="producto_nombre"> Nombre Producto:</label>
                                                                 <input type="text" class="form-control" name="producto_nombre" id="producto_nombre" placeholder="Nombre de Producto" required>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="producto_precio"> Precio:</label>
                                                                 <input type="number" class="form-control" name="producto_precio" id="producto_precio" placeholder="precio" required>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="producto_cant_disponible">Cantidad disponible:</label>
                                                                 <input type="number" class="form-control" name="producto_cant_disponible" id="producto_cant_disponible" placeholder="Cantidad disponible" required>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="producto_cant_vendido">Cantidad vendidos:</label>
                                                                 <input type="number" class="form-control" name="producto_cant_vendido" id="producto_cant_vendido" placeholder="Cantidad vendidos" required>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="producto_descripcion">Descripcion:</label>
                                                                 <textarea type="email" class="form-control" name="producto_descripcion" id="producto_descripcion" placeholder="Descripcion del Producto" rows="2" cols="30" required></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                <select name="estadoProducto" class="form-control" id="estadoProducto">
-                                <option value="0">Activo</option>
-                                <option value="1">Inactivo</option>
-                              </select>
+                                                                <label for="estadoProducto">Estado:</label>
+                                                                <select name="estadoProducto" id="estadoProducto" class="form-control text-center"></select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <select name="categoriaProducto" class="form-control" id="categoriaProducto">
-                                <option value="0">Pantalon</option>
-                                <option value="1">Camisas</option>
-                              </select>
+                                                                <label for="categoriaProducto"> Categotia:</label>
+                                                                <select name="categoriaProducto" class="form-control text-center" id="categoriaProducto"></select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="file" class="form-control" name="producto_imagen" id="producto_imagen" placeholder="imagen">
+                                                                <label for="producto_imagen">Imagen:</label>
+                                                                <input type="file" class="form-control " name="producto_imagen" id="producto_imagen" placeholder="imagen">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" onclick="updateProduct()">Confirmar edicion</button>
+                                            <center>
+                                                <button type="submit">Confirmar edicion</button>
+                                            </center>
                                         </form>
                                     </div>
                                 </div>
-
-                                <!-- producto -->
-                                <tr>
-                                    <td class="product-thumb">
-                                        <img width="80px" height="auto" src="../../images/aliado/r1.jfif" alt="image description"></td>
-                                    <td class="product-details">
-                                        <h3 class="title">Camisa Negra Oversize</h3>
-                                        <span><strong>Publicado: </strong><time>Junio 27, 2023</time> </span>
-                                        <span class="status active"><strong>Estado:</strong>Activo</span>
-                                        <span class="location"><strong>Locacion:</strong>Bogota, Colombia</span>
-                                    </td>
-                                    <td class="product-category"><span class="categories">Camisa</span></td>
-                                    <td class="action" data-title="Action">
-                                        <div>
-                                            <ul class="list-inline justify-content-center">
-                                                <li class="list-inline-item">
-                                                    <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="../../product-single.html">
-                                                        <i class="fa fa-eye"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i id="editarProducto" class="fa fa-pencil"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-
                             </tbody>
                         </table>
-
                     </div>
 
                     <!-- pagination -->
@@ -359,8 +324,6 @@ Essential stylesheets
             </div>
     </footer>
 
-
-
     <!-- 
 Essential Scripts
 =====================================-->
@@ -376,9 +339,6 @@ Essential Scripts
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
 
 
-
-
-
     <!-- Main jQuery -->
     <script src="../../js/validacionSesion.js"></script>
     <script src="../../plugins/jquery/dist/jquery.min.js"></script>
@@ -392,12 +352,12 @@ Essential Scripts
     <script src="../../plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
     <!-- Count Down Js -->
     <script src="../../plugins/syo-timer/build/jquery.syotimer.min.js"></script>
-
     <!-- slick Carousel -->
     <script src="../../plugins/slick/slick.min.js"></script>
     <script src="../../plugins/slick/slick-animation.min.js"></script>
     <script src="../../js/validacionSesion.js"></script>
     <script src="../../js/productos.js"></script>
+    <script src="../../js/script.js"></script>
     <!-- Main Js File -->
     <script>
         function verPerfil() {
@@ -408,10 +368,8 @@ Essential Scripts
             document.getElementById("nombreVendedor").textContent = user.usuario_nombre;
         }
     </script>
-    <script src="../../js/script.js"></script>
     <script src="../../js/login.js"></script>
     <script src="../../js/vendedores.js"></script>
-
 
 </body>
 
