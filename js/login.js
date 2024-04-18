@@ -14,16 +14,16 @@ $('#loginForm').submit(function(event) {
                 localStorage.setItem('loggedIn', 'true');
                 CrearUsuarioLocal(response);
 
-                if(response.estado.estado_descripcion !== "Activo"){
+                if (response.estado.estado_descripcion !== "Activo") {
                     alert("Tu estado actual es: " + response.estado.estado_descripcion + " para cambiarlo comunicate con un administrador");
-                }else{        
+                } else {
                     if (response.rol.rolNombre === "Administrador") {
                         window.location.href = '../php/login/administrador.html';
                     } else if (response.rol.rolNombre === "aliado") {
                         window.location.href = '../php/login/aliado.html';
                     } else if (response.rol.rolNombre === "usuario") {
-                        window.location.href = '../php/login/usuario.html';
-                    }; 
+                        window.location.href = '../index.html';
+                    };
                 }
             } else {
                 alert("usuario no registrado");

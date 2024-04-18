@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <div class="contact-number">
-                        <span id="usuarioNombre"></span>
+                        <span id="nombreBienvenida"></span>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-4">
@@ -56,7 +56,7 @@
 								font-weight="bold">
 								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
 									<text id="AVIATO">
-										<tspan x="108.94" y="325">COL-FEXXIONES</tspan>
+										<tspan x="108.94" y="325">COL-FECCIONES</tspan>
 									</text>
 								</g>
 							</g>
@@ -68,8 +68,11 @@
                     <!-- Cart -->
                     <ul class="top-menu text-right list-inline">
                         <ul class="top-menu text-right list-inline">
-                            <li>
+                            <li id="botonIniciarSesion">
                                 <a href="login.html">Iniciar Sesion</a>
+                            </li>
+                            <li id="botonCerrarSesion">
+                                <a onclick="cerrarSesion()" style="cursor: pointer;">Cerrar Sesion</a>
                             </li>
 
                             <!-- Search -->
@@ -119,8 +122,7 @@
                             <a href="index.html">Inicio</a>
                         </li>
                         <!-- / Home -->
-                        <li><a href="shop-sidebar.html">Compra</a></li>
-                        <li><a href="shop.html">Tienda</a></li>
+                        <li><a href="shop-sidebar.html">Tienda</a></li>
                         <li><a href="about.html">Acerca De Nosotros</a></li>
                         <li><a href="contact.html">Contactanos</a></li>
                         <li><a href="pricing.html">Suscripcion</a></li>
@@ -156,71 +158,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="widget">
-
-                        <form method="post" action="#">
-                            <select class="form-control">
-                            <option>Hombre</option>
-                            <option>Mujer</option>
-                            <option>Accesorios</option>
-                            <option>Zapatos</option>
-                        </select>
-                        </form>
-                    </div>
                     <div class="widget product-category">
                         <h4 class="widget-title">Categorias</h4>
                         <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          	Zapatos
-						        	</a>
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Categorias</a>
                                     </h4>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Estilo</a></li>
-                                            <li><a href="#!">Color</a></li>
-                                            <li><a href="#!">Marca</a></li>
+                                        <ul id="categoriasFiltro">
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Duty Wear</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Brand & Twist</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">WorkOut Shoes</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#!">Brand & Twist</a></li>
-                                            <li><a href="#!">Shoe Color</a></li>
-                                            <li><a href="#!">Gladian Shoes</a></li>
-                                            <li><a href="#!">Swis Shoes</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
                     </div>
@@ -342,6 +296,8 @@
 
     <!-- Main Js File -->
     <script src="js/validacionSesion.js"></script>
+    <script src="js/script.js"></script>
+
     <script src="js/comprador.js"></script>
 
 

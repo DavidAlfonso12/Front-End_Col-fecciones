@@ -1,5 +1,3 @@
-document.getElementById("usuarioNombre").textContent = user.usuario_nombre;
-
 obtenerProductosRegistrados();
 
 function obtenerProductosRegistrados() {
@@ -9,12 +7,14 @@ function obtenerProductosRegistrados() {
         method: 'GET',
         success: function(response) {
             let productos = response;
+            let productosActivos = [];
             //Respuesta exitosa
             if (productos != null) {
                 let contentProductos = "";
                 for (let i of productos) {
-
-                    let producto = `
+                    if (i.estado.idEstado === 1) {
+                        productosActivos.push(i);
+                        let producto = `
                     <div class="col-md-4" >
                             <div class="product-item " >
                                 <div class="product-thumb">
@@ -24,14 +24,10 @@ function obtenerProductosRegistrados() {
                                         <ul>
                                             <li>
                                                 <span data-toggle="modal" data-target="#product-modal">
-																								<i class="tf-ion-ios-search-strong" ></i>
-																								</span>
+                                                <i class="tf-ion-ios-search-strong" ></i></span>
                                             </li>
                                             <li>
                                                 <a href="#!"><i class="tf-ion-ios-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -41,18 +37,14 @@ function obtenerProductosRegistrados() {
                                     <p class="price">$${i.producto_precio}</p>
                                 </div>
                             </div>
-                        </div>
-                  `;
-                    contentProductos += producto;
+                        </div>`;
+                        contentProductos += producto;
+                    }
                 }
-
                 document.getElementById("productosRegistrados").innerHTML = contentProductos;
-                mostrarImagenes(response);
-
+                mostrarImagenes(productosActivos);
             } else {
-                let nullProductos = `
-                  <p>No se encontraron Productos de este vendedor</p>
-              `;
+                let nullProductos = `<p>No se encontraron Productos de este vendedor</p>`;
                 contentProductos += nullProductos;
                 //alert("No se encontraron Productos de este vendedor");
             }
@@ -77,4 +69,34 @@ function mostrarImagenes(productos) {
         }
     }
 
+}
+
+categoriasProductosFiltros();
+
+function categoriasProductosFiltros() {
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/categorias',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response != null) {
+                $('#categoriasFiltro').empty();
+                response.forEach(function(categoria) {
+                    var filtro = $('<a>', {
+                        text: categoria.categoria_nombre,
+                        click: function() {
+                            console.log('categoria seleccionada: ', categoria.categoria_nombre);
+                        }
+                    });
+
+                    var opcion = $('<li>').append(filtro);
+
+                    $('#categoriasFiltro').append(opcion);
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al obtener datos de categorias:', error);
+        }
+    });
 }

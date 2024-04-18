@@ -87,8 +87,31 @@
     $('.hero-slider').slickAnimation();
 
 })(jQuery);
+MensajeBienvenida();
+
+// function cargarContenido(ruta) {
+//     var iframe = document.getElementById('miIframe');
+//     iframe.src = ruta;
+//     iframe.onload = resizeIframe(iframe);
+// }
 
 
+// //Funcion iframe
+// function resizeIframe(iframe) {
+//     iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+// }
+
+//Mensaje bienvenida
+function MensajeBienvenida() {
+    let span = document.getElementById("nombreBienvenida");
+    if (localStorage.getItem('loggedIn')) {
+        span.innerText = user.usuario_nombre;
+        document.getElementById('botonIniciarSesion').style.display = "none";
+    } else {
+        span.innerText = 'Bienvenido';
+        document.getElementById('botonCerrarSesion').style.display = "none";
+    }
+}
 
 //api
 
