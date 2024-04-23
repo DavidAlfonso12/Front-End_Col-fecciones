@@ -87,19 +87,17 @@
     $('.hero-slider').slickAnimation();
 
 })(jQuery);
-MensajeBienvenida();
 
-// function cargarContenido(ruta) {
-//     var iframe = document.getElementById('miIframe');
-//     iframe.src = ruta;
-//     iframe.onload = resizeIframe(iframe);
-// }
+// Validiacion de rol para mensaje de bienvenida
+if (localStorage.getItem('loggedIn') && user.rol.idRol != 2 && user.rol.idRol != 3) {
+    MensajeBienvenida();
+}
 
+//Validacion de que no ha iniciado session para mensaje de bienvenida
+if (Object.keys(localStorage).length === 0) {
+    MensajeBienvenida();
+}
 
-// //Funcion iframe
-// function resizeIframe(iframe) {
-//     iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-// }
 
 //Mensaje bienvenida
 function MensajeBienvenida() {

@@ -78,10 +78,10 @@ Essential stylesheets
                                             </select><br><br>
 
                                             <label for="productPrice">Precio:</label>
-                                            <input type="number" id="productPrice" name="productPrice" required><br><br>
+                                            <input type="number" id="productPrice" name="productPrice" min="0" required><br><br>
 
                                             <label for="productPrice">Cantidad disponible:</label>
-                                            <input type="number" id="productCantidad" name="productCantidad" required><br><br>
+                                            <input type="number" id="productCantidad" name="productCantidad" min="0" required><br><br>
 
                                             <label for="productDescription">Descripción:</label><br>
                                             <textarea id="productDescription" name="productDescription" rows="4" cols="50" required></textarea><br><br>
@@ -115,7 +115,7 @@ Essential stylesheets
                         <div class="widget user-aliado-profile">
                             <!-- User Image -->
                             <div class="profile-thumb">
-                                <img src="../../images/ferxxo.png" alt="">
+                                <img style="border-radius: 50%; margin-bottom: 1rem;" src="../../images/PerfilPredeterminada.png" alt="">
                             </div>
                             <!-- User Name -->
                             <h5 class="text-center" id="nombreVendedor"></h5>
@@ -204,15 +204,15 @@ Essential stylesheets
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="producto_precio"> Precio:</label>
-                                                                <input type="number" class="form-control" name="producto_precio" id="producto_precio" placeholder="precio" required>
+                                                                <input type="number" class="form-control" name="producto_precio" id="producto_precio" min="0" placeholder="precio" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="producto_cant_disponible">Cantidad disponible:</label>
-                                                                <input type="number" class="form-control" name="producto_cant_disponible" id="producto_cant_disponible" placeholder="Cantidad disponible" required>
+                                                                <input type="number" class="form-control" name="producto_cant_disponible" id="producto_cant_disponible" min="0" placeholder="Cantidad disponible" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="producto_cant_vendido">Cantidad vendidos:</label>
-                                                                <input type="number" class="form-control" name="producto_cant_vendido" id="producto_cant_vendido" placeholder="Cantidad vendidos" required>
+                                                                <input type="number" class="form-control" name="producto_cant_vendido" id="producto_cant_vendido" min="0" placeholder="Cantidad vendidos" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="producto_descripcion">Descripcion:</label>
