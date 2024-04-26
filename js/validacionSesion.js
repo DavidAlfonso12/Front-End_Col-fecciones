@@ -19,16 +19,26 @@ function CrearUsuarioLocal(usuario) {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(usuario));
 }
+if (window.location.href.includes('administrador.html') && !user) {
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+} else if (window.location.href.includes('administrador.html') && user.rol.idRol != 4) {
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+}
 
-if (window.location.href.includes('administrador.html') && user.rol.idRol != 4) {
+if (window.location.href.includes('aliado.html') && !user) {
+    cerrarSesion();
+    alert('No tienes permiso para acceder a este sitio');
+} else if (window.location.href.includes('aliado.html') && user.rol.idRol != 2) {
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
 }
-if (window.location.href.includes('aliado.html') && user.rol.idRol != 2) {
+
+if (window.location.href.includes('usuario.html') && !user) {
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
-}
-if (window.location.href.includes('usuario.html') && user.rol.idRol != 1) {
+} else if (window.location.href.includes('usuario.html') && user.rol.idRol != 1) {
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
 }

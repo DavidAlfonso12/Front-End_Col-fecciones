@@ -162,6 +162,7 @@
                         <h4 class="widget-title">Categorias</h4>
                         <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
+                                <!-- Lista categorias -->
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Categorias</a>
@@ -174,10 +175,28 @@
                                     </div>
                                 </div>
 
+
                             </div>
+                            <!-- Lista vendedores con esa categoria -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Vendedores</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <ul id="vendedorFiltro">
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
-                                    <a onclick="obtenerProductosRegistrados();" style="cursor: pointer;">Eliminar Filtros</a>
+                                    <a onclick="obtenerProductosRegistrados(0,0,0);" style="cursor: pointer;">Eliminar Filtros</a>
                                 </h4>
                             </div>
                         </div>
