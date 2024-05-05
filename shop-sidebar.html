@@ -77,16 +77,9 @@
 
                             <!-- Search -->
                             <li class="dropdown search dropdown-slide">
-                                <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-									class="tf-ion-ios-search-strong"></i> Buscar</a>
-                                <ul class="dropdown-menu search-dropdown">
-                                    <li>
-                                        <form action="post"><input type="search" class="form-control" placeholder="Buscar..."></form>
-                                    </li>
-                                </ul>
+
                             </li>
                             <!-- / Search -->
-
                         </ul>
                         <!-- / Cart -->
                     </ul>
@@ -178,18 +171,8 @@
 
                             </div>
                             <!-- Lista vendedores con esa categoria -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Vendedores</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <ul id="vendedorFiltro">
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="panel panel-default" id="listaVendedores">
+
 
 
                             </div>
@@ -206,42 +189,43 @@
 
 
                 <div class="col-md-10">
+                    <div class="container buscadorDiv">
+                        <input type="search" id="buscadorProductos" class="form-control" placeholder="Buscar..." onclick="buscador()">
+                    </div>
                     <div class="row" id="productosRegistrados">
                         <!--Productos Registrados-->
-
-                        <!-- Modal -->
-                        <div class="modal product-modal fade" id="product-modal">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<i class="tf-ion-close"></i>
-													</button>
-                            <div class="modal-dialog " role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-8 col-sm-6 col-xs-12">
-                                                <div class="modal-image">
-                                                    <img class="img-responsive" src="images/shop/products/modal-product.jpg" alt="product-img" />
-                                                </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal product-modal fade" id="product-modal">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <i class="tf-ion-close"></i>
+                                                </button>
+                        <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            <div class="modal-image">
+                                                <img class="img-responsive" src="images/shop/products/modal-product.jpg" alt="product-img" />
                                             </div>
-                                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                                <div class="product-short-details">
-                                                    <h2 class="product-title">gf</h2>
-                                                    <p class="product-price">4</p>
-                                                    <p class="product-short-description">
-                                                        hj
-                                                    </p>
-                                                    <a href="cart.html" class="btn btn-main">Añadir al carrito</a>
-                                                    <a href="product-single.html" class="btn btn-transparent">Ver detalles del producto</a>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-short-details">
+                                                <h2 class="product-title">gf</h2>
+                                                <p class="product-price">4</p>
+                                                <p class="product-short-description">
+                                                    hj
+                                                </p>
+                                                <a href="cart.html" class="btn btn-main">Añadir al carrito</a>
+                                                <a href="product-single.html" class="btn btn-transparent">Ver detalles del producto</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.modal -->
-
                     </div>
+                    <!-- /.modal -->
                 </div>
 
             </div>

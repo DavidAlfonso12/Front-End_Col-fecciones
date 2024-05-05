@@ -1,3 +1,4 @@
+let listaProductosMostrados;
 obtenerProductosRegistrados();
 
 //Funcion para mostrar productos que se encuentras registrados y con estado activo
@@ -16,16 +17,15 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
 
                 for (let i of productosActivos) {
                     let producto = `
-                    <div class="col-md-4" >
-                            <div class="product-item " >
-                                <div class="product-thumb">
+                    <div class="col-md-4" id="producto_${i.idProducto}">
+                            <div class="product-item " data-search="${i.producto_nombre}">
+                                <div class="product-thumb ">
                                     <span class="bage">Sale</span>
                                     <div id="imagenProducto_${i.idProducto}" class="contentImagenProducto"></div>
                                     <div class="preview-meta">
                                         <ul>
                                             <li>
-                                                <span data-toggle="modal" data-target="#product-modal">
-                                                <i class="tf-ion-ios-search-strong" ></i></span>
+                                                <a onclick="verDetalle(${i.idProducto})"><i class="tf-ion-ios-search-strong" ></i></a>
                                             </li>
                                             <li>
                                                 <a href="#!"><i class="tf-ion-ios-heart"></i></a>
@@ -34,7 +34,7 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                                     </div>
                                 </div>
                                 <div class="product-content">
-                                    <h4>${i.producto_nombre}</h4>
+                                    <h4 class="listaProducto">${i.producto_nombre}</h4>
                                     <p class="price">$${i.producto_precio}</p>
                                 </div>
                             </div>
@@ -42,6 +42,10 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                     contentProductos += producto;
 
                 }
+                if (contentProductos === "") {
+                    contentProductos = `<h2 class="nullProductos">No se encontrarón productos registrados</h2>`;
+                }
+                listaProductosMostrados = productosActivos;
                 document.getElementById("productosRegistrados").innerHTML = contentProductos;
                 mostrarImagenes(productosActivos);
                 if (idCategoriaSelecionada > 0 && !idVendedor > 0) {
@@ -56,9 +60,13 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
     });
 }
 
+function verDetalle(idProducto) {
+    window.location.href = '../product-single.html';
+    localStorage.setItem('idProductoSeleccionado', idProducto);
+}
+
 //filtrar lista
 function obtenerProductosFiltrados(listaProductos, idCategoria, idVendedor) {
-    console.log(listaProductos.length + ' ca: ' + idCategoria + ' idV: ' + idVendedor);
     let productosActivos = [];
     for (let i of listaProductos) {
         if (idVendedor > 0) {
@@ -149,7 +157,21 @@ function mostrarVendedoresConCategorias(listaProductos) {
 
 function filtrarVendedor(listaVendedores) {
     $('#vendedorFiltro').empty();
-    console.log(listaVendedores);
+    if (listaVendedores != "") {
+        let listaDesplegableVendedores = `<div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Vendedores</a>
+        </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+            <ul id="vendedorFiltro">
+            </ul>
+        </div>
+    </div>`;
+
+        document.getElementById('listaVendedores').innerHTML = listaDesplegableVendedores;
+    }
     listaVendedores.forEach(function(vendedor) {
         var filtro = $('<a>', {
             text: vendedor.usuario_nombre + " " + vendedor.usuario_apellido,
@@ -161,5 +183,26 @@ function filtrarVendedor(listaVendedores) {
         var opcion = $('<li>').append(filtro);
 
         $('#vendedorFiltro').append(opcion);
+    });
+}
+
+
+// buscador
+function buscador() {
+    let buscador = document.getElementById('buscadorProductos');
+
+    buscador.addEventListener("input", function() {
+        let textBuscador = buscador.value.toLowerCase();
+        let listProductos = listaProductosMostrados;
+
+        for (let i of listProductos) {
+
+            const producto = i.producto_nombre.toLowerCase();
+            if (producto.includes(textBuscador)) {
+                document.getElementById("producto_" + i.idProducto).style.display = "block";
+            } else {
+                document.getElementById("producto_" + i.idProducto).style.display = "none";
+            }
+        }
     });
 }

@@ -87,18 +87,24 @@
     $('.hero-slider').slickAnimation();
 
 })(jQuery);
-
 // Validiacion de rol para mensaje de bienvenida
 if (localStorage.getItem('loggedIn') && user.rol.idRol != 2 && user.rol.idRol != 3) {
     MensajeBienvenida();
 }
 
 //Validacion de que no ha iniciado session para mensaje de bienvenida
-if (Object.keys(localStorage).length === 0) {
+// if (Object.keys(localStorage).length === 0) {
+//     MensajeBienvenida();
+// }
+if (!localStorage.getItem('user')) {
     MensajeBienvenida();
 }
 
-
+// Borrar valiable de localstorage si no coincide la url
+let urlActual = window.location.href;
+if (urlActual.indexOf("product-single") === -1 && urlActual.indexOf("login") === -1) {
+    localStorage.removeItem('idProductoSeleccionado');
+}
 //Mensaje bienvenida
 function MensajeBienvenida() {
     let span = document.getElementById("nombreBienvenida");
@@ -106,8 +112,11 @@ function MensajeBienvenida() {
         span.innerText = user.usuario_nombre;
         document.getElementById('botonIniciarSesion').style.display = "none";
     } else {
-        span.innerText = 'Bienvenido';
-        document.getElementById('botonCerrarSesion').style.display = "none";
+        if (document.getElementById('botonCerrarSesion')) {
+
+            span.innerText = 'Bienvenido';
+            document.getElementById('botonCerrarSesion').style.display = "none";
+        }
     }
 }
 
@@ -131,11 +140,14 @@ $('#registerVendedor').submit(function(event) {
     campos.usuario_documento = document.getElementById("ali_documento").value;
     campos.usuario_empresa = document.getElementById("ali_nombre_empresa").value;
     campos.usuario_direccion = document.getElementById("ali_direccion").value;
+    campos.usuario_descripcion = document.getElementById("ali_descripcion").value;
     campos.usuario_foto = "foto.png";
     campos.usuario_ventas = 0;
     campos.usuario_compras = 0;
     campos.estado = estado;
     campos.rol = rol;
+
+    console.log(campos);
 
     $.ajax({
         url: 'http://localhost:8080/api/v1/usuarios',
@@ -187,7 +199,7 @@ $('#registerUsuario').submit(function(event) {
         success: function(response) {
             // Manejar la respuesta exitosa
             if (response != null) {
-                alert("vendedor registrado");
+                alert("usuario registrado");
             } else {
                 alert("No se pudo registrar")
             }

@@ -120,6 +120,7 @@ Essential stylesheets
                             <!-- User Name -->
                             <h5 class="text-center" id="nombreVendedor"></h5>
                             <p>Se unio el 28 Noviembre, 2023</p>
+                            <p class="text-center" id="descripcionVendedor"></p>
                             <button id="openFormButton" onClick="verPerfil()">Editar perfil</button>
 
                             <!-- Ventana para editar perfil del vendedor  -->
@@ -155,6 +156,10 @@ Essential stylesheets
                                                         <div class="form-group">
                                                             <label for="actualVendedor_nombre_empresa">Empresa</label>
                                                             <input type="text" class="form-control" name="actualVendedor_nombre_empresa" id="actualVendedor_nombre_empresa" placeholder="Nombre empresa" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="actualVendedor_descripcion">Descripcion</label>
+                                                            <input type="text" class="form-control" name="actualVendedor_descripcion" id="actualVendedor_descripcion" placeholder="Descripcion" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="actualVendedor_password">Contraseña</label>
@@ -366,6 +371,7 @@ Essential Scripts
 
         if (user.usuario_nombre) {
             document.getElementById("nombreVendedor").textContent = user.usuario_nombre;
+            document.getElementById("descripcionVendedor").textContent = user.usuario_descripcion;
         }
     </script>
     <script src="../../js/login.js"></script>

@@ -21,6 +21,8 @@ $('#loginForm').submit(function(event) {
                         window.location.href = '../php/login/administrador.html';
                     } else if (response.rol.rolNombre === "aliado") {
                         window.location.href = '../php/login/aliado.html';
+                    } else if (response.rol.rolNombre === "usuario" && localStorage.getItem('idProductoSeleccionado')) {
+                        window.location.href = '../product-single.html';
                     } else if (response.rol.rolNombre === "usuario") {
                         window.location.href = '../index.html';
                     };

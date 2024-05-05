@@ -1,6 +1,7 @@
 // if (!window.location.href.includes('login.html') && !localStorage.getItem('loggedIn')) {
 //     window.location.href = '../../login.html';
 // }
+urlActual = window.location.href;
 
 function cerrarSesion() {
 
@@ -8,6 +9,7 @@ function cerrarSesion() {
 
     window.location.href = '../../../login.html';
 }
+
 
 var user = JSON.parse(localStorage.getItem('user'));
 

@@ -625,15 +625,6 @@ input[type=tel]:focus {
     padding: 10px 10px;
 }
 
-.commonAccordion .panel .panel-title a:before,
-.commonAccordion-2 .panel .panel-title a:before {
-    color: #555;
-    content: "\f209";
-    position: absolute;
-    right: 25px;
-    font-family: 'Comfortaa', sans-serif;
-}
-
 .commonAccordion .panel .panel-title a.collapsed:before,
 .commonAccordion-2 .panel .panel-title a.collapsed:before {
     content: "\f217";
@@ -2989,4 +2980,38 @@ input[type=tel]:focus {
 
 .typeAcount:hover {
     background-color: #373d41;
+}
+
+
+/* Menseje si no hay productos registrados */
+
+.nullProductos {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+
+/* style detalle producto */
+
+.imgDetalleProducto {
+    display: block;
+    max-width: 100%;
+    width: 41rem !important;
+    height: 45rem !important;
+}
+
+.cantida-disponible {
+    text-align: center;
+    width: 50%;
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.buscadorDiv {
+    width: 30%;
+    margin-left: 70%;
+    margin-bottom: 15px;
+}
+
+.buscadorDiv input {
+    box-shadow: 1px 1px 5px 2px rgb(155, 155, 155);
 }

@@ -40,6 +40,7 @@ function obtenerVendedores() {
                       <th>Documento</th>
                       <th>Email</th>
                       <th>Telefono</th>
+                      <th>Descripcion</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
@@ -49,6 +50,7 @@ function obtenerVendedores() {
                       <td>${i.usuario_documento}</td>
                       <td>${i.usuario_email}</td>
                       <td>${i.usuario_telefono}</td>
+                      <td>${i.usuario_descripcion}</td>
                       <td>${i.estado.estado_descripcion}</td>
                     </tr>
                     
@@ -96,6 +98,7 @@ function editar(id) {
             $('#actualVendedor_email').val(response.usuario_email);
             $('#actualVendedor_nombre_empresa').val(response.usuario_empresa);
             $('#actualVendedor_password').val(response.usuario_password);
+            $('#actualVendedor_descripcion').val(response.usuario_descripcion);
             estadoVendedor = response.estado;
             vendedorAEditar = response;
             if (validarAdministrador()) {
@@ -151,6 +154,7 @@ $('#actualizarVendedor').submit(function(event) {
     campos.usuario_password = document.getElementById("actualVendedor_password").value;
     campos.usuario_empresa = document.getElementById("actualVendedor_nombre_empresa").value;
     campos.usuario_direccion = document.getElementById("actualVendedor_direccion").value;
+    campos.usuario_descripcion = document.getElementById("actualVendedor_descripcion").value;
     campos.usuario_foto = "foto.png";
     campos.usuario_ventas = 0;
     campos.usuario_compras = 0;
