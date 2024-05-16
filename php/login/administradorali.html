@@ -7,7 +7,7 @@
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
-    <title>COL-FEXXIONES</title>
+    <title>Col-Fecciones</title>
 
     <!-- Mobile Specific Metas
   ================================================== -->
@@ -59,7 +59,7 @@
 								font-weight="bold">
 								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
 									<text id="AVIATO">
-										<tspan x="108.94" y="325">COL-FEXXIONES</tspan>
+										<tspan x="108.94" y="325">COL-FECCIONES</tspan>
 									</text>
 								</g>
 							</g>
@@ -73,15 +73,7 @@
 
 
                         <!-- Search -->
-                        <li class="dropdown search dropdown-slide">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-								class="tf-ion-ios-search-strong"></i> Buscar</a>
-                            <ul class="dropdown-menu search-dropdown">
-                                <li>
-                                    <form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
-                                </li>
-                            </ul>
-                        </li>
+                        
 
                     </ul>
                     <!-- / .nav .navbar-nav .navbar-right -->
@@ -133,7 +125,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name">Lista de Aliados</h1>
+                        <div class="col-md-6 col-lg-6 col-sm-6">
+                            <h1 class="page-name">Lista de Vendedores</h1>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-sm-6">
+                            <input type="search" id="buscadorVendedor" class="form-control buscador-usuarios" placeholder="Buscar..." onclick="buscador()">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,6 +140,7 @@
 
     <section class="user-dashboard page-wrapper">
         <div class="container">
+            
             <div class="row" id="vendedoresRender">
 
             </div>
@@ -154,37 +152,46 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Perfil Vendedor</h1>
+                    <h1 class="modal-title fs-5 input-actualizar-usuario" id="staticBackdropLabel">Perfil Vendedor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetForm()"></button>
                 </div>
                 <div class="modal-body">
                     <form class="text-left clearfix" id="actualizarVendedor">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_nombres" id="actualVendedor_nombres" placeholder="Nombres" required>
+                            <label for="actualVendedor_nombres">Nombres</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_nombres" id="actualVendedor_nombres" placeholder="Nombres" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_documento" id="actualVendedor_documento" placeholder="Num. Documento Identidad" required>
+                            <label for="actualVendedor_documento">Num. Documento Identidad</label>
+                            <input type="text" class="form-control input-actualizar-usuario " name="actualVendedor_documento" id="actualVendedor_documento" placeholder="Num. Documento Identidad" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_apellidos" id="actualVendedor_apellidos" placeholder="Apellidos" required>
+                            <label for="actualVendedor_apellidos">Apellidos</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_apellidos" id="actualVendedor_apellidos" placeholder="Apellidos" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_telefono" id="actualVendedor_telefono" placeholder="Telefono" required>
+                            <label for="actualVendedor_telefono">Telefono</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_telefono" id="actualVendedor_telefono" placeholder="Telefono" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_direccion" id="actualVendedor_direccion" placeholder="Direccion" required>
+                            <label for="actualVendedor_direccion">Dirección</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_direccion" id="actualVendedor_direccion" placeholder="Direccion" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="actualVendedor_email" id="actualVendedor_email" placeholder="Email" required>
+                            <label for="actualVendedor_email">Email</label>
+                            <input type="email" class="form-control input-actualizar-usuario" name="actualVendedor_email" id="actualVendedor_email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_nombre_empresa" id="actualVendedor_nombre_empresa" placeholder="Nombre Empresa" required>
+                            <label for="actualVendedor_email">Nombre Empresa</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_nombre_empresa" id="actualVendedor_nombre_empresa" placeholder="Nombre Empresa" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_descripcion" id="actualVendedor_descripcion" placeholder="Decripcion" required>
+                            <label for="actualVendedor_descripcion">Decripción</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_descripcion" id="actualVendedor_descripcion" placeholder="Decripción" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="actualVendedor_password" id="actualVendedor_password" placeholder="Password" required>
+                            <label for="actualVendedor_password">Contraseña</label>
+                            <input type="text" class="form-control input-actualizar-usuario" name="actualVendedor_password" id="actualVendedor_password" placeholder="Contraseña" required>
                         </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
@@ -192,12 +199,12 @@
 						</select>
                         </div>
                         <div class="text-center">
-                            <button name="actualizar" type="submit" id="actualizar" class="btn btn-primary text-center">Actualizar</button>
+                            <button name="actualizar" type="submit" id="actualizar" class="btn btn-main text-center btn-actualizar-usuario">Actualizar</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="resetForm()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" onclick="resetForm()" class="btn btn-secondary btn-cerrar-modal-actualizar-usu" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

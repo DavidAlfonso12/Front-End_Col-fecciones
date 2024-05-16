@@ -1,4 +1,5 @@
 //Get Vendedores
+let listaVendedoresMostrados;
 let vendedorModificado = false;
 let estadoVendedor;
 if (validarAdministrador()) {
@@ -18,53 +19,51 @@ function obtenerVendedores() {
                 let contentVendedores = "";
                 for (let i of vendedores) {
                     let vend = `
-          <div class="col-md-6">
-          <div class="dashboard-wrapper user-dashboard">
-            <div class="media">
-              <div class="pull-left">
-                
-              </div>
-              <div class="media-body">
-                <p>Nombre: <h2 class="media-heading">${i.usuario_nombre}</h2></p>
-                <p>Apellido: <h2 class="media-heading">${i.usuario_apellido}</h2></p>
-                
-              </div>
-            </div>
-            <div class="total-order mt-20">
-              <h4>Datos del Aliado</h4>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Documento</th>
-                      <th>Email</th>
-                      <th>Telefono</th>
-                      <th>Descripcion</th>
-                      <th>Estado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>${i.idUsuario}</td>
-                      <td>${i.usuario_documento}</td>
-                      <td>${i.usuario_email}</td>
-                      <td>${i.usuario_telefono}</td>
-                      <td>${i.usuario_descripcion}</td>
-                      <td>${i.estado.estado_descripcion}</td>
-                    </tr>
-                    
-                  </tbody>
-                  </table>
-                  <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Perfil</button>
-              </div>
-            </div>
-          </div>
-        </div>
-          `;
+                    <div class="col-md-6" id="usuario_${i.idUsuario}">
+                    <div class="dashboard-wrapper user-dashboard">
+                      <div class="media">
+                        <div class="pull-left">
+                          
+                        </div>
+                        <div class="media-body">
+                          <p><h2 class="media-heading">${i.usuario_nombre} ${i.usuario_apellido}</h2></p>       
+                        </div>
+                      </div>
+                      <div class="total-order mt-20">
+                        <h4>Datos del Aliado</h4>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Documento</th>
+                                <th>Email</th>
+                                <th>Telefono</th>
+                                <th>Descripcion</th>
+                                <th>Estado</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>${i.idUsuario}</td>
+                                <td>${i.usuario_documento}</td>
+                                <td>${i.usuario_email}</td>
+                                <td>${i.usuario_telefono}</td>
+                                <td>${i.usuario_descripcion}</td>
+                                <td>${i.estado.estado_descripcion}</td>
+                              </tr>
+                              
+                            </tbody>
+                            </table>
+                            <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-main text-center btn-actualizar-usuario" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Actualizar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    `;
                     contentVendedores += vend;
                 }
-
+                listaVendedoresMostrados = vendedores;
                 document.getElementById("vendedoresRender").innerHTML = contentVendedores;
 
             } else {
@@ -202,4 +201,23 @@ $('#actualizarVendedor').submit(function(event) {
 
 function resetForm() {
     document.getElementById('estadoSelect').selectedIndex = -1;
+}
+
+// buscador
+function buscador() {
+    let buscador = document.getElementById('buscadorVendedor');
+
+    buscador.addEventListener("input", function() {
+        let textBuscador = buscador.value.toLowerCase();
+        let listVendedores = listaVendedoresMostrados;
+
+        for (let i of listVendedores) {
+            const usuario = i.usuario_nombre.toLowerCase();
+            if (usuario.includes(textBuscador)) {
+                document.getElementById("usuario_" + i.idUsuario).style.display = "block";
+            } else {
+                document.getElementById("usuario_" + i.idUsuario).style.display = "none";
+            }
+        }
+    });
 }

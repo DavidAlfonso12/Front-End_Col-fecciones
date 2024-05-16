@@ -3015,3 +3015,33 @@ input[type=tel]:focus {
 .buscadorDiv input {
     box-shadow: 1px 1px 5px 2px rgb(155, 155, 155);
 }
+
+.btn-actualizar-usuario{
+    padding: 10px 10px;
+}
+
+#actualizarUsuario, #actualizarVendedor{
+    font-size:15px;
+}
+
+.input-actualizar-usuario{
+    font-size:15px !important;
+}
+
+.btn-cerrar-modal-actualizar-usu{
+    font-size: 14px;
+}
+
+.buscador-usuarios{
+    width: 40%;
+    margin-left: 50%;
+    font-size: 14px;
+    box-shadow: 2px 2px 2px #575757;
+}
+
+@media  (max-width: 400px){
+    .buscador-usuarios{
+        width: 50%;
+        margin-left: 0;
+    }
+}

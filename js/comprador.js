@@ -27,9 +27,6 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                                             <li>
                                                 <a onclick="verDetalle(${i.idProducto})"><i class="tf-ion-ios-search-strong" ></i></a>
                                             </li>
-                                            <li>
-                                                <a href="#!"><i class="tf-ion-ios-heart"></i></a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>

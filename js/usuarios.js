@@ -52,7 +52,7 @@ function obtenerUsuarios() {
                         </tr>
                     </tbody>
                     </table>
-                    <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Perfil</button>
+                    <button onClick="editar(${i.idUsuario})" type="button" class="btn btn-main text-center btn-actualizar-usuario" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Actualizar</button>
                 </div>
                 </div>
                 </div>
@@ -195,4 +195,24 @@ $('#actualizarUsuario').submit(function(event) {
 
 function resetForm() {
     document.getElementById('estadoSelect').selectedIndex = -1;
+}
+
+// buscador
+function buscador() {
+    let buscador = document.getElementById('buscadorVendedor');
+
+    buscador.addEventListener("input", function() {
+        let textBuscador = buscador.value.toLowerCase();
+        let listProductos = listaProductosMostrados;
+
+        for (let i of listProductos) {
+
+            const producto = i.producto_nombre.toLowerCase();
+            if (producto.includes(textBuscador)) {
+                document.getElementById("producto_" + i.idProducto).style.display = "block";
+            } else {
+                document.getElementById("producto_" + i.idProducto).style.display = "none";
+            }
+        }
+    });
 }

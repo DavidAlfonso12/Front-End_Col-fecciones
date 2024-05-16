@@ -9,7 +9,7 @@ function obtenerDetalleProducto(idProducto) {
         success: function(response) {
             if (response != null) {
                 document.getElementById('nombreProducto').textContent = response.producto_nombre;
-                document.getElementById('precioProducto').textContent = response.producto_precio;
+                document.getElementById('precioProducto').textContent = "$ " + response.producto_precio;
                 document.getElementById('descripcionProducto').textContent = response.producto_descripcion;
                 document.getElementById('categoriaProducto').textContent = response.categoria.categoria_nombre;
                 document.getElementById('product-quantity').value = response.cantidad_disponible;
