@@ -53,7 +53,7 @@
 
 
     // e-commerce touchspin
-    $('input[name=\'product-quantity\']').TouchSpin();
+    //$('input[name=\'product-quantity\']').TouchSpin();
 
 
     // Video Lightbox
@@ -110,7 +110,10 @@ function MensajeBienvenida() {
     let span = document.getElementById("nombreBienvenida");
     if (localStorage.getItem('loggedIn')) {
         span.innerText = user.usuario_nombre;
-        document.getElementById('botonIniciarSesion').style.display = "none";
+        if (user.rol.idRol != 4) {
+
+            document.getElementById('botonIniciarSesion').style.display = "none";
+        }
     } else {
         if (document.getElementById('botonCerrarSesion')) {
 
@@ -222,7 +225,9 @@ function openForm() {
 function closeForm() {
     document.getElementById("formContainer").style.display = "none";
 }
-document.getElementById("openFormButton").addEventListener("click", openForm);
+if (user.rol.idRol == 2) {
+    document.getElementById("openFormButton").addEventListener("click", openForm);
+}
 
 
 //============= Formulario para editar el producto del vendedor ================ \\
@@ -238,5 +243,6 @@ function closeFormAddProducto() {
     document.getElementById('formAddProducto').style.display = "none";
 }
 
-
-document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);
+if (user.rol.idRol == 2) {
+    document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);
+}

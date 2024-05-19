@@ -1,12 +1,7 @@
-// if (!window.location.href.includes('login.html') && !localStorage.getItem('loggedIn')) {
-//     window.location.href = '../../login.html';
-// }
 urlActual = window.location.href;
 
 function cerrarSesion() {
-
     localStorage.clear();
-
     window.location.href = '../../../login.html';
 }
 
@@ -21,12 +16,17 @@ function CrearUsuarioLocal(usuario) {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(usuario));
 }
-if (window.location.href.includes('administrador.html') && !user) {
+if (urlActual.includes('administrador.html') && !user) {
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
-} else if (window.location.href.includes('administrador.html') && user.rol.idRol != 4) {
+} else if (urlActual.includes('administrador.html') && user.rol.idRol != 4) {
     cerrarSesion();
     alert('No tienes permiso para acceder a este sitio');
+}
+if (urlActual.includes('administradorali.html') && !user) {
+    cerrarSesion();
+} else if (urlActual.includes('administradorusu.html') && user.rol.idRol != 4) {
+    cerrarSesion();
 }
 
 if (window.location.href.includes('aliado.html') && !user) {

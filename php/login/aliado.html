@@ -56,7 +56,7 @@ Essential stylesheets
                                     <a class="nav-link" href="#">Inicio</a>
                                 </li>
                             </ul>
-                            <ul class="navbar-nav ml-auto mt-10">
+                            <ul class="navbar-nav ml-auto ">
                                 <li class="nav-item">
                                     <button class="nav-link login-button" onclick="cerrarSesion()"><a>Cerrar Sesion</a></button>
                                 </li>
@@ -69,25 +69,36 @@ Essential stylesheets
                                         <span class="close" onclick="closeFormAddProducto()">&times;</span>
                                         <h2>REGISTRA TU PRODUCTO!</h2><br>
                                         <form id="addProductForm">
-                                            <label for="productName">Nombre Producto:</label>
-                                            <input type="text" id="productName" name="productName" required><br><br>
+                                            <div class="row " style="margin-bottom: 1.5rem;">
+                                                <div class="col-md-6 col-lg-6 col-sm-12 ">
+                                                    <label for="productName">Nombre Producto:</label>
+                                                    <input type="text" id="productName" name="productName" required><br>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                                    <label for="productCategoria">Categoria Producto:</label>
+                                                    <select type="text" id="productCategoria" name="productCategoria" required>
+                                                        <option value="0" selected>Seleccione una categoria</option>
+                                                    </select><br>
+                                                </div>
 
-                                            <label for="productCategoria">Categoria Producto:</label>
-                                            <select type="text" id="productCategoria" name="productCategoria" required>
-                                                <option value="0" selected>Seleccione una categoria</option>
-                                            </select><br><br>
+                                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                                    <label style="margin-top: 1rem;" for="productPrice">Precio:</label>
+                                                    <input type="number" id="productPrice" name="productPrice" min="0" required><br>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                                    <label style="margin-top: 1rem;" for="productPrice">Cantidad disponible:</label>
+                                                    <input type="number" id="productCantidad" name="productCantidad" min="0" required><br>
+                                                </div>
 
-                                            <label for="productPrice">Precio:</label>
-                                            <input type="number" id="productPrice" name="productPrice" min="0" required><br><br>
+                                                <div class="col-md-12 col-lg-12 col-sm-12 " style="margin-top: 1rem;">
+                                                    <label for="productDescription">Descripción:</label><br>
+                                                    <textarea id="productDescription" name="productDescription" rows="10" cols="80" required></textarea><br>
+                                                </div>
 
-                                            <label for="productPrice">Cantidad disponible:</label>
-                                            <input type="number" id="productCantidad" name="productCantidad" min="0" required><br><br>
-
-                                            <label for="productDescription">Descripción:</label><br>
-                                            <textarea id="productDescription" name="productDescription" rows="4" cols="50" required></textarea><br><br>
+                                            </div>
 
                                             <label for="productImage">Imagen:</label>
-                                            <input type="file" id="productImage" name="productImage" accept="image/*"><br><br>
+                                            <input class="update-venededor" type="file" id="productImage" name="productImage" accept="image/*"><br><br>
 
                                             <button type="submit">Añadir Producto</button>
                                         </form>
@@ -131,15 +142,18 @@ Essential stylesheets
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12 col-md-offset-6">
-                                                    <div class="block text-center">
+                                                    <div class=" text-center">
                                                         <div class="form-group">
                                                             <label for="actualVendedor_nombres">Nombres</label>
                                                             <input type="text" class="form-control" name="actualVendedor_nombres" id="actualVendedor_nombres" placeholder="Nombres" required>
                                                         </div>
+
                                                         <div class="form-group">
                                                             <label for="actualVendedor_apellidos">Apellidos</label>
                                                             <input type="text" class="form-control" name="actualVendedor_apellidos" id="actualVendedor_apellidos" placeholder="Apellidos" required>
                                                         </div>
+
+
                                                         <div class="form-group">
                                                             <label for="actualVendedor_direccion">Direccion</label>
                                                             <input type="text" class="form-control" name="actualVendedor_direccion" id="actualVendedor_direccion" placeholder="Direccion" required>
@@ -178,9 +192,14 @@ Essential stylesheets
 
                 <div class="col-lg-8">
                     <!-- Vista de productos -->
-                    <div class="widget aliado-container my-adslist">
-                        <h3 class="widget-header">Mis Productos</h3>
+                    <div class="widget aliado-container my-adslist ">
+                        <div class="col-lg-12 widget-header busca">
+                            <h3>Mis Productos</h3>
+                            <input type="search" id="buscadorProductVendedor" class="form-control buscador-usuarios" placeholder="Buscar..." onclick="buscadorProductVendedor()">
+                        </div>
+
                         <h3 class="widget-header"><a href="../../products.html">Ver tabla de productos</a></h3>
+
                         <table class="table table-responsive product-aliado-table">
                             <thead>
                                 <tr>
@@ -247,6 +266,7 @@ Essential stylesheets
                             </tbody>
                         </table>
                     </div>
+
 
                     <!-- pagination -->
                     <div class="pagination justify-content-center">
@@ -374,7 +394,6 @@ Essential Scripts
         }
     </script>
     <script src="../../js/login.js"></script>
-    <script src="../../js/vendedores.js"></script>
 
 </body>
 

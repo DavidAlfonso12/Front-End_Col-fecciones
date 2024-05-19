@@ -2983,6 +2983,17 @@ input[type=tel]:focus {
 }
 
 
+/* Style vista del administrador */
+
+.update-venededor {
+    margin-top: 2rem;
+}
+
+.modal-backGround {
+    background-color: #F8EDE3;
+}
+
+
 /* Menseje si no hay productos registrados */
 
 .nullProductos {
@@ -3016,32 +3027,37 @@ input[type=tel]:focus {
     box-shadow: 1px 1px 5px 2px rgb(155, 155, 155);
 }
 
-.btn-actualizar-usuario{
+.btn-actualizar-usuario {
     padding: 10px 10px;
 }
 
-#actualizarUsuario, #actualizarVendedor{
-    font-size:15px;
+#actualizarUsuario,
+#actualizarVendedor {
+    font-size: 15px;
 }
 
-.input-actualizar-usuario{
-    font-size:15px !important;
+.input-actualizar-usuario {
+    font-size: 15px !important;
 }
 
-.btn-cerrar-modal-actualizar-usu{
+.btn-cerrar-modal-actualizar-usu {
     font-size: 14px;
 }
 
-.buscador-usuarios{
+.buscador-usuarios {
     width: 40%;
     margin-left: 50%;
     font-size: 14px;
     box-shadow: 2px 2px 2px #575757;
 }
 
-@media  (max-width: 400px){
-    .buscador-usuarios{
+@media (max-width: 400px) {
+    .buscador-usuarios {
         width: 50%;
         margin-left: 0;
     }
+}
+
+.inline-block {
+    float: left;
 }

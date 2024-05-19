@@ -2,6 +2,7 @@ let estadoProducto;
 let categoriaProducto;
 let productoAEditar;
 let fechaRegistro;
+let productosMostrados;
 
 function obtenerCategorias() {
     $.ajax({
@@ -294,6 +295,7 @@ function eliminarProducto(idProducto) {
 
 obtenerProductosVendedor(user.idUsuario);
 
+
 function obtenerProductosVendedor(idVendedor) {
     document.getElementById("productosVendedor").innerHTML = '';
     $.ajax({
@@ -303,10 +305,12 @@ function obtenerProductosVendedor(idVendedor) {
             let productos = response;
             //Respuesta exitosa
             if (productos != null) {
+                console.log(productos);
+
                 let contentProductos = "";
                 for (let i of productos) {
                     let producto = `
-                    <tr>
+                    <tr id="producto_${i.idProducto}">
                         <td class="product-thumb" >
                         <div width="80px" height="auto" id="imagenProducto_${i.idProducto}"></div>
                             </td>
@@ -323,11 +327,6 @@ function obtenerProductosVendedor(idVendedor) {
                             <div>
                                 <ul class="list-inline justify-content-center">
                                     <li class="list-inline-item">
-                                        <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="../../product-single.html">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
                                         <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i onclick="openFormUpdateProduct(${i.idProducto})" class="fa fa-pencil"></i>
                                         </a>
@@ -343,6 +342,7 @@ function obtenerProductosVendedor(idVendedor) {
                     </tr>`;
                     contentProductos += producto;
                 }
+                productosMostrados = productos;
 
                 document.getElementById("productosVendedor").innerHTML = contentProductos;
                 mostrarImagenes(response);
@@ -362,6 +362,7 @@ function obtenerProductosVendedor(idVendedor) {
     });
 }
 
+
 function mostrarImagenes(productos) {
     for (let producto of productos) {
         let divImgContainer = document.getElementById("imagenProducto_" + producto.idProducto);
@@ -375,4 +376,22 @@ function mostrarImagenes(productos) {
         }
     }
 
+}
+
+function buscadorProductVendedor() {
+    let buscador = document.getElementById('buscadorProductVendedor');
+
+    buscador.addEventListener("input", function() {
+        let textBuscador = buscador.value.toLowerCase();
+        let listProductos = productosMostrados;
+
+        for (let i of listProductos) {
+            const producto = i.producto_nombre.toLowerCase();
+            if (producto.includes(textBuscador)) {
+                document.getElementById("producto_" + i.idProducto).hidden = false;
+            } else {
+                document.getElementById("producto_" + i.idProducto).hidden = true;
+            }
+        }
+    });
 }

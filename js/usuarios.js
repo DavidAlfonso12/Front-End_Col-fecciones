@@ -1,4 +1,5 @@
 //Get Vendedores
+let listarUsuariosMostrar;
 let usuarioModificado = false;
 let estadoUsuario;
 if (validarAdministrador()) {
@@ -18,7 +19,7 @@ function obtenerUsuarios() {
                 let contentUsuarios = "";
                 for (let i of usuarios) {
                     let usuario = `
-            <div class="col-md-6">
+            <div class="col-md-6" id="usuario_${i.idUsuario}">
                 <div class="dashboard-wrapper user-dashboard">
                 <div class="media">
                 <div class="pull-left">
@@ -59,6 +60,7 @@ function obtenerUsuarios() {
                 </div>`;
                     contentUsuarios += usuario;
                 }
+                listarUsuariosMostrar = usuarios;
                 document.getElementById("usuariosRender").innerHTML = contentUsuarios;
 
             } else {
@@ -199,19 +201,19 @@ function resetForm() {
 
 // buscador
 function buscador() {
-    let buscador = document.getElementById('buscadorVendedor');
+    let buscador = document.getElementById('buscadorUsuarios');
 
     buscador.addEventListener("input", function() {
         let textBuscador = buscador.value.toLowerCase();
-        let listProductos = listaProductosMostrados;
+        let listUsuarios = listarUsuariosMostrar;
 
-        for (let i of listProductos) {
+        for (let i of listUsuarios) {
 
-            const producto = i.producto_nombre.toLowerCase();
-            if (producto.includes(textBuscador)) {
-                document.getElementById("producto_" + i.idProducto).style.display = "block";
+            const usuario = i.usuario_nombre.toLowerCase();
+            if (usuario.includes(textBuscador)) {
+                document.getElementById("usuario_" + i.idUsuario).style.display = "block";
             } else {
-                document.getElementById("producto_" + i.idProducto).style.display = "none";
+                document.getElementById("usuario_" + i.idUsuario).style.display = "none";
             }
         }
     });

@@ -1,4 +1,5 @@
 let idProducto = localStorage.getItem('idProductoSeleccionado');
+let productoSeleccionado;
 obtenerDetalleProducto(idProducto);
 
 function obtenerDetalleProducto(idProducto) {
@@ -8,6 +9,7 @@ function obtenerDetalleProducto(idProducto) {
         dataType: 'json',
         success: function(response) {
             if (response != null) {
+                productoSeleccionado = response;
                 document.getElementById('nombreProducto').textContent = response.producto_nombre;
                 document.getElementById('precioProducto').textContent = "$ " + response.producto_precio;
                 document.getElementById('descripcionProducto').textContent = response.producto_descripcion;
@@ -41,7 +43,7 @@ function mostrarImagen(producto) {
 
 function comprarProducto() {
     if (localStorage.getItem('user')) {
-        console.log('Ir a pagina del vendedor');
+        document.getElementById("contactarVendedor").href = `https://wa.me/57${productoSeleccionado.usuario.usuario_telefono}?text=Buen día estoy interesado en el siguiente producto: ${productoSeleccionado.producto_nombre}, que vi en la plataforma de ColFecciones.`;
     } else {
         window.location.href = '../login.html';
     }
