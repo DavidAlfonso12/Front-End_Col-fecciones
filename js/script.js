@@ -114,6 +114,9 @@ function MensajeBienvenida() {
 
             document.getElementById('botonIniciarSesion').style.display = "none";
         }
+        if (user.rol.idRol == 1){
+            span.onclick = verPerfil(user);
+        }
     } else {
         if (document.getElementById('botonCerrarSesion')) {
 
@@ -121,6 +124,13 @@ function MensajeBienvenida() {
             document.getElementById('botonCerrarSesion').style.display = "none";
         }
     }
+}
+function perfilUsuario(){
+    document.getElementById('perfilUsuario').display = 'none';
+}
+//ver Perfil
+function verPerfil(user) {
+    console.log(user);
 }
 
 //api
@@ -246,3 +256,77 @@ function closeFormAddProducto() {
 if (user.rol.idRol == 2) {
     document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);
 }
+
+
+// Modal ver perfil usuario
+const modal = document.getElementById('miModal');
+const btnAbrirModal = document.getElementById('nombreBienvenida');
+const spanCerrar = document.getElementsByClassName('cerrar')[0];
+
+btnAbrirModal.onclick = function() {
+    modal.style.display = 'block';
+    editarUsuario(user.idUsuario);
+}
+
+spanCerrar.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function editarUsuario(id) {
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/usuarios/' + id,
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            $('#actualUsuario_nombres').val(response.usuario_nombre);
+            $('#actualUsuario_apellidos').val(response.usuario_apellido);
+            $('#actualUsuario_telefono').val(response.usuario_telefono);
+            $('#actualUsuario_email').val(response.usuario_email);
+            $('#actualUsuario_password').val(response.usuario_password);
+            
+        }
+
+    });
+}
+
+//Enviar formulario
+$('#actualizarUsuario').submit(function(event) {
+    event.preventDefault();
+
+    let campos = {};
+    campos.idUsuario = user.idUsuario;
+    campos.usuario_nombre = document.getElementById("actualUsuario_nombres").value;
+    campos.usuario_apellido = document.getElementById("actualUsuario_apellidos").value;
+    campos.usuario_telefono = document.getElementById("actualUsuario_telefono").value;
+    campos.usuario_email = document.getElementById("actualUsuario_email").value;
+    campos.usuario_password = document.getElementById("actualUsuario_password").value;
+    campos.usuario_foto = "foto.png";
+    campos.estado = user.estado;
+    campos.rol = user.rol;
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/usuarios',
+        method: 'POST',
+        data: JSON.stringify(campos),
+        contentType: 'application/json',
+        success: function(response) {
+            if (response != null) {
+                document.getElementById("nombreBienvenida").innerText = '';
+                location.reload();
+                alert("usuario actualizado");
+                MensajeBienvenida();
+            } else {
+                alert("No se pudo actualizar");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+        }
+    });
+});

@@ -276,21 +276,24 @@ $('#updateFormProduct').submit(function(event) {
 });
 
 function eliminarProducto(idProducto) {
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/productos/' + idProducto,
-        method: 'DELETE',
-        success: function(response) {
-            if (response != null) {
-                alert("Producto Eliminado");
-            } else {
-                alert("No se pudo actualizar");
+    let confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
+    if (confirmacion){
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/productos/' + idProducto,
+            method: 'DELETE',
+            success: function(response) {
+                if (response != null) {
+                    alert("Producto Eliminado");
+                } else {
+                    alert("No se pudo actualizar");
+                }
+                obtenerProductosVendedor(user.idUsuario);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-            obtenerProductosVendedor(user.idUsuario);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-        }
-    });
+        });
+    }
 }
 
 obtenerProductosVendedor(user.idUsuario);

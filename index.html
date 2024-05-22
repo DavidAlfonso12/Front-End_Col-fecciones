@@ -33,7 +33,6 @@
     <!-- Slick Carousel -->
     <link rel="stylesheet" href="plugins/slick/slick.css">
     <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -204,6 +203,47 @@
             </div>
         </div>
     </section>
+    <!-- Modal editar perfil usuario -->
+
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2>Perfil</h2>
+            <form class="text-left clearfix" id="actualizarUsuario">
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_nombres">Nombres</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_nombres" id="actualUsuario_nombres" placeholder="Nombres" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_apellidos">Apellidos</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_apellidos" id="actualUsuario_apellidos" placeholder="Apellidos" required>
+                    </div>
+                </div>
+
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_telefono">Telefono</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_telefono" id="actualUsuario_telefono" placeholder="Telefono" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_email">Email</label>
+                        <input type="email" class="form-control input-actualizar-usuario" name="actualUsuario_email" id="actualUsuario_email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group update-venededor">
+                    
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_password">Contraseña</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_password" id="actualUsuario_password" placeholder="Contraseña" required>
+                    </div>
+                </div>
+                <div class="text-center update-venededor">
+                    <button name="actualizar" type="submit" id="actualizar" class="btn btn-main text-center btn-actualizar-usuario">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <section class="products section bg-gray">
         <div class="container">
@@ -255,101 +295,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="row ">
-                    <div class="title text-center">
-                        <h2>!MARCAS DE COLOMBIA PARA EL MUNDO!</h2>
-                    </div>
+            </div>
+            <div class="row mt-20">
+                <div class="title text-center ">
+                    <h2 >!MARCAS DE COLOMBIA PARA EL MUNDO!</h2>
                 </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/marcas/Koaj.png" alt="product-img" />
-                        </div>
-                    </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-3 text-center">
+                    <img src="images/team/koaj-logo.png" style="width: 201px; height: 225px;margin-top: -20px;">
                 </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/marcas/arturo-calle.webp" alt="product-img" />
-                        </div>
-                    </div>
+                <div class="col-md-3 text-center">
+                    <img src="images/team/H_M-Logo.png" style="width: 150px; height: 75px; margin-top: 50px;">
                 </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="images/marcas/Miguel-Caballero.png" alt="product-img" />
-                        </div>
-                    </div>
+                <div class="col-md-3 text-center">
+                    <img src="images/team/Logo-Leonisa.png " style="width: 247px; height: 125px; margin-top: 30px;">
                 </div>
-
-                <!-- Modal -->
-                <div class="modal product-modal fade" id="product-modal">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<i class="tf-ion-close"></i>
-			</button>
-                    <div class="modal-dialog " role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6 col-xs-12">
-                                        <div class="modal-image">
-                                            <img class="img-responsive" src="images/shop/products/product11.png" alt="product-img" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="product-short-details">
-                                            <h2 class="product-title">Buso Blanco</h2>
-                                            <p class="product-price">$80,000</p>
-                                            <p class="product-short-description">
-                                                El diseño limpio y clásico de este buso la convierte en una pieza versátil que se adapta perfectamente a cualquier ocasión. </p>
-                                            <a href="cart.html" class="btn btn-main">Añadir al carrito</a>
-                                            <a href="product-single.html" class="btn btn-transparent">Ver detalle del producto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3 text-center">
+                    <img src="images/team/logo-carmel.png" style="width: 170px; height: 71px; margin-top: 64px;">
                 </div>
-                <!-- /.modal -->
-
             </div>
         </div>
     </section>
-
-
-    <!--
-Start Call To Action
-==================================== -->
-    <section class="call-to-action bg-gray section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="title">
-                        <h2>Unete A COL-FECCIONES</h2>
-                        <p>¿Mejor calidad?, <br> Siempre.</p>
-                    </div>
-                    <div class="col-lg-6 col-md-offset-3">
-                        <div class="input-group subscription-form">
-                            <span class="input-group-btn">
-				        <button class="btn btn-main" type="button">Suscribete Ahora!</button>
-				      </span>
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-
-                </div>
-            </div>
-            <!-- End row -->
-        </div>
-        <!-- End container -->
-    </section>
-    <!-- End section -->
-
-
-
-
     <footer class="footer section text-center">
         <div class="container">
             <div class="row">

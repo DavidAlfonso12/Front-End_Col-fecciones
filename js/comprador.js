@@ -118,6 +118,9 @@ function categoriasProductosFiltros() {
                 response.forEach(function(categoria) {
                     var filtro = $('<a>', {
                         text: categoria.categoria_nombre,
+                        css:{
+                            cursor: 'pointer'
+                        },
                         click: function() {
                             obtenerProductosCategoria(categoria.idCategoria);
                         }
@@ -172,6 +175,9 @@ function filtrarVendedor(listaVendedores) {
     listaVendedores.forEach(function(vendedor) {
         var filtro = $('<a>', {
             text: vendedor.usuario_nombre + " " + vendedor.usuario_apellido,
+            css:{
+                cursor: 'pointer'
+            },
             click: function() {
                 obtenerProductosRegistrados(idCategoriaSelecionada, vendedor.idUsuario);
             }
