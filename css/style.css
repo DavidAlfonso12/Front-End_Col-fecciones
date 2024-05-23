@@ -3001,13 +3001,14 @@ input[type=tel]:focus {
     font-family: 'Comfortaa', sans-serif;
 }
 
-.marcas{
+.marcas {
     margin-top: 2rem !important;
 }
 
-#usuarioPerfil{
+#usuarioPerfil {
     display: block;
 }
+
 
 /* style detalle producto */
 
@@ -3069,25 +3070,32 @@ input[type=tel]:focus {
     float: left;
 }
 
+
 /* Estilos básicos para el modal */
+
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* En el frente */
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    /* Posición fija */
+    z-index: 1;
+    /* En el frente */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Habilitar scroll si es necesario */
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con opacidad */
+    overflow: auto;
+    /* Habilitar scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo negro con opacidad */
 }
 
 .modal-contenido {
     background-color: #DFD3C3;
-    margin: 10% auto; 
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%; 
+    width: 60%;
 }
 
 .cerrar {
@@ -3102,4 +3110,8 @@ input[type=tel]:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.m-top {
+    margin-top: 27%;
 }

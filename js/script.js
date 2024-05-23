@@ -114,7 +114,7 @@ function MensajeBienvenida() {
 
             document.getElementById('botonIniciarSesion').style.display = "none";
         }
-        if (user.rol.idRol == 1){
+        if (user.rol.idRol == 1) {
             span.onclick = verPerfil(user);
         }
     } else {
@@ -125,7 +125,8 @@ function MensajeBienvenida() {
         }
     }
 }
-function perfilUsuario(){
+
+function perfilUsuario() {
     document.getElementById('perfilUsuario').display = 'none';
 }
 //ver Perfil
@@ -259,22 +260,25 @@ if (user.rol.idRol == 2) {
 
 
 // Modal ver perfil usuario
-const modal = document.getElementById('miModal');
-const btnAbrirModal = document.getElementById('nombreBienvenida');
-const spanCerrar = document.getElementsByClassName('cerrar')[0];
+if (user.rol.idRol == 1) {
+    const modal = document.getElementById('miModal');
+    const btnAbrirModal = document.getElementById('nombreBienvenida');
+    btnAbrirModal.style.cursor = 'pointer';
+    const spanCerrar = document.getElementsByClassName('cerrar')[0];
 
-btnAbrirModal.onclick = function() {
-    modal.style.display = 'block';
-    editarUsuario(user.idUsuario);
-}
+    btnAbrirModal.onclick = function() {
+        modal.style.display = 'block';
+        editarUsuario(user.idUsuario);
+    }
 
-spanCerrar.onclick = function() {
-    modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
+    spanCerrar.onclick = function() {
         modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
     }
 }
 
@@ -289,7 +293,7 @@ function editarUsuario(id) {
             $('#actualUsuario_telefono').val(response.usuario_telefono);
             $('#actualUsuario_email').val(response.usuario_email);
             $('#actualUsuario_password').val(response.usuario_password);
-            
+
         }
 
     });
@@ -317,8 +321,6 @@ $('#actualizarUsuario').submit(function(event) {
         contentType: 'application/json',
         success: function(response) {
             if (response != null) {
-                document.getElementById("nombreBienvenida").innerText = '';
-                location.reload();
                 alert("usuario actualizado");
                 MensajeBienvenida();
             } else {

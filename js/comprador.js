@@ -20,7 +20,6 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                     <div class="col-md-4" id="producto_${i.idProducto}">
                             <div class="product-item " data-search="${i.producto_nombre}">
                                 <div class="product-thumb ">
-                                    <span class="bage">Sale</span>
                                     <div id="imagenProducto_${i.idProducto}" class="contentImagenProducto"></div>
                                     <div class="preview-meta">
                                         <ul>
@@ -118,7 +117,7 @@ function categoriasProductosFiltros() {
                 response.forEach(function(categoria) {
                     var filtro = $('<a>', {
                         text: categoria.categoria_nombre,
-                        css:{
+                        css: {
                             cursor: 'pointer'
                         },
                         click: function() {
@@ -175,7 +174,7 @@ function filtrarVendedor(listaVendedores) {
     listaVendedores.forEach(function(vendedor) {
         var filtro = $('<a>', {
             text: vendedor.usuario_nombre + " " + vendedor.usuario_apellido,
-            css:{
+            css: {
                 cursor: 'pointer'
             },
             click: function() {

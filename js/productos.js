@@ -59,6 +59,8 @@ $('#addProductForm').submit(function(event) {
         success: function(response) {
             if (response != null) {
                 convertirBase64(response);
+                document.getElementById('updateFormProduct').reset();
+                document.getElementById('addProductForm').reset();
             } else {
                 alert("No se pudo registrar");
             }
@@ -277,7 +279,7 @@ $('#updateFormProduct').submit(function(event) {
 
 function eliminarProducto(idProducto) {
     let confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
-    if (confirmacion){
+    if (confirmacion) {
         $.ajax({
             url: 'http://localhost:8080/api/v1/productos/' + idProducto,
             method: 'DELETE',
@@ -308,7 +310,6 @@ function obtenerProductosVendedor(idVendedor) {
             let productos = response;
             //Respuesta exitosa
             if (productos != null) {
-                console.log(productos);
 
                 let contentProductos = "";
                 for (let i of productos) {
@@ -330,13 +331,13 @@ function obtenerProductosVendedor(idVendedor) {
                             <div>
                                 <ul class="list-inline justify-content-center">
                                     <li class="list-inline-item">
-                                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i onclick="openFormUpdateProduct(${i.idProducto})" class="fa fa-pencil"></i>
+                                        <a onclick="openFormUpdateProduct(${i.idProducto})" class="edit" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i  class="fa fa-pencil"></i>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
-                                            <i onclick="eliminarProducto(${i.idProducto})" class="fa fa-trash"></i>
+                                        <a onclick="eliminarProducto(${i.idProducto})" class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                     </li>
                                 </ul>

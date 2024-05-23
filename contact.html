@@ -17,7 +17,7 @@
     <meta name="generator" content="Themefisher Constra HTML Template v1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/Leonardo_Diffusion_XL_A_logo_for_a_clothing_brand_called_colfe_3 (1) 1.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/about/logo/COLFECCIONES_Logo_-_White_with_out_Background_-_5000x5000-removebg-preview.png" />
 
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="plugins/themefisher-font/style.css">
@@ -147,36 +147,30 @@
                 <div class="row">
                     <!-- Contact Form -->
                     <div class="contact-form col-md-6 ">
-                        <form id="contact-form" method="post" action="" role="form">
+                        <form id="contact-form" action="https://formsubmit.co/8b9e3347df6d98526eca93c65b98cb04" method="POST">
 
                             <div class="form-group">
-                                <input type="text" placeholder="Nombre" class="form-control" name="name" id="name">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" placeholder="Email" class="form-control" name="email" id="email">
+                                <input type="text" placeholder="Nombre" class="form-control" name="name" id="name" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" placeholder="Asunto" class="form-control" name="subject" id="subject">
+                                <input type="email" placeholder="Email" class="form-control" name="email" id="email" required>
                             </div>
 
                             <div class="form-group">
-                                <textarea rows="6" placeholder="Mensaje" class="form-control" name="message" id="message"></textarea>
+                                <input type="text" placeholder="Asunto" class="form-control" name="subject" id="subject" required>
                             </div>
 
-                            <div id="mail-success" class="success">
-                                Thank you. The Mailman is on His Way :)
-                            </div>
-
-                            <div id="mail-fail" class="error">
-                                Sorry, don't know what happened. Try later :(
+                            <div class="form-group">
+                                <textarea rows="6" placeholder="Mensaje" class="form-control" name="message" id="message" required></textarea>
                             </div>
 
                             <div id="cf-submit">
-                                <input id="contact-submit" class="btn btn-transparent" value="Enviar">
+                                <input type="submit" id="contact-submit" class="btn btn-transparent" value="Enviar">
                             </div>
-
+                            <input type="hidden" name="_next" value="http://127.0.0.1:5500/contact.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
                         </form>
                     </div>
                     <!-- ./End Contact Form -->
@@ -211,9 +205,9 @@
                         <div class="social-icon">
                             <ul>
                                 <li><a class="fb-icon"><i class="tf-ion-social-facebook"></i></a></li>
-                                <li><a ><i class="tf-ion-social-twitter"></i></a></li>
-                                <li><a ><i class="tf-ion-social-instagram"></i></a></li>
-                                <li><a ><i class="tf-ion-social-pinterest-outline"></i></a></li>
+                                <li><a><i class="tf-ion-social-twitter"></i></a></li>
+                                <li><a><i class="tf-ion-social-instagram"></i></a></li>
+                                <li><a><i class="tf-ion-social-pinterest-outline"></i></a></li>
                             </ul>
                         </div>
                         <!--/. End Footer Social Links -->
@@ -229,12 +223,46 @@
         </div>
     </section>
 
+    <!-- Modal editar perfil usuario -->
 
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2>Perfil</h2>
+            <form class="text-left clearfix" id="actualizarUsuario">
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_nombres">Nombres</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_nombres" id="actualUsuario_nombres" placeholder="Nombres" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_apellidos">Apellidos</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_apellidos" id="actualUsuario_apellidos" placeholder="Apellidos" required>
+                    </div>
+                </div>
 
-
-
-
-
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_telefono">Telefono</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_telefono" id="actualUsuario_telefono" placeholder="Telefono" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_email">Email</label>
+                        <input type="email" class="form-control input-actualizar-usuario" name="actualUsuario_email" id="actualUsuario_email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_password">Contraseña</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_password" id="actualUsuario_password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor text-center">
+                        <button name="actualizar" type="submit" id="actualizar" class="btn btn-main text-center btn-actualizar-usuario">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer section text-center">
         <div class="container">
@@ -242,23 +270,18 @@
                 <div class="col-md-12">
                     <ul class="social-media">
                         <li>
-                            <a href="https://www.facebook.com/themefisher">
+                            <a>
                                 <i class="tf-ion-social-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/themefisher">
+                            <a>
                                 <i class="tf-ion-social-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.twitter.com/themefisher">
+                            <a>
                                 <i class="tf-ion-social-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.pinterest.com/themefisher/">
-                                <i class="tf-ion-social-pinterest"></i>
                             </a>
                         </li>
                     </ul>
@@ -267,16 +290,13 @@
                             <a href="contact.html">CONTACT</a>
                         </li>
                         <li>
-                            <a href="shop.html">SHOP</a>
+                            <a href="shop-sidebar.html">Tienda</a>
                         </li>
                         <li>
-                            <a href="pricing.html">Pricing</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">PRIVACY POLICY</a>
+                            <a href="pricing.html">Suscripción</a>
                         </li>
                     </ul>
-                    <p class="copyright-text">Copyright &copy;2023, Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p>
+                    <p class="copyright-text">Copyright &copy;2024, Diseñado &amp; Desarrollado por <a href="https://www.sena.edu.co/es-co/Paginas/default.aspx">TEAM SENA</a></p>
                 </div>
             </div>
         </div>

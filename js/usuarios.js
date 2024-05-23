@@ -182,7 +182,6 @@ $('#actualizarUsuario').submit(function(event) {
                     CrearUsuarioLocal(response);
                     closeForm();
                 }
-
                 alert("usuario actualizado");
             } else {
                 alert("No se pudo actualizar");
