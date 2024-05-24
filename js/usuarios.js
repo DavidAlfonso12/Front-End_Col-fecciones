@@ -151,7 +151,14 @@ $('#actualizarUsuario').submit(function(event) {
     campos.usuario_apellido = document.getElementById("actualUsuario_apellidos").value;
     campos.usuario_telefono = document.getElementById("actualUsuario_telefono").value;
     campos.usuario_email = document.getElementById("actualUsuario_email").value;
-    campos.usuario_password = document.getElementById("actualUsuario_password").value;
+
+    let password = document.getElementById("actualUsuario_password").value;
+    let mensaje = document.getElementById('mensaje');
+    let mayusculas = /[A-Z]/.test(password);
+    let minusculas = /[a-z]/.test(password);
+    let numeros = /[0-9]/.test(password);
+    let minCaracteres = password.length >= 6;
+
     campos.usuario_foto = "foto.png";
     campos.usuario_ventas = 0;
     campos.usuario_compras = 0;
@@ -168,30 +175,45 @@ $('#actualizarUsuario').submit(function(event) {
         campos.rol = user.rol;
     }
 
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios',
-        method: 'POST',
-        data: JSON.stringify(campos),
-        contentType: 'application/json',
-        success: function(response) {
-            if (response != null) {
-                if (validarAdministrador()) {
-                    obtenerUsuarios();
-                    modal.hide();
+    if (!mayusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra mayúscula.';
+        mensaje.style.color = 'red';
+    } else if (!minusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra minúscula.';
+        mensaje.style.color = 'red';
+    } else if (!numeros) {
+        mensaje.textContent = 'La contraseña debe contener al menos un número.';
+        mensaje.style.color = 'red';
+    } else if (!minCaracteres) {
+        mensaje.textContent = `La contraseña debe tener al menos 6 caracteres.`;
+        mensaje.style.color = 'red';
+    } else {
+        campos.usuario_password = password;
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/usuarios',
+            method: 'POST',
+            data: JSON.stringify(campos),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response != null) {
+                    if (validarAdministrador()) {
+                        obtenerUsuarios();
+                        modal.hide();
+                    } else {
+                        CrearUsuarioLocal(response);
+                        closeForm();
+                    }
+                    alert("usuario actualizado");
                 } else {
-                    CrearUsuarioLocal(response);
-                    closeForm();
+                    alert("No se pudo actualizar");
                 }
-                alert("usuario actualizado");
-            } else {
-                alert("No se pudo actualizar");
+                console.log('Respuesta del servicio:', response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-            console.log('Respuesta del servicio:', response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-        }
-    });
+        });
+    }
 });
 
 function resetForm() {

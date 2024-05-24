@@ -150,7 +150,14 @@ $('#actualizarVendedor').submit(function(event) {
     campos.usuario_apellido = document.getElementById("actualVendedor_apellidos").value;
     campos.usuario_telefono = document.getElementById("actualVendedor_telefono").value;
     campos.usuario_email = document.getElementById("actualVendedor_email").value;
-    campos.usuario_password = document.getElementById("actualVendedor_password").value;
+    
+    let password = document.getElementById("actualVendedor_password").value;
+    let mensaje = document.getElementById('mensaje');
+    let mayusculas = /[A-Z]/.test(password);
+    let minusculas = /[a-z]/.test(password);
+    let numeros = /[0-9]/.test(password);
+    let minCaracteres = password.length >= 6;
+
     campos.usuario_empresa = document.getElementById("actualVendedor_nombre_empresa").value;
     campos.usuario_direccion = document.getElementById("actualVendedor_direccion").value;
     campos.usuario_descripcion = document.getElementById("actualVendedor_descripcion").value;
@@ -172,31 +179,46 @@ $('#actualizarVendedor').submit(function(event) {
         campos.rol = user.rol;
     }
 
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios',
-        method: 'POST',
-        data: JSON.stringify(campos),
-        contentType: 'application/json',
-        success: function(response) {
-            if (response != null) {
-                if (validarAdministrador()) {
-                    obtenerVendedores();
-                    modal.hide();
+    if (!mayusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra mayúscula.';
+        mensaje.style.color = 'red';
+    } else if (!minusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra minúscula.';
+        mensaje.style.color = 'red';
+    } else if (!numeros) {
+        mensaje.textContent = 'La contraseña debe contener al menos un número.';
+        mensaje.style.color = 'red';
+    } else if (!minCaracteres) {
+        mensaje.textContent = `La contraseña debe tener al menos 6 caracteres.`;
+        mensaje.style.color = 'red';
+    } else {
+        campos.usuario_password = password;
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/usuarios',
+            method: 'POST',
+            data: JSON.stringify(campos),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response != null) {
+                    if (validarAdministrador()) {
+                        obtenerVendedores();
+                        modal.hide();
+                    } else {
+                        CrearUsuarioLocal(response);
+                        document.getElementById("nombreVendedor").textContent = response.usuario_nombre;
+                        closeForm();
+                    }
+                    alert("vendedor actualizado");
                 } else {
-                    CrearUsuarioLocal(response);
-                    document.getElementById("nombreVendedor").textContent = response.usuario_nombre;
-                    closeForm();
+                    alert("No se pudo actualizar")
                 }
-                alert("vendedor actualizado");
-            } else {
-                alert("No se pudo actualizar")
+                console.log('Respuesta del servicio:', response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-            console.log('Respuesta del servicio:', response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-        }
-    });
+        });
+    }
 });
 
 function resetForm() {

@@ -93,9 +93,6 @@ if (localStorage.getItem('loggedIn') && user.rol.idRol != 2 && user.rol.idRol !=
 }
 
 //Validacion de que no ha iniciado session para mensaje de bienvenida
-// if (Object.keys(localStorage).length === 0) {
-//     MensajeBienvenida();
-// }
 if (!localStorage.getItem('user')) {
     MensajeBienvenida();
 }
@@ -138,7 +135,6 @@ function verPerfil(user) {
 
 $('#registerVendedor').submit(function(event) {
     event.preventDefault();
-    //Consumir api
 
     let rol = {};
     rol.idRol = 2;
@@ -150,7 +146,15 @@ $('#registerVendedor').submit(function(event) {
     campos.usuario_apellido = document.getElementById("ali_apellidos").value;
     campos.usuario_telefono = document.getElementById("ali_telefono").value;
     campos.usuario_email = document.getElementById("ali_email").value;
-    campos.usuario_password = document.getElementById("ali_password").value;
+
+    let password = document.getElementById("ali_password").value;
+    let mensaje = document.getElementById('mensaje');
+    let mayusculas = /[A-Z]/.test(password);
+    let minusculas = /[a-z]/.test(password);
+    let numeros = /[0-9]/.test(password);
+    let minCaracteres = password.length >= 6;
+    
+
     campos.usuario_documento = document.getElementById("ali_documento").value;
     campos.usuario_empresa = document.getElementById("ali_nombre_empresa").value;
     campos.usuario_direccion = document.getElementById("ali_direccion").value;
@@ -161,29 +165,39 @@ $('#registerVendedor').submit(function(event) {
     campos.estado = estado;
     campos.rol = rol;
 
-    console.log(campos);
-
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios',
-        method: 'POST',
-        data: JSON.stringify(campos),
-        contentType: 'application/json',
-        success: function(response) {
-            // Manejar la respuesta exitosa
-            if (response != null) {
-                alert("vendedor registrado");
-            } else {
-                alert("No se pudo registrar")
+    if (!mayusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra mayúscula.';
+        mensaje.style.color = 'red';
+    } else if (!minusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra minúscula.';
+        mensaje.style.color = 'red';
+    } else if (!numeros) {
+        mensaje.textContent = 'La contraseña debe contener al menos un número.';
+        mensaje.style.color = 'red';
+    } else if (!minCaracteres) {
+        mensaje.textContent = `La contraseña debe tener al menos 6 caracteres.`;
+        mensaje.style.color = 'red';
+    } else {
+        campos.usuario_password = password;
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/usuarios',
+            method: 'POST',
+            data: JSON.stringify(campos),
+            contentType: 'application/json',
+            success: function(response) {
+                // Manejar la respuesta exitosa
+                if (response != null) {
+                    alert("vendedor registrado");
+                    location.href = "../login.html";
+                } else {
+                    alert("No se pudo registrar")
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-            console.log('Respuesta del servicio:', response);
-            // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Manejar errores de la solicitud
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-            // Puedes mostrar un mensaje de error al usuario aquí
-        }
-    });
+        });
+    }
 });
 
 
@@ -201,31 +215,56 @@ $('#registerUsuario').submit(function(event) {
     campos.usuario_apellido = document.getElementById("user_apellidos").value;
     campos.usuario_telefono = document.getElementById("user_telefono").value;
     campos.usuario_email = document.getElementById("user_email").value;
-    campos.usuario_password = document.getElementById("user_password").value;
+
+    let password = document.getElementById("user_password").value;
+    let mensaje = document.getElementById('mensaje');
+    let mayusculas = /[A-Z]/.test(password);
+    let minusculas = /[a-z]/.test(password);
+    let numeros = /[0-9]/.test(password);
+    let minCaracteres = password.length >= 6;
+    
+
     campos.usuario_compras = 0;
     campos.estado = estado;
     campos.rol = rol;
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios',
-        method: 'POST',
-        data: JSON.stringify(campos),
-        contentType: 'application/json',
-        success: function(response) {
-            // Manejar la respuesta exitosa
-            if (response != null) {
-                alert("usuario registrado");
-            } else {
-                alert("No se pudo registrar")
+
+    if (!mayusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra mayúscula.';
+        mensaje.style.color = 'red';
+    } else if (!minusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra minúscula.';
+        mensaje.style.color = 'red';
+    } else if (!numeros) {
+        mensaje.textContent = 'La contraseña debe contener al menos un número.';
+        mensaje.style.color = 'red';
+    } else if (!minCaracteres) {
+        mensaje.textContent = `La contraseña debe tener al menos 6 caracteres.`;
+        mensaje.style.color = 'red';
+    } else {
+        campos.usuario_password = password;
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/usuarios',
+            method: 'POST',
+            data: JSON.stringify(campos),
+            contentType: 'application/json',
+            success: function(response) {
+                // Manejar la respuesta exitosa
+                if (response != null) {
+                    alert("usuario registrado");
+                    location.href = "../login.html";
+                } else {
+                    alert("No se pudo registrar");
+                }
+                console.log('Respuesta del servicio:', response);
+                // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Manejar errores de la solicitud
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+                // Puedes mostrar un mensaje de error al usuario aquí
             }
-            console.log('Respuesta del servicio:', response);
-            // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Manejar errores de la solicitud
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-            // Puedes mostrar un mensaje de error al usuario aquí
-        }
-    });
+        });
+    }
 });
 
 //============= Formulario para editar el perfil del vendedor ================ \\
@@ -309,26 +348,47 @@ $('#actualizarUsuario').submit(function(event) {
     campos.usuario_apellido = document.getElementById("actualUsuario_apellidos").value;
     campos.usuario_telefono = document.getElementById("actualUsuario_telefono").value;
     campos.usuario_email = document.getElementById("actualUsuario_email").value;
-    campos.usuario_password = document.getElementById("actualUsuario_password").value;
+
+    let password = document.getElementById("actualUsuario_password").value;
+    let mensaje = document.getElementById('mensaje');
+    let mayusculas = /[A-Z]/.test(password);
+    let minusculas = /[a-z]/.test(password);
+    let numeros = /[0-9]/.test(password);
+    let minCaracteres = password.length >= 6;
     campos.usuario_foto = "foto.png";
     campos.estado = user.estado;
     campos.rol = user.rol;
 
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios',
-        method: 'POST',
-        data: JSON.stringify(campos),
-        contentType: 'application/json',
-        success: function(response) {
-            if (response != null) {
-                alert("usuario actualizado");
-                MensajeBienvenida();
-            } else {
-                alert("No se pudo actualizar");
+    if (!mayusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra mayúscula.';
+        mensaje.style.color = 'red';
+    } else if (!minusculas) {
+        mensaje.textContent = 'La contraseña debe contener al menos una letra minúscula.';
+        mensaje.style.color = 'red';
+    } else if (!numeros) {
+        mensaje.textContent = 'La contraseña debe contener al menos un número.';
+        mensaje.style.color = 'red';
+    } else if (!minCaracteres) {
+        mensaje.textContent = `La contraseña debe tener al menos 6 caracteres.`;
+        mensaje.style.color = 'red';
+    } else {
+        campos.usuario_password = password;
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/usuarios',
+            method: 'POST',
+            data: JSON.stringify(campos),
+            contentType: 'application/json',
+            success: function(response) {
+                if (response != null) {
+                    alert("usuario actualizado");
+                    MensajeBienvenida();
+                } else {
+                    alert("No se pudo actualizar");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-        }
-    });
+        });
+    }
 });
