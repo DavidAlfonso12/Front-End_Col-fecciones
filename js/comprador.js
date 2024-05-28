@@ -1,4 +1,5 @@
 let listaProductosMostrados;
+
 obtenerProductosRegistrados();
 
 //Funcion para mostrar productos que se encuentras registrados y con estado activo
@@ -16,6 +17,7 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                 let contentProductos = "";
 
                 for (let i of productosActivos) {
+
                     let producto = `
                     <div class="col-md-4" id="producto_${i.idProducto}">
                             <div class="product-item " data-search="${i.producto_nombre}">
@@ -25,6 +27,9 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                                         <ul>
                                             <li>
                                                 <a onclick="verDetalle(${i.idProducto})"><i class="tf-ion-ios-search-strong" ></i></a>
+                                            </li>
+                                            <li>
+                                                <a onclick="addCarrito(${i.idProducto})"><i class="tf-ion-android-cart"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -73,7 +78,7 @@ function obtenerProductosFiltrados(listaProductos, idCategoria, idVendedor) {
             if (i.estado.idEstado === 1 && i.categoria.idCategoria === idCategoria) {
                 productosActivos.push(i);
             }
-        } else if (i.estado.idEstado === 1) {
+        } else if (i.estado.idEstado === 1 && i.cantidad_disponible > 0) {
             productosActivos.push(i);
         }
     }

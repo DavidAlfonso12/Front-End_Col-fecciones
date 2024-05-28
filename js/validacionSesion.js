@@ -61,3 +61,9 @@ function convertirFecha(fecha) {
 function pad(num) {
     return (num < 10 ? '0' : '') + num;
 }
+
+let carrito = document.getElementById('carrito');
+
+if (!user) {
+    carrito.style.display = "none";
+}
