@@ -111,9 +111,7 @@ function MensajeBienvenida() {
 
             document.getElementById('botonIniciarSesion').style.display = "none";
         }
-        if (user.rol.idRol == 1) {
-            span.onclick = verPerfil(user);
-        }
+
     } else {
         if (document.getElementById('botonCerrarSesion')) {
 
@@ -126,10 +124,7 @@ function MensajeBienvenida() {
 function perfilUsuario() {
     document.getElementById('perfilUsuario').display = 'none';
 }
-//ver Perfil
-function verPerfil(user) {
-    console.log(user);
-}
+
 
 //api
 
@@ -153,7 +148,7 @@ $('#registerVendedor').submit(function(event) {
     let minusculas = /[a-z]/.test(password);
     let numeros = /[0-9]/.test(password);
     let minCaracteres = password.length >= 6;
-    
+
 
     campos.usuario_documento = document.getElementById("ali_documento").value;
     campos.usuario_empresa = document.getElementById("ali_nombre_empresa").value;
@@ -222,7 +217,7 @@ $('#registerUsuario').submit(function(event) {
     let minusculas = /[a-z]/.test(password);
     let numeros = /[0-9]/.test(password);
     let minCaracteres = password.length >= 6;
-    
+
 
     campos.usuario_compras = 0;
     campos.estado = estado;

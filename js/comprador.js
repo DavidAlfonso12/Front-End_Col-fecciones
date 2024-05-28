@@ -36,6 +36,7 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                                 </div>
                                 <div class="product-content">
                                     <h4 class="listaProducto">${i.producto_nombre}</h4>
+                                    <h6 class="listaProducto">Vendedor: ${i.usuario.usuario_empresa}</h6>
                                     <p class="price">$${i.producto_precio}</p>
                                 </div>
                             </div>
@@ -178,7 +179,7 @@ function filtrarVendedor(listaVendedores) {
     }
     listaVendedores.forEach(function(vendedor) {
         var filtro = $('<a>', {
-            text: vendedor.usuario_nombre + " " + vendedor.usuario_apellido,
+            text: vendedor.usuario_empresa,
             css: {
                 cursor: 'pointer'
             },

@@ -77,8 +77,10 @@
                             <a onclick="cerrarSesion()" style="cursor: pointer;">Cerrar Sesion</a>
                         </li>
                         <li class="dropdown cart-nav dropdown-slide" id="carrito">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-cart"></i>Carrito</a>
-                            <div class="dropdown-menu cart-dropdown" id="productosDelCarrito">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-android-cart"></i>Carrito <span id="carrito_txt">0</span></a>
+                            <div class="dropdown-menu cart-dropdown">
+                                <div id="productosDelCarrito">
+                                </div>
                                 <div class="cart-summary">
                                     <span>Total</span>
                                     <span class="total-price" id="totalCarrito"></span>
