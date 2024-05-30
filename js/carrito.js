@@ -9,50 +9,52 @@ function obtenerLista() {
 }
 
 function addCarrito(idProducto) {
-    let lista = obtenerLista();
-    $.ajax({
-        url: 'http://localhost:8080/api/v1/productos/' + idProducto,
-        method: 'GET',
-        success: function(response) {
-            let producto = response;
-            console.log(producto);
-            //Respuesta exitosa
-            if (producto != null) {
+    if (localStorage.getItem('user')) {
 
-                const nombreProducto = producto.producto_nombre;
-                const precioProducto = producto.producto_precio;
-                const product = {
-                    imagen: producto.imagenes[0].imagen_base64,
-                    id: producto.idProducto,
-                    nombre: nombreProducto,
-                    precio: precioProducto,
-                    cantidad_disponible: producto.cantidad_disponible,
-                    cantidad: 1
-                }
-                console.log(product)
-                const existeProducto = lista.find(item => item.id == producto.idProducto);
+        let lista = obtenerLista();
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/productos/' + idProducto,
+            method: 'GET',
+            success: function(response) {
+                let producto = response;
+                //Respuesta exitosa
+                if (producto != null) {
 
-                if (existeProducto) {
-                    const productoIndex = lista.findIndex(item => item.id === idProducto);
-                    if (lista[productoIndex].cantidad <= product.cantidad_disponible) {
-                        lista[productoIndex].cantidad++;
+                    const nombreProducto = producto.producto_nombre;
+                    const precioProducto = producto.producto_precio;
+                    const product = {
+                        imagen: producto.imagenes[0].imagen_base64,
+                        id: producto.idProducto,
+                        nombre: nombreProducto,
+                        precio: precioProducto,
+                        cantidad_disponible: producto.cantidad_disponible,
+                        cantidad: 1
+                    }
+                    const existeProducto = lista.find(item => item.id == producto.idProducto);
+
+                    if (existeProducto) {
+                        const productoIndex = lista.findIndex(item => item.id === idProducto);
+                        if (lista[productoIndex].cantidad <= product.cantidad_disponible) {
+                            lista[productoIndex].cantidad++;
+                            guardarLista(lista);
+                        }
+                    } else {
+                        lista.push(product);
                         guardarLista(lista);
                     }
-                } else {
-                    lista.push(product);
-                    guardarLista(lista);
+
+                    actualizarCarrito();
                 }
-
-                actualizarCarrito();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Manejar errores de la solicitud
+                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Manejar errores de la solicitud
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-        }
-    });
+        });
 
-
+    } else {
+        location.href = "../login.html";
+    }
 }
 
 function actualizarCarrito() {
@@ -77,7 +79,7 @@ function actualizarCarrito() {
                                         </div>
                                         <h5><strong>$ ${item.precio * item.cantidad}</strong></h5>
                                     </div>
-                                    <a class="remove" onclick="eliminarDelCarrito(${item.id})"><i class="tf-ion-close"></i></a>`;
+                                    <a class="remove" style="cursor:pointer;" onclick="eliminarDelCarrito(${item.id})"><i class="tf-ion-close"></i></a>`;
 
         contenedorDeProductos.appendChild(itemElemento);
         valorPorProducto = item.precio * item.cantidad;
@@ -115,9 +117,6 @@ function eliminarDelCarrito(idProducto) {
     actualizarCarrito();
 }
 
-function reload() {
-    location.reload();
-}
 
 function listarProductos() {
     let contenidoDetalleCarrito = "";
@@ -135,9 +134,9 @@ function listarProductos() {
                             <a>${i.nombre}</a>
                         </td>
                         <td>$ ${i.precio}</td>
-                        <td><input type="number" style="width:30%; background-color:transparent; border:1px solid #6666;" value="${i.cantidad}"></input> </td>
+                        <td><input type="number" style=" background-color:transparent; border:1px solid #6666;" value="${i.cantidad}" min=1 max=${i.cantidad_disponible}></input> </td>
                         <td>
-                            <a class="product-remove" style="cursor: pointer;" onclick="eliminarDelCarrito(${i.id}); reload();">Eliminar</a>
+                            <a class="product-remove" style="cursor: pointer;" onclick="eliminarDelCarrito(${i.id});">Eliminar</a>
                         </td>
                     </tr>`;
         contenidoDetalleCarrito += producto;
@@ -147,6 +146,10 @@ function listarProductos() {
     if (contenidoDetalleCarrito === "") {
         contenidoDetalleCarrito = `<h4 class="nullProductos">No se encontrarón productos en el carrito</h4>`;
     }
-    document.getElementById("productosDetalleCarrito").innerHTML = contenidoDetalleCarrito;
-    document.getElementById("totalDetalleCarrito").innerText = totalValorCarrito.toFixed(1);
+    if (document.getElementById("productosDetalleCarrito")) {
+        document.getElementById("productosDetalleCarrito").innerHTML = contenidoDetalleCarrito;
+    }
+    if (document.getElementById("totalDetalleCarrito")) {
+        document.getElementById("totalDetalleCarrito").innerText = totalValorCarrito.toFixed(1);
+    }
 }

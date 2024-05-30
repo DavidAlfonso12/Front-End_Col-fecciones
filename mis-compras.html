@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -6,7 +7,7 @@
     <!-- Basic Page Needs
   ================================================== -->
     <meta charset="utf-8">
-    <title>COL-FECCIONES | COMPROBANTE</title>
+    <title>COL-FECCIONES | Mis compras</title>
 
     <!-- Mobile Specific Metas
   ================================================== -->
@@ -17,7 +18,7 @@
     <meta name="generator" content="Themefisher Constra HTML Template v1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/Leonardo_Diffusion_XL_A_logo_for_a_clothing_brand_called_colfe_3 (1) 1.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/about/logo/COLFECCIONES_Logo_-_White_with_out_Background_-_5000x5000-removebg-preview.png" />
 
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="plugins/themefisher-font/style.css">
@@ -36,6 +37,7 @@
 </head>
 
 <body id="body">
+
     <!-- Start Top Header Bar -->
     <section class="top-header">
         <div class="container">
@@ -65,6 +67,7 @@
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <!-- Cart -->
+                    <!-- Cart -->
                     <ul class="top-menu text-right list-inline">
                         <li id="botonIniciarSesion">
                             <a href="login.html">Iniciar Sesion</a>
@@ -89,6 +92,7 @@
                                 </ul>
                             </div>
                         </li>
+
                     </ul>
                     <!-- / .nav .navbar-nav .navbar-right -->
                 </div>
@@ -126,6 +130,7 @@
                         <li><a href="about.html">Acerca De Nosotros</a></li>
                         <li><a href="contact.html">Contactanos</a></li>
                         <li><a href="pricing.html">Suscripcion</a></li>
+                        <li><a href="mis-compras.html">Mis Compras</a></li>
                     </ul>
                     <!-- / .nav .navbar-nav -->
                 </div>
@@ -134,102 +139,26 @@
         </nav>
     </section>
 
-
-
     <section class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name">Verificar</h1>
+                        <h1 class="page-name">Mis Compras</h1>
                         <ol class="breadcrumb">
                             <li><a href="index.html">Inicio</a></li>
-                            <li class="active">Verificar</li>
+                            <li class="active">Mis Compras</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <div class="page-wrapper">
-        <div class="checkout shopping">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="block billing-details">
-                            <h4 class="widget-title">Detalles De Facturacion</h4>
-                            <form class="checkout-form" id="formularioCompra">
-                                <div class="form-group">
-                                    <label for="full_name">Nombre Completo</label>
-                                    <input type="text" class="form-control" id="full_name" placeholder="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_address">Direccion</label>
-                                    <input type="text" class="form-control" id="user_address" placeholder="" required>
-                                </div>
-                                <div class="checkout-country-code clearfix">
-                                    <div class="form-group">
-                                        <label for="user_post_code">Codigo Postal</label>
+        <div class="cart shopping">
+            <div class="container" id="contenedorCompras">
 
-                                        <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <select name="" id="" style="height: 50px; margin-left: auto;" class="form-control" required>
-                                            <option value="" selected>Ciudad</option>
-                                            <option value="">Bogotá</option>
-                                            <option value="">Medellín</option>
-                                            <option value="">Cali</option>
-                                            <option value="">Barranquilla</option>
-                                            <option value="">Cartagena</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <h4 class="widget-title">Metodo De Pago</h4>
-                                <p>Detalles De Tarjeta De Credito (Pago Seguro)</p>
-                                <div class="checkout-product-details">
-                                    <div class="payment">
-                                        <div class="card-details">
-                                            <div class="form-group">
-                                                <label for="card-number">Numero De Tarjeta <span class="required">*</span></label>
-                                                <input id="card-number" class="form-control" type="tel" placeholder="•••• •••• •••• ••••" required>
-                                            </div>
-                                            <div class="form-group half-width padding-right">
-                                                <label for="card-expiry">Expira (MM/YY) <span class="required">*</span></label>
-                                                <input id="card-expiry" class="form-control" type="tel" placeholder="MM / YY" required>
-                                            </div>
-                                            <div class="form-group half-width padding-left">
-                                                <label for="card-cvc">Codigo De tarjeta <span class="required">*</span></label>
-                                                <input id="card-cvc" class="form-control" type="tel" maxlength="4" placeholder="CVC" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-main text-center">Realizar Pedido</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="block">
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="product-checkout-details">
-                            <div class="block">
-                                <h4 class="widget-title">Resumen De Productos</h4>
-                                <div class="media product-card" id="productosComprar">
-                                </div>
-                                <div class="summary-total">
-                                    <span>Total</span>
-                                    <span id="totalCompra">$</span>
-                                </div>
-                                <div class="verified-icon">
-                                    <img src="images/shop/verified.png">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -305,10 +234,8 @@
     <!-- Main Js File -->
     <script src="js/validacionSesion.js"></script>
     <script src="js/carrito.js"></script>
-    <script src="js/comprar.js"></script>
+    <script src="js/misCompras.js"></script>
     <script src="js/script.js"></script>
-
-
 
 </body>
 

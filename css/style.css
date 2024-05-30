@@ -3115,3 +3115,16 @@ input[type=tel]:focus {
 .m-top {
     margin-top: 27%;
 }
+
+
+/* compras */
+
+.row-content {
+    background-color: #DFD3C3;
+    margin-bottom: 2rem;
+    padding: 15px;
+}
+
+.padding-fecha {
+    margin-bottom: 15px;
+}

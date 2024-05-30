@@ -270,7 +270,7 @@ function openForm() {
 function closeForm() {
     document.getElementById("formContainer").style.display = "none";
 }
-if (user.rol.idRol == 2) {
+if (user && user.rol.idRol == 2) {
     document.getElementById("openFormButton").addEventListener("click", openForm);
 }
 
@@ -288,13 +288,13 @@ function closeFormAddProducto() {
     document.getElementById('formAddProducto').style.display = "none";
 }
 
-if (user.rol.idRol == 2) {
+if (user && user.rol.idRol == 2) {
     document.getElementById("openFormAddProducto").addEventListener("click", openFormAddProducto);
 }
 
 
 // Modal ver perfil usuario
-if (user.rol.idRol == 1) {
+if (user && user.rol.idRol == 1) {
     const modal = document.getElementById('miModal');
     const btnAbrirModal = document.getElementById('nombreBienvenida');
     btnAbrirModal.style.cursor = 'pointer';
@@ -387,3 +387,7 @@ $('#actualizarUsuario').submit(function(event) {
         });
     }
 });
+
+if (!localStorage.getItem('user')) {
+    document.getElementById('misComprasPage').style.display = "none";
+}

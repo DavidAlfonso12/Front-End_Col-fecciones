@@ -1,6 +1,8 @@
 let idProducto = localStorage.getItem('idProductoSeleccionado');
 let productoSeleccionado;
+
 obtenerDetalleProducto(idProducto);
+
 
 function obtenerDetalleProducto(idProducto) {
     $.ajax({
@@ -14,7 +16,9 @@ function obtenerDetalleProducto(idProducto) {
                 document.getElementById('precioProducto').textContent = "$ " + response.producto_precio;
                 document.getElementById('descripcionProducto').textContent = response.producto_descripcion;
                 document.getElementById('categoriaProducto').textContent = response.categoria.categoria_nombre;
-                document.getElementById('product-quantity').value = response.cantidad_disponible;
+                document.getElementById('product-quantity').value = 1;
+                document.getElementById('product-quantity').max = response.cantidad_disponible;
+                document.getElementById('product-quantity').min = 1;
                 document.getElementById('empresaVendedor').textContent = response.usuario.usuario_empresa;
                 document.getElementById('nombreVendedor').textContent = response.usuario.usuario_nombre + ' ' + response.usuario.usuario_apellido;
                 document.getElementById('descripcionVendedor').textContent = response.usuario.usuario_descripcion;
@@ -43,7 +47,20 @@ function mostrarImagen(producto) {
 
 function comprarProducto() {
     if (localStorage.getItem('user')) {
-        document.getElementById("contactarVendedor").href = `https://wa.me/57${productoSeleccionado.usuario.usuario_telefono}?text=Buen día estoy interesado en el siguiente producto: ${productoSeleccionado.producto_nombre}, que vi en la plataforma de ColFecciones.`;
+        let lista = obtenerLista();
+        const product = {
+            imagen: productoSeleccionado.imagenes[0].imagen_base64,
+            id: productoSeleccionado.idProducto,
+            nombre: productoSeleccionado.producto_nombre,
+            precio: productoSeleccionado.producto_precio,
+            cantidad_disponible: productoSeleccionado.cantidad_disponible,
+            cantidad: document.getElementById('product-quantity').value
+        }
+
+        lista.push(product);
+        guardarLista(lista);
+        //document.getElementById("contactarVendedor").href = `https://wa.me/57${productoSeleccionado.usuario.usuario_telefono}?text=Buen día estoy interesado en el siguiente producto: ${productoSeleccionado.producto_nombre}, que vi en la plataforma de ColFecciones.`;
+        window.location.href = '../checkout.html';
     } else {
         window.location.href = '../login.html';
     }

@@ -4,7 +4,9 @@ obtenerProductosRegistrados();
 
 //Funcion para mostrar productos que se encuentras registrados y con estado activo
 function obtenerProductosRegistrados(idCategoria, idVendedor) {
-    document.getElementById("productosRegistrados").innerHTML = '';
+    if (document.getElementById("productosRegistrados")) {
+        document.getElementById("productosRegistrados").innerHTML = '';
+    }
     $.ajax({
         url: 'http://localhost:8080/api/v1/productos',
         method: 'GET',
@@ -48,7 +50,9 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                     contentProductos = `<h2 class="nullProductos">No se encontrarón productos registrados</h2>`;
                 }
                 listaProductosMostrados = productosActivos;
-                document.getElementById("productosRegistrados").innerHTML = contentProductos;
+                if (document.getElementById("productosRegistrados")) {
+                    document.getElementById("productosRegistrados").innerHTML = contentProductos;
+                }
                 mostrarImagenes(productosActivos);
                 if (idCategoriaSelecionada > 0 && !idVendedor > 0) {
                     mostrarVendedoresConCategorias(productosActivos);
