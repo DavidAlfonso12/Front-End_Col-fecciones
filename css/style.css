@@ -823,7 +823,6 @@ input[type=tel]:focus {
 
 .cart-buttons li {
     display: inline-block;
-    width: 49%;
 }
 
 .cart-buttons li a {
@@ -3174,4 +3173,59 @@ input[type=tel]:focus {
     left: 25%;
     z-index: 9999;
     display: none;
+}
+
+/* Style modal calificacion */
+
+/* Modal estilos */
+.calificacion {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.calificacion-content {
+    background-color:#DFD3C3;;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.select-calificacion{
+    width: 20%;
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+    display: block;
+    margin: 0 auto;
+}
+
+#comentario{
+    width: 100%;
+}
+#imagenProductoCalificar{
+    width: 100%;
 }
