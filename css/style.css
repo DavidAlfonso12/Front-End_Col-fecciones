@@ -53,8 +53,20 @@ a:hover {
 }
 
 .videito {
-    width: 580px;
+    width: 100%;
     height: 735px;
+}
+
+@media (max-width:992px) {
+    .videito {
+        display: none;
+    }
+}
+
+@media (max-width:626px) {
+    .mapaContacto {
+        display: none;
+    }
 }
 
 .container-button {
@@ -1177,7 +1189,25 @@ input[type=tel]:focus {
     text-align: center;
 }
 
-.product-item .product-content h4 {
+.product-content {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+.product-content h4 {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.product-item {
     font-size: 16px;
     font-weight: 400;
     margin-top: 15px;
@@ -3015,8 +3045,8 @@ input[type=tel]:focus {
 .imgDetalleProducto {
     display: block;
     max-width: 100%;
-    width: 41rem !important;
-    height: 45rem !important;
+    width: 100%;
+    height: 100%;
 }
 
 .cantida-disponible {
@@ -3127,4 +3157,21 @@ input[type=tel]:focus {
 
 .padding-fecha {
     margin-bottom: 15px;
+}
+
+
+/* Calificacion */
+
+.form-container {
+    background-color: #F8EDE3;
+    margin: 10% auto;
+    padding: 20px;
+    border: 3px solid #9090909e;
+    border-radius: 20px;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    z-index: 9999;
+    display: none;
 }

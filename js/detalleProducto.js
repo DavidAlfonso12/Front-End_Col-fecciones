@@ -19,7 +19,7 @@ function obtenerDetalleProducto(idProducto) {
                 document.getElementById('product-quantity').value = 1;
                 document.getElementById('product-quantity').max = response.cantidad_disponible;
                 document.getElementById('product-quantity').min = 1;
-                document.getElementById('empresaVendedor').textContent = response.usuario.usuario_empresa;
+                document.getElementById('empresaVendedor').textContent = "Empresa : " + response.usuario.usuario_empresa;
                 document.getElementById('nombreVendedor').textContent = response.usuario.usuario_nombre + ' ' + response.usuario.usuario_apellido;
                 document.getElementById('descripcionVendedor').textContent = response.usuario.usuario_descripcion;
                 mostrarImagen(response);
@@ -59,8 +59,15 @@ function comprarProducto() {
 
         lista.push(product);
         guardarLista(lista);
-        //document.getElementById("contactarVendedor").href = `https://wa.me/57${productoSeleccionado.usuario.usuario_telefono}?text=Buen día estoy interesado en el siguiente producto: ${productoSeleccionado.producto_nombre}, que vi en la plataforma de ColFecciones.`;
         window.location.href = '../checkout.html';
+    } else {
+        window.location.href = '../login.html';
+    }
+}
+
+function contactarVendedor() {
+    if (localStorage.getItem('user')) {
+        document.getElementById("contactarVendedorProduct").href = `https://wa.me/57${productoSeleccionado.usuario.usuario_telefono}?text=Buen día estoy interesado en el siguiente producto: ${productoSeleccionado.producto_nombre}, que vi en la plataforma de ColFecciones.`;
     } else {
         window.location.href = '../login.html';
     }

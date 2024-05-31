@@ -161,7 +161,7 @@
                             <div class='carousel-outer'>
                                 <!-- me art lab slider -->
                                 <div class='carousel-inner '>
-                                    <div class='item active' id="imagenProductoDetalle">
+                                    <div class='item active' id="imagenProductoDetalle" style=" border: 2px solid rgba(193, 193, 193, 0.611);">
                                     </div>
                                 </div>
                             </div>
@@ -176,20 +176,6 @@
 
                         <p class="product-description mt-20" id="descripcionProducto">
                         </p>
-                        <div class="color-swatches">
-                            <span>color:</span>
-                            <ul>
-                                <li>
-                                    <a href="#!" class="swatch-violet"></a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="swatch-black"></a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="swatch-cream"></a>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="product-size">
                             <span>Tallas disponibles:</span>
                             <select class="form-control">
@@ -219,9 +205,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="tabCommon mt-20">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#reviews" aria-expanded="false">Vendedor</a></li>
-                        </ul>
+                        <h4 class="mt-20"><b>Vendedor</b></h4>
                         <div class="tab-content patternbg">
                             <div id="reviews" class="tab-pane fade active in">
                                 <div class="post-comments">
@@ -242,7 +226,7 @@
                                                 </div>
                                                 <p class="mt-5" id="descripcionVendedor"></p>
                                             </div>
-
+                                            <a target="_blank" class="btn btn-main" id="contactarVendedorProduct" onclick="contactarVendedor()">Contactar</a>
                                         </li>
                                         <!-- End Comment Item -->
                                     </ul>

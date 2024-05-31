@@ -55,7 +55,7 @@ function verCompras(idUsuario) {
                                       <p>Cantidad comprada</p>
                                   </div>
                                   <div class="col-md-5 text-center">
-                                      <button class="btn btn-main">Calificar Producto</button>
+                                  <button type="button" class="btn btn-main text-center btn-actualizar-usuario">Calificar Producto</button>
                                   </div>
                               </div>
                           </div>
@@ -71,4 +71,9 @@ function verCompras(idUsuario) {
             console.error('Error al obtener datos de categorias:', error);
         }
     });
+}
+
+//============= Formulario para calificar ================ \\
+function openCalificacion() {
+    location.href = "../calificar.html";
 }
