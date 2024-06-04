@@ -20,10 +20,8 @@ function obtenerDetalleProducto(idProducto) {
                 document.getElementById('product-quantity').value = 1;
                 document.getElementById('product-quantity').max = response.cantidad_disponible;
                 document.getElementById('product-quantity').min = 1;
-                document.getElementById('empresaVendedor').textContent = "Empresa : " + response.usuario.usuario_empresa;
-                document.getElementById('nombreVendedor').textContent = response.usuario.usuario_nombre + ' ' + response.usuario.usuario_apellido;
-                document.getElementById('descripcionVendedor').textContent = response.usuario.usuario_descripcion;
                 mostrarImagen(response);
+                verVendedor();
             }
         },
         error: function(xhr, status, error) {
@@ -31,6 +29,77 @@ function obtenerDetalleProducto(idProducto) {
             console.error('Error al obtener datos de estados:', error);
         }
     });
+}
+
+
+function verVendedor() {
+    let contenidoVendedor = `
+    <li class="media">
+        <a class="pull-left" href="#!">
+            <img class="media-object comment-avatar" src="images/PerfilPredeterminada.png" alt="" width="50" height="50" />
+        </a>
+
+        <div class="media-body">
+            <div class="comment-info">
+                <h4 class="comment-author">
+                    <a id="empresaVendedor">${productoSeleccionado.usuario.usuario_empresa}</a>
+                </h4>
+                <a class="comment-button" id="nombreVendedor">${productoSeleccionado.usuario.usuario_nombre + ' ' + productoSeleccionado.usuario.usuario_apellido}</a>
+            </div>
+            <p class="mt-5" id="descripcionVendedor">${productoSeleccionado.usuario.usuario_descripcion}</p>
+        </div>
+        <a target="_blank" class="btn btn-main" id="contactarVendedorProduct" onclick="contactarVendedor()">Contactar</a>
+    </li>`;
+    document.getElementById('contenidoAdicionalProducto').innerHTML = contenidoVendedor;
+}
+
+function formatearFecha(dateString) {
+    const date = new Date(dateString);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}
+
+function verComentarios() {
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/calificaciones/producto/' + productoSeleccionado.idProducto,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            if (response != null) {
+                document.getElementById('contenidoAdicionalProducto').innerHTML = "";
+                let contenidoComentario;
+                for (let i of response) {
+                    let comentario = `
+                        <li class="media">
+                            <a class="pull-left" href="#!">
+                                <img class="media-object comment-avatar" src="images/PerfilPredeterminada.png" alt="" width="50" height="50" />
+                            </a>
+                            <div class="media-body" style="margin:0 2rem;">
+                                <div class="comment-info">
+                                    <h4 class="comment-author">
+                                        <a id="usuarioQueComento">${i.usuario.usuario_nombre + " " + i.usuario.usuario_apellido}</a>
+                                    </h4>
+                                    <p style="margin:0 1rem;" id="fechaComentario">${formatearFecha(i.fecha)}</p>
+                                </div>
+                                <span class="mt-5" id="Comentario">${i.comentario}</span>
+                            </div>
+                            <hr style="border:1px solid #959595;">
+                        </li>`;
+                    document.getElementById('contenidoAdicionalProducto').innerHTML += comentario;
+                }
+            } else {
+                alert("No se encontraron calificaciones");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+        }
+    });
+
 }
 
 

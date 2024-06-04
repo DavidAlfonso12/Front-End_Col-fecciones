@@ -208,29 +208,14 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="tabCommon mt-20">
-                        <h4 class="mt-20"><b>Vendedor</b></h4>
+                        <span class="detallevendeComent" onclick="verVendedor()"><b>Vendedor</b></span>
+                        <span class="detallevendeComent" onclick="verComentarios()"><b>Comentarios</b></span>
                         <div class="tab-content patternbg">
                             <div id="reviews" class="tab-pane fade active in">
                                 <div class="post-comments">
-                                    <ul class="media-list comments-list m-bot-50 clearlist">
+                                    <ul class="media-list comments-list clearlist" id="contenidoAdicionalProducto">
                                         <!-- Comment Item start-->
-                                        <li class="media">
 
-                                            <a class="pull-left" href="#!">
-                                                <img class="media-object comment-avatar" src="images/PerfilPredeterminada.png" alt="" width="50" height="50" />
-                                            </a>
-
-                                            <div class="media-body">
-                                                <div class="comment-info">
-                                                    <h4 class="comment-author">
-                                                        <a id="empresaVendedor"></a>
-                                                    </h4>
-                                                    <a class="comment-button mt-5" id="nombreVendedor"></a>
-                                                </div>
-                                                <p class="mt-5" id="descripcionVendedor"></p>
-                                            </div>
-                                            <a target="_blank" class="btn btn-main" id="contactarVendedorProduct" onclick="contactarVendedor()">Contactar</a>
-                                        </li>
                                         <!-- End Comment Item -->
                                     </ul>
                                 </div>

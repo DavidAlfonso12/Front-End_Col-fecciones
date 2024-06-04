@@ -3238,3 +3238,16 @@ input[type=tel]:focus {
 #imagenProductoCalificar {
     width: 100%;
 }
+
+
+/* Style ver vendedor y comentarios detalle producto */
+
+.detallevendeComent {
+    margin: 1rem;
+    font-size: large;
+    cursor: pointer;
+}
+
+.detallevendeComent:hover {
+    color: #818181;
+}
