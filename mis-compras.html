@@ -171,19 +171,15 @@
             <h2><strong> Calificar Producto</strong></h2>
             <form id="formCalificacion">
                 <div class="row mt-20 text-center">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <h4>Producto</h4>
-                        <img alt=""  id="imagenProductoCalificar">
+                        <img alt="" id="imagenProductoCalificar">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <h4>Nombre del Producto</h4>
                         <p id="nombreProductoCalificar"></p>
                     </div>
-                    <div class="col-md-3">
-                        <h4>Descripcion del Producto</h4>
-                        <p id="descripcionProductoCalificar"></p>
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <h4>Vendedor</h4>
                         <p id="vendedorProductoComentado"></p>
                     </div>
@@ -201,12 +197,12 @@
                     </div>
                     <div class="col-md-6">
                         <h4 for="comentario">Comentario:</h4>
-                        <textarea style="background: #F8EDE3;" id="comentario" name="comentario" rows="4" cols="50"></textarea>
+                        <textarea style="background: #F8EDE3;" id="comentario" name="comentario" placeholder="Agrega un comentario" rows="4" cols="50"></textarea>
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-6"> 
-                        <button type="button" class="btn btn-main text-center btn-enviar-calificacion" onclick="submitCalificacion()">Enviar</button>
+                    <div class="col-md-6">
+                        <button onclick="guardarCalificacion()" type="submit" id="enviarCalificacion" class="btn btn-main text-center btn-enviar-calificacion">Enviar</button>
                     </div>
                 </div>
             </form>

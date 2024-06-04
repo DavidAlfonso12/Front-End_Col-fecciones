@@ -7,12 +7,12 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
     if (document.getElementById("productosRegistrados")) {
         document.getElementById("productosRegistrados").innerHTML = '';
     }
+
     $.ajax({
         url: 'http://localhost:8080/api/v1/productos',
         method: 'GET',
         success: function(response) {
             let productos = response;
-
             //Respuesta exitosa
             if (productos != null) {
                 let productosActivos = obtenerProductosFiltrados(productos, idCategoria, idVendedor);
@@ -39,10 +39,12 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                                 <div class="product-content">
                                     <h4 class="listaProducto">${i.producto_nombre}</h4>
                                     <h6 class="listaProducto">Vendedor: ${i.usuario.usuario_empresa}</h6>
+                                    <p id="calificacionProducto_${i.idProducto}"></p>
                                     <p class="price">$${i.producto_precio}</p>
                                 </div>
                             </div>
                         </div>`;
+
                     contentProductos += producto;
 
                 }

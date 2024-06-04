@@ -13,6 +13,7 @@ function obtenerDetalleProducto(idProducto) {
             if (response != null) {
                 productoSeleccionado = response;
                 document.getElementById('nombreProducto').textContent = response.producto_nombre;
+
                 document.getElementById('precioProducto').textContent = "$ " + response.producto_precio;
                 document.getElementById('descripcionProducto').textContent = response.producto_descripcion;
                 document.getElementById('categoriaProducto').textContent = response.categoria.categoria_nombre;
@@ -26,6 +27,7 @@ function obtenerDetalleProducto(idProducto) {
             }
         },
         error: function(xhr, status, error) {
+            location.href = "../shop-sidebar.html";
             console.error('Error al obtener datos de estados:', error);
         }
     });

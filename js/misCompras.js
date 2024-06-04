@@ -1,5 +1,6 @@
 const URL_PATH = "http://localhost:8080/api/v1/detalleFactura/usuario";
-let productoCalificar;
+const URL_PATH_RATING = "http://localhost:8080/api/v1/calificaciones/producto/";
+let productoCalificar = {};
 
 function verCompras(idUsuario, repetir = false) {
     const contenedorCompras = document.getElementById('contenedorCompras');
@@ -7,7 +8,7 @@ function verCompras(idUsuario, repetir = false) {
         url: `${URL_PATH}/${idUsuario}`,
         method: 'GET',
         dataType: 'json',
-        success: function (response) {
+        success: function(response) {
             contenedorCompras.innerHTML = ''; // Limpiar el contenedor antes de agregar contenido nuevo
 
             if (!response || response.length === 0) {
@@ -28,7 +29,6 @@ function verCompras(idUsuario, repetir = false) {
 
                 const ul = itemElemento.querySelector(`#factura_${i.id}`);
                 i.productos.forEach(p => {
-                    console.log(p);
                     ul.innerHTML += `
                         <li>
                             <div class="row" style="margin-bottom: 2rem;">
@@ -42,14 +42,13 @@ function verCompras(idUsuario, repetir = false) {
                                             <p>Cantidad comprada</p>
                                         </div>
                                         <div class="col-md-5 text-center">
-                                            <button type="button" data-nombre="${p.producto_nombre}" data-imagen="${p.imagenes[0].imagen_base64}" data-descripcion="${p.producto_descripcion}" data-nombre-usuario="${p.imagenes[0].producto.usuario.usuario_empresa}" class="btn btn-main text-center btn-actualizar-usuario openModalBtn">Calificar Producto</button>
+                                            <button type="button" data-nombre="${p.producto_nombre}" data-imagen="${p.imagenes[0].imagen_base64}" data-nombre-usuario="${p.imagenes[0].producto.usuario.usuario_empresa}" onclick="ptc('${encodeURIComponent(JSON.stringify(p))}')" class="btn btn-main text-center btn-actualizar-usuario openModalBtn">Calificar Producto</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr style="border-top: 1px solid #333; width: 100%;">
                         </li>`;
-                        
                 });
 
                 contenedorCompras.appendChild(itemElemento);
@@ -57,22 +56,30 @@ function verCompras(idUsuario, repetir = false) {
 
             // Agregar eventos a los botones de abrir modal
             document.querySelectorAll('.openModalBtn').forEach(btn => {
-                
-                btn.addEventListener('click', () =>{
+
+                btn.addEventListener('click', () => {
                     let product = {
                         nombre: btn.getAttribute('data-nombre'),
-                        descripcion: btn.getAttribute('data-descripcion'),
                         imagen: btn.getAttribute('data-imagen'),
                         vendedor: btn.getAttribute('data-nombre-usuario')
                     }
-                    openModal(product.nombre, product.descripcion, product.imagen, product.vendedor);
+                    openModal(product.nombre, product.imagen, product.vendedor);
                 });
             });
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
             contenedorCompras.innerHTML = mostrarDescripcion("Error al traer los datos");
         }
     });
+}
+
+function ptc(encodedProduct) {
+    let product = JSON.parse(decodeURIComponent(encodedProduct));
+    productoCalificar.nombre = product.producto_nombre;
+    productoCalificar.idProducto = product.idProducto;
+    productoCalificar.imagen = product.imagenes[0].imagen_base64;
+    productoCalificar.descripcion = product.producto_descripcion;
+    productoCalificar.imagenes = product.imagenes;
 }
 
 function mostrarDescripcion(mensaje) {
@@ -89,12 +96,39 @@ function mostrarDescripcion(mensaje) {
 }
 
 // Función para abrir el modal
-function openModal(nombreProducto, descripcion, imagen, vendedor) {
+function openModal(nombreProducto, imagen, vendedor) {
     document.getElementById('modalCalificacion').style.display = 'block';
     document.getElementById('nombreProductoCalificar').innerText = nombreProducto;
-    document.getElementById('descripcionProductoCalificar').innerText = descripcion;
     document.getElementById('imagenProductoCalificar').src = imagen;
     document.getElementById('vendedorProductoComentado').innerText = vendedor;
+
+    $.ajax({
+        url: `${URL_PATH_RATING}${productoCalificar.idProducto}`,
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            let calificacion = document.getElementById("calificacion");
+            let comentario = document.getElementById("comentario");
+            let found = false;
+
+            response.forEach(i => {
+                if (i.usuario.idUsuario == user.idUsuario) {
+                    calificacion.value = i.calificacion;
+                    comentario.value = i.comentario;
+                    localStorage.setItem("idCalificacion", i.id);
+                    found = true;
+                    return false;
+                }
+            });
+
+            if (!found) {
+                localStorage.setItem("idCalificacion", null);
+            }
+        },
+        error: function(xhr, status, error) {
+            contenedorCompras.innerHTML = mostrarDescripcion("Error al traer los datos");
+        }
+    });
 }
 
 // Obtener el modal
@@ -106,28 +140,15 @@ const span = document.getElementsByClassName('close')[0];
 // Cuando el usuario haga clic en <span> (x), cerrar el modal
 span.onclick = function() {
     modal.style.display = 'none';
+    document.getElementById('formCalificacion').reset();
 }
 
 // Cuando el usuario haga clic fuera del modal, cerrarlo
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            document.getElementById('formCalificacion').reset();
+        }
     }
-}
-
-// Función para manejar el envío del formulario
-function submitCalificacion() {
-    const calificacion = document.getElementById('calificacion').value;
-    const comentario = document.getElementById('comentario').value;
-
-    // Aquí puedes hacer lo que necesites con los datos, como enviarlos a un servidor
-    console.log('Calificación:', calificacion);
-    console.log('Comentario:', comentario);
-    console.log(document);
-
-    // Cerrar el modal después de enviar los datos
-    modal.style.display = 'none';
-}
-
-// Llamada inicial
+    // Llamada inicial
 verCompras(user.idUsuario, true);

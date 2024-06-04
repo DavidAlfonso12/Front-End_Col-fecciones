@@ -300,9 +300,12 @@ function eliminarProducto(idProducto) {
 
 obtenerProductosVendedor(user.idUsuario);
 
+function volverProductos() {
+    obtenerProductosVendedor(user.idUsuario);
+}
 
 function obtenerProductosVendedor(idVendedor) {
-    document.getElementById("productosVendedor").innerHTML = '';
+    document.getElementById("tablaVendedor").innerHTML = '';
     $.ajax({
         url: 'http://localhost:8080/api/v1/productos/vendedor/' + idVendedor,
         method: 'GET',
@@ -312,8 +315,19 @@ function obtenerProductosVendedor(idVendedor) {
             if (productos != null) {
 
                 let contentProductos = "";
+                let headerTabla = `<thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre Del Producto</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Acción</th>
+                </tr>
+            </thead>`;
+                contentProductos += headerTabla;
+
                 for (let i of productos) {
                     let producto = `
+                    <tbody>
                     <tr id="producto_${i.idProducto}">
                         <td class="product-thumb" >
                         <div width="80px" height="auto" id="imagenProducto_${i.idProducto}"></div>
@@ -343,12 +357,13 @@ function obtenerProductosVendedor(idVendedor) {
                                 </ul>
                             </div>
                         </td>
-                    </tr>`;
+                    </tr>
+                    </tbody>`;
                     contentProductos += producto;
                 }
                 productosMostrados = productos;
 
-                document.getElementById("productosVendedor").innerHTML = contentProductos;
+                document.getElementById("tablaVendedor").innerHTML = contentProductos;
                 mostrarImagenes(response);
 
             } else {
