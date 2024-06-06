@@ -3251,3 +3251,68 @@ input[type=tel]:focus {
 .detallevendeComent:hover {
     color: #818181;
 }
+
+
+/* Factura */
+
+.descargarFactura {
+    color: #5e5e5e;
+    cursor: pointer;
+}
+
+.descargarFactura:hover {
+    color: #000000;
+}
+
+#factura h1 {
+    font-weight: 700;
+    margin: 3rem;
+}
+
+#factura h2 {
+    font-weight: 700;
+    margin: 3rem;
+}
+
+#factura section div {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+#factura img {
+    width: 30%;
+    margin-left: 35%;
+}
+
+#tablaProducto {
+    margin-top: 10rem;
+    width: 100%;
+}
+
+#tablaProductos,
+thead,
+tr,
+th,
+tbody,
+tr,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.contenedorTabla {
+    margin: 5rem;
+}
+
+.detallesFactura {
+    margin: 1rem 5rem;
+}
+
+#factura header {
+    margin: 0 auto;
+}
+
+.contenedorTotalFactura {
+    margin-top: 1rem;
+    margin-left: 70%;
+}

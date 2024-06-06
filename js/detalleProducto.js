@@ -34,12 +34,8 @@ function obtenerDetalleProducto(idProducto) {
 
 function verVendedor() {
     let contenidoVendedor = `
-    <li class="media">
-        <a class="pull-left" href="#!">
-            <img class="media-object comment-avatar" src="images/PerfilPredeterminada.png" alt="" width="50" height="50" />
-        </a>
-
-        <div class="media-body">
+    <li class="media " style="padding: 0 2rem;">
+        <div class="media-body ">
             <div class="comment-info">
                 <h4 class="comment-author">
                     <a id="empresaVendedor">${productoSeleccionado.usuario.usuario_empresa}</a>
@@ -70,26 +66,39 @@ function verComentarios() {
         contentType: 'application/json',
         success: function(response) {
             if (response != null) {
-                document.getElementById('contenidoAdicionalProducto').innerHTML = "";
-                let contenidoComentario;
-                for (let i of response) {
+                if (response.length == 0) {
+                    document.getElementById('contenidoAdicionalProducto').innerHTML = "";
                     let comentario = `
-                        <li class="media">
-                            <a class="pull-left" href="#!">
-                                <img class="media-object comment-avatar" src="images/PerfilPredeterminada.png" alt="" width="50" height="50" />
-                            </a>
-                            <div class="media-body" style="margin:0 2rem;">
-                                <div class="comment-info">
-                                    <h4 class="comment-author">
-                                        <a id="usuarioQueComento">${i.usuario.usuario_nombre + " " + i.usuario.usuario_apellido}</a>
-                                    </h4>
-                                    <p style="margin:0 1rem;" id="fechaComentario">${formatearFecha(i.fecha)}</p>
-                                </div>
-                                <span class="mt-5" id="Comentario">${i.comentario}</span>
-                            </div>
-                            <hr style="border:1px solid #959595;">
+                        <li class="media" style="padding: 0 2rem; ">
+                            
+                        <div class="media-body " style="margin:0 2rem;">
+                            <h4 class="comment-author">
+                                <a id="usuarioQueComento">No se encontraron comentarios de este producto</a>
+                            </h4>
+                        </div>
                         </li>`;
                     document.getElementById('contenidoAdicionalProducto').innerHTML += comentario;
+                } else {
+                    document.getElementById('contenidoAdicionalProducto').innerHTML = "";
+                    let contenidoComentario;
+                    for (let i of response) {
+                        let comentario = `
+                            <li class="media" style="padding: 0 2rem; ">
+                                
+                                <div class="media-body " style="margin:0 2rem;">
+                                    <div class="comment-info">
+                                        <h4 class="comment-author">
+                                            <a id="usuarioQueComento">${i.usuario.usuario_nombre + " " + i.usuario.usuario_apellido}</a>
+                                        </h4>
+                                        <p style="margin:0 1rem;" id="fechaComentario">${formatearFecha(i.fecha)}</p>
+                                    </div>
+                                    <span class="mt-5" id="Comentario">${i.comentario}</span>
+                                </div>
+                                <hr style="border:1px solid #959595;">
+                            </li>`;
+                        document.getElementById('contenidoAdicionalProducto').innerHTML += comentario;
+                    }
+
                 }
             } else {
                 alert("No se encontraron calificaciones");

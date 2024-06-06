@@ -209,6 +209,49 @@
         </div>
     </div>
 
+    <!-- factura -->
+    <div style="display: none;">
+        <div id="factura">
+            <header>
+                <img src="images/about/logo/COLFECCIONES Logo - Black with Transparent Background - 5000x5000.png" alt="Logo Col-fecciones">
+                <h1>Factura compra</h1>
+                <h2 id="numeroFactura"></h2>
+            </header>
+            <section style="margin-bottom: 5rem;">
+                <div class="contenedorDetallesFactura">
+                    <div class="detallesFactura"><strong> Nombre Cliente:</strong> <span id="nombreCliente"></span></div>
+                    <div class="detallesFactura">Telefono: <span id="telefonoCliente"></span></div>
+                    <div class="detallesFactura">Direccion: <span id="direccion"></span></div>
+                    <div class="detallesFactura">Fecha: <span id="fecha"></span></div>
+                </div>
+                <div class="contenedorTabla">
+                    <table style="border: 1px solid black;" id="tablaProductos">
+                        <thead style="border: 1px solid black;">
+                            <tr>
+                                <th style="border: 1px solid black;">CANTIDAD</th>
+                                <th style="border: 1px solid black;">DESCRIPCIÓN</th>
+                                <th style="border: 1px solid black;">VALOR</th>
+                                <th style="border: 1px solid black;">COSTO TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyTablaFactura">
+                            <tr style="border: 1px solid black;">
+                                <td style="border: 1px solid black;"></td>
+                                <td style="border: 1px solid black;"></td>
+                                <td style="border: 1px solid black;"></td>
+                                <td style="border: 1px solid black;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="contenedorTotalFactura" style="margin-bottom: 5rem;">
+                        <span>TOTAL : </span>
+                        <span style="margin-left: 10px;" id="totalFactura"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
 
     <footer class="footer section text-center">
         <div class="container">
@@ -283,6 +326,8 @@
     <script src="js/misCompras.js"></script>
     <script src="js/calificacion.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
 
 </body>
 
