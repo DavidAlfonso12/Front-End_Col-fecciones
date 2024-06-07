@@ -42,7 +42,7 @@ function verCompras(idUsuario, repetir = false) {
                                         </div>
                                         <div class="col-md-6">
                                             <h4>${p.producto_nombre}</h4>
-                                            <p>Cantidad comprada</p>
+                                            <p>Cantidad comprada: ${p.cantidad_vendidos}</p>
                                         </div>
                                         <div class="col-md-5 text-center">
                                             <button type="button" data-nombre="${p.producto_nombre}" data-imagen="${p.imagenes[0].imagen_base64}" data-nombre-usuario="${p.imagenes[0].producto.usuario.usuario_empresa}" onclick="ptc('${encodeURIComponent(JSON.stringify(p))}')" class="btn btn-main text-center btn-actualizar-usuario openModalBtn">Calificar Producto</button>

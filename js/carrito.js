@@ -117,7 +117,6 @@ function eliminarDelCarrito(idProducto) {
     actualizarCarrito();
 }
 
-
 function listarProductos() {
     let contenidoDetalleCarrito = "";
     let totalValorCarrito = 0;

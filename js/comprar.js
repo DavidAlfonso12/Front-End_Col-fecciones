@@ -1,41 +1,41 @@
 let productosAComprar = [];
+let listaVacia = [];
 cargarProductosAComprar();
 $('#formularioCompra').submit(function(event) {
     event.preventDefault();
 
-    if (localStorage.getItem('productosEnElCarrito') == null) {
-        alert("No hay productos en el carrito");
-        location.href = "../shop-sidebar.html";
-    } else {
-        let campos = {};
-        campos.idUsuario = user.idUsuario;
-        campos.direccion = document.getElementById('user_address').value;
-        campos.productos = productosAComprar;
+    let campos = {};
+    campos.idUsuario = user.idUsuario;
+    campos.direccion = document.getElementById('user_address').value;
+    campos.productos = productosAComprar;
 
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/detalleFactura',
-            method: 'POST',
-            data: JSON.stringify(campos),
-            contentType: 'application/json',
-            success: function(response) {
-                // Manejar la respuesta exitosa
-                if (response != null) {
-                    localStorage.getItem('productosEnElCarrito', JSON.stringify([]));
-                    location.href = "../confirmation.html";
-                    actualizarCarrito();
-                } else {
-                    alert("No se pudo registrar");
-                }
-                console.log('Respuesta del servicio:', response);
-                // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                // Manejar errores de la solicitud
-                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-                // Puedes mostrar un mensaje de error al usuario aquí
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/detalleFactura',
+        method: 'POST',
+        data: JSON.stringify(campos),
+        contentType: 'application/json',
+        success: function(response) {
+            // Manejar la respuesta exitosa
+            if (response != null) {
+
+                location.href = "../confirmation.html";
+                guardarLista(listaVacia);
+                actualizarCarrito();
+            } else {
+                alert("No se pudo registrar");
             }
-        });
-    }
+            console.log('Respuesta del servicio:', response);
+            // Puedes actualizar el DOM o mostrar un mensaje de éxito aquí
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar errores de la solicitud
+            alert('No se puedo realizar la compra con exito');
+            reload();
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+            // Puedes mostrar un mensaje de error al usuario aquí
+        }
+    });
+
 
 });
 

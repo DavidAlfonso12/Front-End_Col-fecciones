@@ -25,7 +25,6 @@ function obtenerDetalleProducto(idProducto) {
             }
         },
         error: function(xhr, status, error) {
-            location.href = "../shop-sidebar.html";
             console.error('Error al obtener datos de estados:', error);
         }
     });

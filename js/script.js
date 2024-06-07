@@ -391,3 +391,13 @@ $('#actualizarUsuario').submit(function(event) {
 if (!localStorage.getItem('user')) {
     document.getElementById('misComprasPage').style.display = "none";
 }
+
+function irAPagar() {
+    console.log(obtenerLista());
+    if (obtenerLista().length === 0) {
+        alert('No hay productos en el carrito');
+        location.href = "../../shop-sidebar.html";
+    } else {
+        location.href = "../../checkout.html";
+    }
+}
