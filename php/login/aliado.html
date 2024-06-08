@@ -196,6 +196,13 @@ Essential stylesheets
                             <input type="search" id="buscadorProductVendedor" class="form-control buscador-usuarios" placeholder="Buscar..." onclick="buscadorProductVendedor()">
                         </div>
                         <h3 class="widget-header" id="verProductosVendidos"><a onclick="obtenerProductosVendidos()" style="cursor: pointer;">Ver productos vendidos</a></h3>
+                        <div class="containerFechas" id="filtrarFechas">
+                            <label for="inicio">Fecha inicio</label>
+                            <input style="margin-right: 5%;" type="date" name="fechaInicio" id="fechaInicio">
+                            <label for="inicio">Fecha Fin</label>
+                            <input style="margin-right: 5%;" type="date" name="fechaFin" id="fechaFin">
+                            <a onclick="obtenerProductosVendidosFechas()" style="cursor: pointer;">Buscar</a>
+                        </div>
                         <table class="table table-responsive product-aliado-table" id="tablaVendedor">
 
                             <tbody id="productosVendedor">

@@ -302,6 +302,7 @@ obtenerProductosVendedor(user.idUsuario);
 
 function volverProductos() {
     obtenerProductosVendedor(user.idUsuario);
+    document.getElementById('filtrarFechas').style.display = "none";
 }
 
 function obtenerProductosVendedor(idVendedor) {

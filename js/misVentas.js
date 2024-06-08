@@ -1,14 +1,52 @@
 function obtenerProductosVendidos() {
+    document.getElementById('filtrarFechas').style.display = "block";
     document.getElementById("tablaVendedor").innerHTML = '';
     $.ajax({
         url: 'http://localhost:8080/api/v1/detalleFactura/FacturasVendedor/' + user.idUsuario,
         method: 'GET',
         success: function(response) {
-            let productos = response;
             //Respuesta exitosa
-            if (productos != null) {
-                let contentproductos = "";
-                let headerTabla = `<thead>
+            if (response != null) {
+                tablaProductos(response);
+            } else {
+                alert("No se encontraron facturas");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar errores de la solicitud
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+        }
+    });
+}
+
+function obtenerProductosVendidosFechas() {
+    let idUsuario = user.idUsuario;
+    let fechaInicio = document.getElementById('fechaInicio').value;
+    let fechaFin = document.getElementById('fechaFin').value;
+    $.ajax({
+        url: `http://localhost:8080/api/v1/detalleFactura/FacturasFechasUsuario?idUsuario=${idUsuario}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
+        method: 'GET',
+        success: function(response) {
+            //Respuesta exitosa
+            if (response != null) {
+                tablaProductos(response);
+            } else {
+                alert("No se encontraron facturas");
+            }
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar errores de la solicitud
+            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+        }
+    });
+}
+
+function tablaProductos(listaProductos) {
+    document.getElementById("tablaVendedor").innerHTML = '';
+    let contentproductos = "";
+
+    let headerTabla = `<thead>
                 <tr>
                   <th class="text-center">idFactura</th>
                   <th class="text-center">Nombre Del Producto</th>
@@ -18,9 +56,17 @@ function obtenerProductosVendidos() {
                   <th class="text-center">Total Venta</th>
                 </tr>
               </thead>`;
-                contentproductos += headerTabla;
-                for (let i of productos) {
-                    let vend = `
+    let tablaVacia = `<tbody>
+                <tr>
+                  <div class="text-center">No se encontrarón ventas</div>
+                </tr>
+              </tbody>`;
+    contentproductos += headerTabla;
+    if (listaProductos.length == 0) {
+        contentproductos += tablaVacia;
+    } else {
+        for (let i of listaProductos) {
+            let vend = `
                     <tbody>
                       <tr>
                         <td class="text-center" style="padding:0;">${i.factura.id}</td>
@@ -32,20 +78,11 @@ function obtenerProductosVendidos() {
                       </tr>
                     </tbody>
                 `;
-                    contentproductos += vend;
-                }
-                document.getElementById("tablaVendedor").innerHTML = contentproductos;
-
-            } else {
-                alert("No se encontraron usuarios con este rol");
-            }
-
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Manejar errores de la solicitud
-            console.error('Error al realizar la solicitud:', textStatus, errorThrown);
+            contentproductos += vend;
         }
-    });
+    }
+
+    document.getElementById("tablaVendedor").innerHTML = contentproductos;
 }
 
 function formatDateToDDMMYYYY(dateString) {
