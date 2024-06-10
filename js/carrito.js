@@ -133,7 +133,7 @@ function listarProductos() {
                             <a>${i.nombre}</a>
                         </td>
                         <td>$ ${i.precio}</td>
-                        <td><input type="number" style=" background-color:transparent; border:1px solid #6666;" value="${i.cantidad}" min=1 max=${i.cantidad_disponible}></input> </td>
+                        <td><p>${i.cantidad}<p> </td>
                         <td>
                             <a class="product-remove" style="cursor: pointer;" onclick="eliminarDelCarrito(${i.id});">Eliminar</a>
                         </td>

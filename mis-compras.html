@@ -52,17 +52,9 @@
                     <!-- Site Logo -->
                     <div class="logo text-center">
                         <a href="index.html">
-                            <!-- replace logo here -->
-                            <svg width="335px" height="29px" viewBox="0 0 450 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
-								font-weight="bold">
-								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
-									<text id="AVIATO">
-										<tspan x="108.94" y="325">COL-FECCIONES</tspan>
-									</text>
-								</g>
-							</g>
-						</svg>
+                            <a href="index.html">
+                                <h2>COL-FECCIONES</h2>
+                            </a>
                         </a>
                     </div>
                 </div>
@@ -101,6 +93,47 @@
         </div>
     </section>
     <!-- End Top Header Bar -->
+    <!-- Modal editar perfil usuario -->
+
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2>Perfil</h2>
+            <form class="text-left clearfix" id="actualizarUsuario">
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_nombres">Nombres</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_nombres" id="actualUsuario_nombres" placeholder="Nombres" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_apellidos">Apellidos</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_apellidos" id="actualUsuario_apellidos" placeholder="Apellidos" required>
+                    </div>
+                </div>
+
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_telefono">Telefono</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_telefono" id="actualUsuario_telefono" placeholder="Telefono" required>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_email">Email</label>
+                        <input type="email" class="form-control input-actualizar-usuario" name="actualUsuario_email" id="actualUsuario_email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group update-venededor">
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor">
+                        <label for="actualUsuario_password">Contraseña</label>
+                        <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_password" id="actualUsuario_password" placeholder="Contraseña" required>
+                        <p id="mensaje"></p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 update-venededor text-center">
+                        <button name="actualizar" type="submit" id="actualizar" class="btn btn-main text-center btn-actualizar-usuario">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
     <section class="menu">
@@ -281,13 +314,10 @@
                             <a href="shop.html">TIENDA</a>
                         </li>
                         <li>
-                            <a href="pricing.html">PRECIOS</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">POLITICA DE PRIVACIDAD</a>
+                            <a href="about.html">CONOCENOS</a>
                         </li>
                     </ul>
-                    <p class="copyright-text">Copyright &copy;2023, Diseñado &amp; Desarrollado por <a href="https://www.sena.edu.co/es-co/Paginas/default.aspx">TEAM SENA</a></p>
+                    <p class="copyright-text">Copyright &copy;2024, Desarrollado por <a target="_blank" href="https://www.sena.edu.co/es-co/Paginas/default.aspx">TEAM SENA</a></p>
                 </div>
             </div>
         </div>

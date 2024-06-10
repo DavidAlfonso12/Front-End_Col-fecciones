@@ -65,5 +65,8 @@ function pad(num) {
 let carrito = document.getElementById('carrito');
 
 if (!user) {
-    carrito.style.display = "none";
+    if (carrito) {
+
+        carrito.style.display = "none";
+    }
 }

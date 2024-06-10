@@ -277,27 +277,6 @@ $('#updateFormProduct').submit(function(event) {
     });
 });
 
-function eliminarProducto(idProducto) {
-    let confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
-    if (confirmacion) {
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/productos/' + idProducto,
-            method: 'DELETE',
-            success: function(response) {
-                if (response != null) {
-                    alert("Producto Eliminado");
-                } else {
-                    alert("No se pudo actualizar");
-                }
-                obtenerProductosVendedor(user.idUsuario);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Error al realizar la solicitud:', textStatus, errorThrown);
-            }
-        });
-    }
-}
-
 obtenerProductosVendedor(user.idUsuario);
 
 function volverProductos() {
@@ -316,7 +295,7 @@ function obtenerProductosVendedor(idVendedor) {
             if (productos != null) {
 
                 let contentProductos = "";
-                let headerTabla = `<thead>
+                let headerTabla = `<thead class="col-md-12">
                 <tr>
                     <th>Imagen</th>
                     <th>Nombre Del Producto</th>
@@ -325,21 +304,41 @@ function obtenerProductosVendedor(idVendedor) {
                 </tr>
             </thead>`;
                 contentProductos += headerTabla;
-
-                for (let i of productos) {
+                if (productos.length == 0) {
                     let producto = `
+                    <tbody>
+                        <tr>
+                            <td class="product-thumb" >
+                                <div width="80px" height="auto"></div>
+                            </td>
+                            <td class="product-thumb" >
+                                <div width="80px" height="auto"></div>
+                            </td>
+                            <td class="product-thumb" >
+                                <div width="80px" height="auto"></div>
+                            </td>
+                            <td class="product-thumb" >
+                                <div width="80px" height="auto"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `;
+                    contentProductos += producto;
+                } else {
+                    for (let i of productos) {
+                        let producto = `
                     <tbody>
                     <tr id="producto_${i.idProducto}">
                         <td class="product-thumb" >
-                        <div width="80px" height="auto" id="imagenProducto_${i.idProducto}"></div>
-                            </td>
+                            <div width="80px" height="auto" id="imagenProducto_${i.idProducto}"></div>
+                        </td>
                         <td class="product-details">
                             <h3 class="title">${i.producto_nombre}</h3>
-                            <span><strong>Publicado: </strong><time>${i.fecha_registro}</time> </span>
-                            <span class="status active"><strong>Estado:</strong>${i.estado.estado_descripcion}</span>
-                            <span class="location"><strong>Disponibles:</strong>${i.cantidad_disponible}</span>
-                            <span class="location"><strong>Precio:</strong>${i.producto_precio}</span>
-                            <span class="location"><strong>Vendidos:</strong>${i.cantidad_vendidos}</span>
+                            <span><strong>Publicado: ${formatearFecha(i.fecha_registro)}</strong><time></time> </span>
+                            <span class="status active"><strong>Estado: ${i.estado.estado_descripcion}</strong></span>
+                            <span class="location"><strong>Disponibles: ${i.cantidad_disponible}</strong></span>
+                            <span class="location"><strong>Precio: ${i.producto_precio}</strong></span>
+                            <span class="location"><strong>Vendidos: ${i.cantidad_vendidos}</strong></span>
                         </td>
                         <td class="product-category"><span class="categories">${i.categoria.categoria_nombre}</span></td>
                         <td class="action" data-title="Action">
@@ -350,19 +349,15 @@ function obtenerProductosVendedor(idVendedor) {
                                             <i  class="fa fa-pencil"></i>
                                         </a>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <a onclick="eliminarProducto(${i.idProducto})" class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="aliado.html">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
                     </tbody>`;
-                    contentProductos += producto;
+                        contentProductos += producto;
+                    }
+                    productosMostrados = productos;
                 }
-                productosMostrados = productos;
 
                 document.getElementById("tablaVendedor").innerHTML = contentProductos;
                 mostrarImagenes(response);
@@ -396,6 +391,16 @@ function mostrarImagenes(productos) {
         }
     }
 
+}
+
+function formatearFecha(dateString) {
+    const date = new Date(dateString);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
 }
 
 function buscadorProductVendedor() {

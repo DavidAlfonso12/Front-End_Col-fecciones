@@ -931,6 +931,24 @@ input[type=tel]:focus {
     z-index: 1;
 }
 
+.imgFix {
+    background-size: cover;
+    /* Hace que la imagen cubra todo el contenedor */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    width: 100%;
+    /* Asegura que el contenedor cubra todo el ancho de la pantalla */
+    height: 100%;
+    /* Asegura que el contenedor cubra toda la altura de la pantalla */
+    display: flex;
+    /* Flexbox para centrar el contenido */
+    align-items: center;
+    /* Centra verticalmente el contenido */
+    justify-content: center;
+}
+
 .slider-item::after {
     position: absolute;
     content: "";
@@ -1742,7 +1760,7 @@ input[type=tel]:focus {
     display: block;
     max-width: 100%;
     height: auto;
-    margin-left: 30%;
+    margin: 0 auto;
 }
 
 .btn2_container {
@@ -3315,4 +3333,74 @@ td {
 .contenedorTotalFactura {
     margin-top: 1rem;
     margin-left: 70%;
+}
+
+
+/* tabla ventas */
+
+.tablaVentas {
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+.tablaVentas th {
+    border: 1px solid #000;
+}
+
+.tablaVentas tr {
+    border: 1px solid #000;
+}
+
+.tablaVentas tr td {
+    border: 1px solid #000;
+}
+
+#vendedoresSelect {
+    text-align: center;
+    padding: 5px;
+}
+
+#fechaInicioAdm {
+    margin-top: 5px;
+}
+
+#fechaFinAdm {
+    margin-top: 5px;
+}
+
+.bottonFiltrarFechaAdm {
+    cursor: pointer;
+    margin-top: 5px;
+    height: 100%;
+}
+
+@media (min-width:992px) {
+    #fechas {
+        text-align: end;
+    }
+}
+
+
+/* Mensaje email recuperacion*/
+
+#emailEnviado {
+    color: rgb(212, 15, 8);
+    display: none;
+}
+
+@media (min-width:769) {
+    .imgMarcas {
+        width: 30%;
+        height: 30%;
+    }
+}
+
+.imgMisCompras {
+    width: 100%;
+}
+
+@media (max-width:768) {
+    .imgMisCompras {
+        width: 50%;
+    }
 }

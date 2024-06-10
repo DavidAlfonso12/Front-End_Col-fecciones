@@ -10,8 +10,7 @@ function verCompras(idUsuario, repetir = false) {
         method: 'GET',
         dataType: 'json',
         success: function(response) {
-            contenedorCompras.innerHTML = ''; // Limpiar el contenedor antes de agregar contenido nuevo
-            console.log(response);
+            contenedorCompras.innerHTML = '';
             if (!response || response.length === 0) {
                 contenedorCompras.innerHTML = mostrarDescripcion("No has realizado ninguna compra aún.");
                 return;
@@ -37,14 +36,14 @@ function verCompras(idUsuario, repetir = false) {
                             <div class="row" style="margin-bottom: 2rem;">
                                 <div class="block">
                                     <div style="height: 25%" class="product-list">
-                                        <div class="product-info col-md-1">
-                                            <img style="width: 100%;" src="${p.imagenes[0].imagen_base64}" alt="">
+                                        <div class="product-info col-md-1 col-sm-3 col-xs-5">
+                                            <img class="imgMisCompras" src="${p.imagenes[0].imagen_base64}" alt="">
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 col-sm-5">
                                             <h4>${p.producto_nombre}</h4>
                                             <p>Cantidad comprada: ${p.cantidad_vendidos}</p>
                                         </div>
-                                        <div class="col-md-5 text-center">
+                                        <div class="col-md-5 col-sm-2 text-center">
                                             <button type="button" data-nombre="${p.producto_nombre}" data-imagen="${p.imagenes[0].imagen_base64}" data-nombre-usuario="${p.imagenes[0].producto.usuario.usuario_empresa}" onclick="ptc('${encodeURIComponent(JSON.stringify(p))}')" class="btn btn-main text-center btn-actualizar-usuario openModalBtn">Calificar Producto</button>
                                         </div>
                                     </div>
