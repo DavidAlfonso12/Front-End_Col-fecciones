@@ -10,7 +10,7 @@ if (validarAdministrador()) {
 function obtenerUsuarios() {
     document.getElementById("usuariosRender").innerHTML = '';
     $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios/rol/1',
+        url: `${URL_SERVICE}usuarios/rol/1`,
         method: 'GET',
         success: function(response) {
             let usuarios = response;
@@ -84,7 +84,7 @@ function editar(id) {
     idEditar = id;
     //cargar datos del vendedor
     $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios/' + idEditar,
+        url: `${URL_SERVICE}usuarios/` + idEditar,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -107,7 +107,7 @@ function obtenerEstados() {
 
     //consultar estados
     $.ajax({
-        url: 'http://localhost:8080/api/v1/estados',
+        url: `${URL_SERVICE}estados`,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -190,7 +190,7 @@ $('#actualizarUsuario').submit(function(event) {
     } else {
         campos.usuario_password = password;
         $.ajax({
-            url: 'http://localhost:8080/api/v1/usuarios',
+            url: `${URL_SERVICE}usuarios`,
             method: 'POST',
             data: JSON.stringify(campos),
             contentType: 'application/json',

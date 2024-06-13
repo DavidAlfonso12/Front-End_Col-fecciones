@@ -1,7 +1,7 @@
 function obtenerProductosVendidos(idVendedor) {
     if (idVendedor) {
         $.ajax({
-            url: 'http://localhost:8080/api/v1/detalleFactura/FacturasVendedor/' + idVendedor,
+            url: `${URL_SERVICE}detalleFactura/FacturasVendedor/` + idVendedor,
             method: 'GET',
             success: function(response) {
                 //Respuesta exitosa
@@ -20,7 +20,7 @@ function obtenerProductosVendidos(idVendedor) {
         document.getElementById('filtrarFechas').style.display = "block";
         document.getElementById("tablaVendedor").innerHTML = '';
         $.ajax({
-            url: 'http://localhost:8080/api/v1/detalleFactura/FacturasVendedor/' + user.idUsuario,
+            url: `${URL_SERVICE}detalleFactura/FacturasVendedor/` + user.idUsuario,
             method: 'GET',
             success: function(response) {
                 //Respuesta exitosa
@@ -46,7 +46,7 @@ function obtenerProductosVendidosFechas() {
     let fechaFin = document.getElementById('fechaFin').value;
 
     $.ajax({
-        url: `http://localhost:8080/api/v1/detalleFactura/FacturasFechasUsuario?idUsuario=${idUsuario}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
+        url: `${URL_SERVICE}detalleFactura/FacturasFechasUsuario?idUsuario=${idUsuario}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
         method: 'GET',
         success: function(response) {
             //Respuesta exitosa

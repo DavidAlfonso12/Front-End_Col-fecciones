@@ -87,6 +87,11 @@
     $('.hero-slider').slickAnimation();
 
 })(jQuery);
+
+const HAMBIENT = "localhost";
+const PORT = 8080;
+const URL_SERVICE = "http://" + HAMBIENT + ":" + PORT + "/api/v1/";
+
 // Validiacion de rol para mensaje de bienvenida
 if (localStorage.getItem('loggedIn') && user.rol.idRol != 2 && user.rol.idRol != 3) {
     MensajeBienvenida();

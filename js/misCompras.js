@@ -1,5 +1,5 @@
-const URL_PATH = "http://localhost:8080/api/v1/detalleFactura/usuario/";
-const URL_PATH_RATING = "http://localhost:8080/api/v1/calificaciones/producto/";
+const URL_PATH = `${URL_SERVICE}detalleFactura/usuario/`;
+const URL_PATH_RATING = `${URL_SERVICE}calificaciones/producto/`;
 let productoCalificar = {};
 let facturas = [];
 

@@ -3,7 +3,7 @@ function verVentasRegistradas() {
     document.getElementById('usuariosAdmin').style.display = "none";
     obtenerVentasPorVendedor();
     $.ajax({
-        url: `http://localhost:8080/api/v1/detalleFactura`,
+        url: `${URL_SERVICE}detalleFactura`,
         method: 'GET',
         success: function(response) {
             //Respuesta exitosa
@@ -47,7 +47,7 @@ function consultarProductosPorVendedoYFecha() {
 
     if (usuarioSelected > 0) {
         $.ajax({
-            url: `http://localhost:8080/api/v1/detalleFactura/FacturasFechasUsuario?idUsuario=${usuarioSelected}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
+            url: `${URL_SERVICE}detalleFactura/FacturasFechasUsuario?idUsuario=${usuarioSelected}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
             method: 'GET',
             success: function(response) {
                 //Respuesta exitosa
@@ -64,7 +64,7 @@ function consultarProductosPorVendedoYFecha() {
         });
     } else {
         $.ajax({
-            url: `http://localhost:8080/api/v1/detalleFactura/FacturasFecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
+            url: `${URL_SERVICE}detalleFactura/FacturasFecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
             method: 'GET',
             success: function(response) {
                 //Respuesta exitosa
@@ -91,7 +91,7 @@ function obtenerVentasPorVendedor() {
     nuevaOpcion.text = "Selecciona un vendedor";
     selectVendedores.add(nuevaOpcion);
     $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios/rol/2',
+        url: `${URL_SERVICE}usuarios/rol/2`,
         method: 'GET',
         success: function(response) {
             let vendedores = response;

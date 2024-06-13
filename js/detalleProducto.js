@@ -6,7 +6,7 @@ obtenerDetalleProducto(idProducto);
 
 function obtenerDetalleProducto(idProducto) {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos/' + idProducto,
+        url: `${URL_SERVICE}productos/` + idProducto,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -60,7 +60,7 @@ function formatearFecha(dateString) {
 
 function verComentarios() {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/calificaciones/producto/' + productoSeleccionado.idProducto,
+        url: `${URL_SERVICE}calificaciones/producto/` + productoSeleccionado.idProducto,
         method: 'GET',
         contentType: 'application/json',
         success: function(response) {

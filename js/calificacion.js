@@ -31,7 +31,7 @@ function guardarCalificacion() {
     }
     campos.producto = productoSelected;
     $.ajax({
-        url: 'http://localhost:8080/api/v1/calificaciones',
+        url: `${URL_SERVICE}calificaciones`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',
@@ -58,7 +58,7 @@ function verCalificaciones(producto) {
     let sumaCalificaciones = 0;
     let promedioCalificacion = 0;
     $.ajax({
-        url: 'http://localhost:8080/api/v1/calificaciones/producto/' + producto.idProducto,
+        url: `${URL_SERVICE}calificaciones/producto/` + producto.idProducto,
         method: 'GET',
         contentType: 'application/json',
         success: function(response) {
@@ -82,7 +82,7 @@ if (localStorage.getItem('idProductoSeleccionado')) {
     let sumaCalificaciones = 0;
     let promedioCalificacion = 0;
     $.ajax({
-        url: 'http://localhost:8080/api/v1/calificaciones/producto/' + localStorage.getItem('idProductoSeleccionado'),
+        url: `${URL_SERVICE}calificaciones/producto/` + localStorage.getItem('idProductoSeleccionado'),
         method: 'GET',
         contentType: 'application/json',
         success: function(response) {

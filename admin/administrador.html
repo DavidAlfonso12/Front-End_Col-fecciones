@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="../../plugins/themefisher-font/style.css">
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 
     <!-- Animate css -->
     <link rel="stylesheet" href="../../plugins/animate/animate.css">
@@ -52,8 +50,8 @@
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <!-- Site Logo -->
                     <div class="logo text-center">
-                        <a href="administrador.php">
-                            <a href="index.html">
+                        <a>
+                            <a href="#">
                                 <h2>COL-FECCIONES</h2>
                             </a>
                         </a>
@@ -71,92 +69,84 @@
     <!-- End Top Header Bar -->
 
 
-    <!-- Main Menu Section -->
-    <section class="menu">
-        <nav class="navbar navigation">
-            <div class="container">
-                <a href="administrador.html">
-                    <h3>volver</h3>
-                </a>
-            </div>
-            <!-- / .container -->
-        </nav>
-    </section>
 
-    <section class="page-header">
+
+    <section class="page-header ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <div class="col-md-6 col-lg-6 col-sm-6">
-                            <h1 class="page-name">Lista de Usuarios</h1>
+                        <h1 class="page-name" style="cursor: pointer;" onclick="botonBienvenida()">Bienvenido</h1>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+            <a style="cursor: pointer;" onclick="verVentasRegistradas()" class="text-center">Ver ventas registradas</a>
+        </div>
+    </section>
+
+    <section class="user-dashboard page-wrapper">
+        <div class="container" id="containerAdmin">
+            <div class="col-md-12 col-sm-6 col-xs-12" id="contenedorTablaVentas" style="display: none;">
+                <div class="row">
+                    <div class="container">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <select name="vendedoresSelect" id="vendedoresSelect" onchange="consultarProductosPorVendedor()"></select>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-sm-6">
-                            <input type="search" id="buscadorUsuarios" class="form-control buscador-usuarios" placeholder="Buscar..." onclick="buscador()">
+                        <div class="col-md-4 col-sm-12 col-xs-12" id="fechas">
+                            <label for="fechaInicio">Fecha inicio</label>
+                            <input type="date" name="fechaInicioAdm" id="fechaInicioAdm">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="fechaFin">Fecha fin</label>
+                            <input type="date" name="fechaInicioAdm" id="fechaFinAdm">
+                            <a onclick="consultarProductosPorVendedoYFecha()" class="bottonFiltrarFechaAdm">Buscar</a>
+                        </div>
+                    </div>
+                </div>
+                <table class="col-md-12 col-sm-6 col-xs-12 tablaVentas">
+                    <thead>
+                        <tr>
+                            <th class="text-center">idFactura</th>
+                            <th class="text-center">Vendedor</th>
+                            <th class="text-center">Nombre Del Producto</th>
+                            <th class="text-center">Fecha Venta</th>
+                            <th class="text-center">Cantidad Vendida</th>
+                            <th class="text-center">Precio Unitario</th>
+                            <th class="text-center">Total Venta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaVentas"></tbody>
+                </table>
+            </div>
+            <div class="row" id="usuariosAdmin">
+                <div class="col-md-6">
+                    <div class="dashboard-wrapper user-dashboard">
+                        <img class="img-responsi" src="../../images/perfil/aliado1.png">
+                        <div class="media">
+                            <div class="media-body" class="texto">
+                                <h2 class="media-heading">Ver lista de Vendedores</h2>
+                                <a href="administradorali.html" class="btn btn-main mt-20">Haga click aqui para ver</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="dashboard-wrapper user-dashboard">
+                        <img class="img-responsi" src="../../images/perfil/usuario1.png">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2 class="media-heading">Ver lista de Usuarios</h2>
+                                <a href="administradorusu.html" class="btn btn-main mt-20">Haga click aqui para ver</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <section class="user-dashboard page-wrapper">
-        <div class="container">
-            <div class="row" id="usuariosRender">
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal -->
-    <div class="modal" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content modal-backGround">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 input-actualizar-usuario" id="staticBackdropLabel">Perfil Usuario</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetForm()"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="text-left clearfix" id="actualizarUsuario">
-                        <div class="form-group">
-                            <label for="actualUsuario_nombres">Nombres</label>
-                            <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_nombres" id="actualUsuario_nombres" placeholder="Nombres" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="actualUsuario_apellidos">Apellido</label>
-                            <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_apellidos" id="actualUsuario_apellidos" placeholder="Apellidos" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="actualUsuario_telefono">Telefono</label>
-                            <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_telefono" id="actualUsuario_telefono" placeholder="Telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="actualUsuario_email">Email</label>
-                            <input type="email" class="form-control input-actualizar-usuario" name="actualUsuario_email" id="actualUsuario_email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="actualUsuario_password">Contraseña</label>
-                            <input type="text" class="form-control input-actualizar-usuario" name="actualUsuario_password" id="actualUsuario_password" placeholder="Contraseña" required>
-                            <p id="mensaje"></p>
-                        </div>
-                        <div class="form-group text-center">
-                            <label for="estado">Estado</label>
-                            <select class="update-venededor" name="estadoSelect" id="estadoSelect">
-							
-						</select>
-                        </div>
-                        <div class="text-center">
-                            <button name="actualizar" type="submit" id="actualizar" class="btn btn-main text-center btn-actualizar-usuario">Actualizar</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="resetForm()" class="btn btn-secondary btn-cerrar-modal-actualizar-usu" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
     <footer class="footer section text-center">
@@ -198,14 +188,14 @@
 
     <!-- 
     Essential Scripts
-		=====================================-->
+    =====================================-->
+
     <!-- Main jQuery -->
     <script src="../../plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.1 -->
     <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Bootstrap Touchpin -->
-    <!-- <script src="../../plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <!-- Instagram Feed Js -->
     <script src="../../plugins/instafeed/instafeed.min.js"></script>
     <!-- Video Lightbox Plugin -->
@@ -217,11 +207,19 @@
     <script src="../../plugins/slick/slick.min.js"></script>
     <script src="../../plugins/slick/slick-animation.min.js"></script>
 
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="../../plugins/google-map/gmap.js"></script>
+
     <!-- Main Js File -->
     <script src="../../js/validacionSesion.js"></script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/administrador.js"></script>
-    <script src="../../js/usuarios.js"></script>
+    <script src="../../js/misVentas.js"></script>
+    <script src="../../js/login.js"></script>
+    <script src="../../js/administrador.js">
+    </script>
+
+
 
 </body>
 

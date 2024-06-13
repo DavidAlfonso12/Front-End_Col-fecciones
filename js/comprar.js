@@ -10,7 +10,7 @@ $('#formularioCompra').submit(function(event) {
     campos.productos = productosAComprar;
 
     $.ajax({
-        url: 'http://localhost:8080/api/v1/detalleFactura',
+        url: `${URL_SERVICE}detalleFactura`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',

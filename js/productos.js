@@ -6,7 +6,7 @@ let productosMostrados;
 
 function obtenerCategorias() {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/categorias',
+        url: `${URL_SERVICE}categorias`,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -52,7 +52,7 @@ $('#addProductForm').submit(function(event) {
     campos.estado = estado;
 
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos',
+        url: `${URL_SERVICE}productos`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',
@@ -85,7 +85,7 @@ function guardarImagen(productoNuevo, base64Imagen, idImagen) {
     campos.imagen_base64 = base64Imagen;
 
     $.ajax({
-        url: 'http://localhost:8080/api/v1/imagenes',
+        url: `${URL_SERVICE}imagenes`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',
@@ -138,7 +138,7 @@ function convertirBase64(producto, idImagen) {
 
 function obtenerEstadosProductos() {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/estados',
+        url: `${URL_SERVICE}estados`,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -169,7 +169,7 @@ function obtenerEstadosProductos() {
 
 function obtenerCategoriasProductos() {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/categorias',
+        url: `${URL_SERVICE}categorias`,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -204,7 +204,7 @@ function openFormUpdateProduct(id) {
     document.getElementById("formEditarProductoContainer").style.display = "block";
     //cargar datos del vendedor
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos/' + id,
+        url: `${URL_SERVICE}productos/` + id,
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -257,7 +257,7 @@ $('#updateFormProduct').submit(function(event) {
 
 
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos',
+        url: `${URL_SERVICE}productos`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',
@@ -287,7 +287,7 @@ function volverProductos() {
 function obtenerProductosVendedor(idVendedor) {
     document.getElementById("tablaVendedor").innerHTML = '';
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos/vendedor/' + idVendedor,
+        url: `${URL_SERVICE}productos/vendedor/` + idVendedor,
         method: 'GET',
         success: function(response) {
             let productos = response;

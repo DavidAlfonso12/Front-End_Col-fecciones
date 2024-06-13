@@ -13,7 +13,7 @@ function addCarrito(idProducto) {
 
         let lista = obtenerLista();
         $.ajax({
-            url: 'http://localhost:8080/api/v1/productos/' + idProducto,
+            url: `${URL_SERVICE}productos/` + idProducto,
             method: 'GET',
             success: function(response) {
                 let producto = response;

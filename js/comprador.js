@@ -9,7 +9,7 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
     }
 
     $.ajax({
-        url: 'http://localhost:8080/api/v1/productos',
+        url: `${URL_SERVICE}productos`,
         method: 'GET',
         success: function(response) {
             let productos = response;
@@ -120,7 +120,7 @@ categoriasProductosFiltros();
 
 function categoriasProductosFiltros() {
     $.ajax({
-        url: 'http://localhost:8080/api/v1/categorias',
+        url: `${URL_SERVICE}categorias`,
         method: 'GET',
         dataType: 'json',
         success: function(response) {

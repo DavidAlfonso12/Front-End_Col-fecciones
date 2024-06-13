@@ -7,7 +7,7 @@ $('#recuperarContraseña').submit(function(event) {
     campos.asunto = "Recuperar contrasena Col-fecciones";
     campos.mensaje = "Estimado usuario su contraseña es: ";
     $.ajax({
-        url: `http://localhost:8080/api/v1/emailPassword`,
+        url: `${URL_SERVICE}emailPassword`,
         method: 'POST',
         data: JSON.stringify(campos),
         contentType: 'application/json',

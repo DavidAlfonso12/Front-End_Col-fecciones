@@ -4,7 +4,7 @@ $('#loginForm').submit(function(event) {
     // Obtener los datos del formulario
     var formData = $(this).serialize();
     $.ajax({
-        url: 'http://localhost:8080/api/v1/usuarios/login?' + formData,
+        url: URL_SERVICE + 'usuarios/login?' + formData,
         method: 'GET',
         success: function(response) {
             // Manejar la respuesta exitosa
@@ -18,9 +18,9 @@ $('#loginForm').submit(function(event) {
                     alert("Tu estado actual es: " + response.estado.estado_descripcion + " para cambiarlo comunicate con un administrador");
                 } else {
                     if (response.rol.rolNombre === "Administrador") {
-                        window.location.href = '../php/login/administrador.html';
+                        window.location.href = '../admin/administrador.html';
                     } else if (response.rol.rolNombre === "aliado") {
-                        window.location.href = '../php/login/aliado.html';
+                        window.location.href = '../admin/aliado.html';
                     } else if (response.rol.rolNombre === "usuario" && localStorage.getItem('idProductoSeleccionado')) {
                         window.location.href = '../product-single.html';
                     } else if (response.rol.rolNombre === "usuario") {
