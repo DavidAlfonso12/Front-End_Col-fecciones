@@ -1431,6 +1431,12 @@ textarea {
     width: 50%;
 }
 
+@media (max-width:770px) {
+    .form-content {
+        width: 80%;
+    }
+}
+
 .form-content h2 {
     padding-bottom: 20px;
 }
