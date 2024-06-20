@@ -64,7 +64,6 @@ $('#addProductForm').submit(function(event) {
             } else {
                 alert("No se pudo registrar");
             }
-            console.log('Respuesta del servicio:', response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Manejar errores de la solicitud

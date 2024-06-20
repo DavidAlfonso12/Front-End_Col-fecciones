@@ -24,7 +24,7 @@ function obtenerProductosRegistrados(idCategoria, idVendedor) {
                     <div class="col-md-4" id="producto_${i.idProducto}">
                             <div class="product-item " data-search="${i.producto_nombre}">
                                 <div class="product-thumb ">
-                                    <div id="imagenProducto_${i.idProducto}" class="contentImagenProducto"></div>
+                                    <div id="imagenProducto_${i.idProducto}" loading="lazy" class="contentImagenProducto"></div>
                                     <div class="preview-meta">
                                         <ul>
                                             <li>
